@@ -14,7 +14,7 @@ import com.simsetuplab.backend.model.setup.Setup;
 import com.simsetuplab.backend.service.SetupService;
 
 @RestController
-@RequestMapping(path = "api/setup")
+@RequestMapping(path = "api/v1/setup")
 public class SetupController {
 	private final SetupService setupService;
 
