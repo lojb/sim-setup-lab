@@ -27,7 +27,7 @@ public class Setup {
 	private Long id;
 	@ManyToOne
 	private User user;
-	private CarType car;
+	private CarType carType;
 	@OneToOne
 	private Aero aero;
 	@OneToOne
