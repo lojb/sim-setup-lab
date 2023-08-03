@@ -1,13 +1,13 @@
 package com.simsetuplab.backend.model.setup;
 
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
-import com.simsetuplab.backend.model.User;
 import com.simsetuplab.backend.model.setup.setupvalues.Aero;
 import com.simsetuplab.backend.model.setup.setupvalues.Dampers;
 import com.simsetuplab.backend.model.setup.setupvalues.Electronics;
 import com.simsetuplab.backend.model.setup.setupvalues.FuelStrategy;
 import com.simsetuplab.backend.model.setup.setupvalues.MechanicalGrip;
 import com.simsetuplab.backend.model.setup.setupvalues.Tyres;
+import com.simsetuplab.backend.model.user.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

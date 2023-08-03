@@ -1,4 +1,4 @@
-package com.simsetuplab.backend.model;
+package com.simsetuplab.backend.model.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
