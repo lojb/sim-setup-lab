@@ -8,9 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
 
 @Entity
 @Table(name = "setup_electronics")
+@Getter
 public class Electronics {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

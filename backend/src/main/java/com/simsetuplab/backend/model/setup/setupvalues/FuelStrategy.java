@@ -9,9 +9,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
 
 @Entity
 @Table(name = "setup_fuel_strategy")
+@Getter
 public class FuelStrategy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
