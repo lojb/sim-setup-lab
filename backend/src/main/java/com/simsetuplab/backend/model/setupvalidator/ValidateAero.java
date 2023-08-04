@@ -30,16 +30,12 @@ public class ValidateAero {
 	private int rearBrakeDuctsMax;
 
 	public boolean validate(Aero aero) {
-		boolean result = true;
-
-		result = result && validateFrontRideHeight(aero.getFrontRideHeight());
-		result = result && validateRearRideHeight(aero.getRearRideHeight());
-		result = result && validateSplitter(aero.getSplitter());
-		result = result && validateRearWing(aero.getRearWing());
-		result = result && validateFrontBrakeDucts(aero.getFrontBrakeDucts());
-		result = result && validateRearBrakeDucts(aero.getRearBrakeDucts());
-
-		return result;
+		return validateFrontRideHeight(aero.getFrontRideHeight())
+				&& validateRearRideHeight(aero.getRearRideHeight())
+				&& validateSplitter(aero.getSplitter())
+				&& validateRearWing(aero.getRearWing())
+				&& validateFrontBrakeDucts(aero.getFrontBrakeDucts())
+				&& validateRearBrakeDucts(aero.getRearBrakeDucts());
 	}
 
 	private boolean validateFrontRideHeight(int frontRideHeight) {
