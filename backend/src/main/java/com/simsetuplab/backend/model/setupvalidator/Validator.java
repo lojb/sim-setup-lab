@@ -33,9 +33,11 @@ public class Validator {
 	private ValidateTyres validateTyres;
 
 	public boolean validate(Setup setup) {
-		boolean result = true;
-		result = result && validateAero.validate(setup.getAero());
-
-		return result;
+		return validateAero.validate(setup.getAero())
+				&& validateDampers.validate(setup.getDampers())
+				&& validateElectronics.validate(setup.getElectronics())
+				&& validateFuelStrategy.validate(setup.getFuelStrategy())
+				&& validateMechanicalGrip.validate(setup.getMechanicalGrip())
+				&& validateTyres.validate(setup.getTyres());
 	}
 }
