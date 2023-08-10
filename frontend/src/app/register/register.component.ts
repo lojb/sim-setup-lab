@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ export class RegisterComponent {
 
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
@@ -20,6 +21,13 @@ export class RegisterComponent {
 
     this.RegisterUser = this.RegisterUser.bind(this);
   }
+  RegisterUser() {
+    console.log(this.registerForm.value);
+    this.http.post('/api/v1/user', this.registerForm.value)
+        .subscribe((res) => {
+          console.log(res);
+        });
+  }
 
   PasswordMatchValidator(control: AbstractControl) {
     const password = control.get('password');
@@ -28,9 +36,6 @@ export class RegisterComponent {
     return confirmPassword && password && password.value !== confirmPassword.value;
   }
 
-  RegisterUser() {
-    console.log(this.registerForm.value);
-  }
 
   get Username(): FormControl {
     return this.registerForm.get("username") as FormControl
