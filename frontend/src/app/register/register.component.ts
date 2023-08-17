@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -21,12 +21,23 @@ export class RegisterComponent {
 
     this.RegisterUser = this.RegisterUser.bind(this);
   }
+
   RegisterUser() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'Access-Control-Allow-Origin',
+      // @ts-ignore
+      'Authorization': localStorage.getItem('idToken')
+    });
+
     console.log(this.registerForm.value);
-    this.http.post('/api/v1/user', this.registerForm.value)
-        .subscribe((res) => {
+
+    this.http.post('/api/v1/user', this.registerForm.value, { headers })
+      .subscribe(
+        (res) => {
           console.log(res);
-        });
+        }
+      );
   }
 
   PasswordMatchValidator(control: AbstractControl) {
@@ -40,12 +51,15 @@ export class RegisterComponent {
   get Username(): FormControl {
     return this.registerForm.get("username") as FormControl
   }
+
   get Email(): FormControl {
     return this.registerForm.get("email") as FormControl
   }
+
   get Password(): FormControl {
     return this.registerForm.get("password") as FormControl
   }
+
   get ConfirmPassword(): FormControl {
     return this.registerForm.get("confirmPassword") as FormControl
   }
