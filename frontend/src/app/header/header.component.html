@@ -1,19 +1,26 @@
 <header>
   <div class="flex flex-row p-5">
-    <a class="pr-5" routerLink="/">
-      <h1>HOME</h1>
-    </a>
-    <a class="pr-5 hidden" routerLink="/profile">
-      <button
-        class="border-radius: 20px; background: #2f6c9f; box-shadow: inset 16px 16px 24px #285c87, inset -16px -16px 24px #367cb7;">
-        Profile
+    <div class=" pr-5">
+      <a class="pr-5" routerLink="/">
+        <h1>HOME</h1>
+      </a>
+
+    </div>
+    <div *ngIf="localStorage.getItem('isLoggedIn') === 'true'">
+      <a class="pr-5" routerLink="/profile">
+          {{localStorage.getItem('username')}}
+      </a>
+      <button (click)="LogoutUser()">
+        Logout
       </button>
-    </a>
-    <a class="pr-5" routerLink="/login">
-      Login
-    </a>
-    <a class="pr-5" routerLink="/register">
-      Register
-    </a>
+    </div>
+    <div *ngIf="!localStorage.getItem('isLoggedIn')">
+      <a class="pr-5" routerLink="/login">
+        Login
+      </a>
+      <a class="pr-5" routerLink="/register">
+        Register
+      </a>
+    </div>
   </div>
 </header>
