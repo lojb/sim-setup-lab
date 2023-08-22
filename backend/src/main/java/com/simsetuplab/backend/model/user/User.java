@@ -37,7 +37,6 @@ public class User implements UserDetails {
 	private String password;
 	@Column(unique = true)
 	private String email;
-	private String idToken;
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
