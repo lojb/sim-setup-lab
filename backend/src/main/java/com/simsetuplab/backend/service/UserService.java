@@ -13,12 +13,10 @@ import com.simsetuplab.backend.repository.UserRepository;
 @Service
 public class UserService {
 	private final UserRepository userRepository;
-	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
 	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
-		this.passwordEncoder = passwordEncoder;
 	}
 
 	public List<User> getAllUsers() {
@@ -31,12 +29,18 @@ public class UserService {
 		return user.orElseThrow(() -> new NoSuchElementException("User not found"));
 	}
 
+	public User getUserByUsername(String username) {
+		Optional<User> user = userRepository.findUserByUsername(username);
+
+		if (user.isPresent()) {
+			return user.get();
+		} else {
+			throw new ApiRequestException("User does not exist");
+		}
+	}
+
 	public User addOrUpdateUser(User user) {
-		String encryptedPassword = passwordEncoder.encode(user.getPassword());
-
-		user.setPassword(encryptedPassword);
-
-		checkIfUserExists(user);
+		checkIfUserIsTaken(user);
 		return userRepository.save(user);
 	}
 
@@ -44,7 +48,7 @@ public class UserService {
 		userRepository.delete(user);
 	}
 
-	private void checkIfUserExists(User user) {
+	private void checkIfUserIsTaken(User user) {
 		Optional<User> takenEmail = userRepository.findUserByEmail(user.getEmail());
 		Optional<User> takenUsername = userRepository.findUserByUsername(user.getUsername());
 
@@ -54,4 +58,5 @@ public class UserService {
 		if (takenUsername.isPresent())
 			throw new ApiRequestException("This username is already taken");
 	}
+
 }
