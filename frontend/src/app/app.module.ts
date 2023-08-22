@@ -10,8 +10,7 @@ import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {SocialLoginModule, SocialAuthServiceConfig, GoogleSigninButtonModule} from '@abacritt/angularx-social-login';
-import {GoogleLoginProvider} from '@abacritt/angularx-social-login';
+import {AuthService} from "./auth.service";
 
 
 @NgModule({
@@ -28,28 +27,9 @@ import {GoogleLoginProvider} from '@abacritt/angularx-social-login';
     NgOptimizedImage,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    GoogleSigninButtonModule
+    HttpClientModule
   ],
-  providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '325133012077-tlu59p1infi9ajtkmkv4vvh8vqjlf5gr.apps.googleusercontent.com'
-            )
-          }
-        ],
-        onError: (err) => {
-          console.error(err);
-        }
-      } as SocialAuthServiceConfig,
-    }
-  ],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
