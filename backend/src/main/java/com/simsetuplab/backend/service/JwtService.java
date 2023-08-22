@@ -1,7 +1,8 @@
-package com.simsetuplab.backend.config;
+package com.simsetuplab.backend.service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,7 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-	private static final String SECRET_KEY = "AdpOfuNrt5JOMgMGUS7tIhexVv360bMg";
+	private static final String SECRET_KEY = "9d276962ccad774605b4ee616b14a404f9f6428fa21e8965dddddbdbc41a49c8";
 
 	public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
 		final Claims claims = extractAllClaims(token);
@@ -25,6 +26,10 @@ public class JwtService {
 
 	public String extractUsername(String token) {
 		return extractClaim(token, Claims::getSubject);
+	}
+
+	public String generateToken(UserDetails userDetails) {
+		return generateToken(new HashMap<>(), userDetails);
 	}
 
 	public String generateToken(
@@ -36,7 +41,7 @@ public class JwtService {
 				.setClaims(extraClaims)
 				.setSubject(userDetails.getUsername())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 3))
+				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
 				.signWith(getSignInKey(), SignatureAlgorithm.HS256)
 				.compact();
 	}
