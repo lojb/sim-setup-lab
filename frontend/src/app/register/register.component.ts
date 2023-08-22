@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,11 @@ export class RegisterComponent {
 
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder,
+              private http: HttpClient,
+              private router: Router,
+              private auth: AuthService
+  ) {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
@@ -23,22 +29,14 @@ export class RegisterComponent {
   }
 
   RegisterUser() {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'Access-Control-Allow-Origin',
-      // @ts-ignore
-      'Authorization': localStorage.getItem('idToken')
-    });
-
-    console.log(this.registerForm.value);
-
-    this.http.post('/api/v1/user', this.registerForm.value, { headers })
+    this.http.post('http://localhost:8080/api/v1/auth/register', this.registerForm.value)
       .subscribe(
-        (res) => {
-          console.log(res);
+        (user: any) => {
+          this.auth.login(user);
         }
       );
   }
+
 
   PasswordMatchValidator(control: AbstractControl) {
     const password = control.get('password');
