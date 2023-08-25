@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 
 @Component({
@@ -15,7 +14,6 @@ export class RegisterComponent {
 
   constructor(private formBuilder: FormBuilder,
               private http: HttpClient,
-              private router: Router,
               private auth: AuthService
   ) {
     this.registerForm = this.formBuilder.group({
@@ -32,6 +30,7 @@ export class RegisterComponent {
     this.http.post('http://localhost:8080/api/v1/auth/register', this.registerForm.value)
       .subscribe(
         (user: any) => {
+          console.log(user)
           this.auth.login(user);
         }
       );
