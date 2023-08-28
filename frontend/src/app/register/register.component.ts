@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../auth.service";
+import {environment} from "../../environments/environment.development";
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,7 @@ export class RegisterComponent {
   }
 
   RegisterUser() {
-    this.http.post('http://localhost:8080/api/v1/auth/register', this.registerForm.value)
+    this.http.post(`${environment.backend}/api/v1/auth/register`, this.registerForm.value)
       .subscribe(
         (user: any) => {
           console.log(user)
