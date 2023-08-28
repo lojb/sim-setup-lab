@@ -19,16 +19,27 @@ public class MechanicalGrip {
 	private long id;
 	@OneToOne
 	private Setup setup;
+
 	private int frontAntiRollBar;
-	private int rearAntiRollBar;
 	private int brakePower = 100;
 	private float brakeBias;
 	private int steerRatio;
-	private int frontWheelRate;
-	private int rearWheelRate;
-	private int frontBumpstopRate;
-	private int rearBumpstopRate;
-	private int frontBumpstopRange;
-	private int rearBumpstopRange;
+
+	private int frontLeftWheelRate;
+	private int frontRightWheelRate;
+	private int rearLeftWheelRate;
+	private int rearRightWheelRate;
+
+	private int frontLeftBumpstopRate;
+	private int frontRightBumpstopRate;
+	private int rearLeftBumpstopRate;
+	private int rearRightBumpstopRate;
+
+	private int frontLeftBumpstopRange;
+	private int frontRightBumpstopRange;
+	private int rearLeftBumpstopRange;
+	private int rearRightBumpstopRange;
+
+	private int rearAntiRollBar;
 	private int preloadDifferential;
 }
