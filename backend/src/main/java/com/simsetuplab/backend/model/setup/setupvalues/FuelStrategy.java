@@ -21,7 +21,7 @@ public class FuelStrategy {
 	@OneToOne
 	private Setup setup;
 	private int fuel = 20;
-	private TyreType tyreType;
+	private TyreType tyreType = TyreType.DRY;
 	private int frontBrakes = 1;
 	private int rearBrakes = 1;
 	private double fuelPerLap;
