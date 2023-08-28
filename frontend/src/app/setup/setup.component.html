@@ -1,0 +1,52 @@
+<div class="group-div">
+  <div class="flex items font-semibold space-x-2">
+    <button class="setup-buttons"
+            [class.active-button]="selectedSetupPart === TyresComponent"
+            (click)="toggle(TyresComponent)">
+      Tyres
+    </button>
+    <button class="setup-buttons"
+            [class.active-button]="selectedSetupPart === ElectronicsComponent"
+            (click)="toggle(ElectronicsComponent)">
+      Electronics
+    </button>
+    <button class="setup-buttons"
+            [class.active-button]="selectedSetupPart === FuelStrategyComponent"
+            (click)="toggle(FuelStrategyComponent)">
+      Fuel & Strategy
+    </button>
+    <button class="setup-buttons"
+            [class.active-button]="selectedSetupPart === MechanicalGripComponent"
+            (click)="toggle(MechanicalGripComponent)">
+      Mechanical Grip
+    </button>
+    <button class="setup-buttons"
+            [class.active-button]="selectedSetupPart === DampersComponent"
+            (click)="toggle(DampersComponent)">
+      Dampers
+    </button>
+    <button class="setup-buttons"
+            [class.active-button]="selectedSetupPart === AeroComponent"
+            (click)="toggle(AeroComponent)">
+      Aero
+    </button>
+  </div>
+  <div *ngIf="selectedSetupPart == TyresComponent">
+    <app-tyres></app-tyres>
+  </div>
+  <div *ngIf="selectedSetupPart == ElectronicsComponent">
+    <app-electronics></app-electronics>
+  </div>
+  <div *ngIf="selectedSetupPart == FuelStrategyComponent">
+    <app-fuel-strategy></app-fuel-strategy>
+  </div>
+  <div *ngIf="selectedSetupPart == MechanicalGripComponent">
+    <app-mechanical-grip></app-mechanical-grip>
+  </div>
+  <div *ngIf="selectedSetupPart == DampersComponent">
+    <app-dampers></app-dampers>
+  </div>
+  <div *ngIf="selectedSetupPart == AeroComponent">
+    <app-aero></app-aero>
+  </div>
+</div>
