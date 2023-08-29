@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../auth.service";
+import {environment} from "../../environments/environment.development";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent {
   }
 
   LoginUser() {
-    this.http.post(`http://localhost:8080/api/v1/auth/authenticate`, this.loginForm.value)
+    this.http.post(`${environment.backend}/api/v1/auth/authenticate`, this.loginForm.value)
       .subscribe((user: any) => {
         console.log(user)
         this.auth.login(user);
