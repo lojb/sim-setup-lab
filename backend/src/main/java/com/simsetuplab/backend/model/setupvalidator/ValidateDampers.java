@@ -34,46 +34,54 @@ public class ValidateDampers {
 	private int rearFastReboundMax;
 
 	public boolean validate(Dampers dampers) {
-		return validateFrontBump(dampers.getFrontBump())
-				&& validateFrontFastBump(dampers.getFrontFastBump())
-				&& validateFrontRebound(dampers.getFrontRebound())
-				&& validateFrontFastRebound(dampers.getFrontFastRebound())
-				&& validateRearBump(dampers.getRearBump())
-				&& validateRearFastBump(dampers.getRearFastBump())
-				&& validateRearRebound(dampers.getRearRebound())
-				&& validateRearFastRebound(dampers.getRearFastRebound());
+		return validateFrontBump(dampers.getFrontLeftBump(), dampers.getFrontRightBump())
+				&& validateFrontFastBump(dampers.getFrontLeftFastBump(), dampers.getFrontRightFastBump())
+				&& validateFrontRebound(dampers.getFrontLeftRebound(), dampers.getFrontRightRebound())
+				&& validateFrontFastRebound(dampers.getFrontLeftFastRebound(), dampers.getFrontRightFastRebound())
+				&& validateRearBump(dampers.getRearLeftBump(), dampers.getRearRightBump())
+				&& validateRearFastBump(dampers.getRearLeftFastBump(), dampers.getRearRightFastBump())
+				&& validateRearRebound(dampers.getRearLeftRebound(), dampers.getRearRightRebound())
+				&& validateRearFastRebound(dampers.getRearLeftFastRebound(), dampers.getRearRightFastRebound());
 	}
 
-	private boolean validateFrontBump(int frontBump) {
-		return frontBump >= frontBumpMin && frontBump <= frontBumpMax;
+	private boolean validateFrontBump(int frontLeftBump, int frontRightBump) {
+		return frontLeftBump >= frontBumpMin && frontLeftBump <= frontBumpMax
+				&& frontRightBump >= frontBumpMin && frontRightBump <= frontBumpMax;
 	}
 
-	private boolean validateFrontFastBump(int frontFastBump) {
-		return frontFastBump >= frontFastBumpMin && frontFastBump <= frontFastBumpMax;
+	private boolean validateFrontFastBump(int frontLeftFastBump, int frontRightFastBump) {
+		return frontLeftFastBump >= frontFastBumpMin && frontLeftFastBump <= frontFastBumpMax
+				&& frontRightFastBump >= frontFastBumpMin && frontRightFastBump <= frontFastBumpMax;
 	}
 
-	private boolean validateFrontRebound(int frontRebound) {
-		return frontRebound >= frontReboundMin && frontRebound <= frontReboundMax;
+	private boolean validateFrontRebound(int frontLeftRebound, int frontRightRebound) {
+		return frontLeftRebound >= frontReboundMin && frontLeftRebound <= frontReboundMax
+				&& frontRightRebound >= frontReboundMin && frontRightRebound <= frontReboundMax;
 	}
 
-	private boolean validateFrontFastRebound(int frontFastRebound) {
-		return frontFastRebound >= frontFastReboundMin && frontFastRebound <= frontFastReboundMax;
+	private boolean validateFrontFastRebound(int frontLeftFastRebound, int frontRightFastRebound) {
+		return frontLeftFastRebound >= frontFastReboundMin && frontLeftFastRebound <= frontFastReboundMax
+				&& frontRightFastRebound >= frontFastReboundMin && frontRightFastRebound <= frontFastReboundMax;
 	}
 
-	private boolean validateRearBump(int rearBump) {
-		return rearBump >= rearBumpMin && rearBump <= rearBumpMax;
+	private boolean validateRearBump(int rearLeftBump, int rearRightBump) {
+		return rearLeftBump >= rearBumpMin && rearLeftBump <= rearBumpMax
+				&& rearRightBump >= rearBumpMin && rearRightBump <= rearBumpMax;
 	}
 
-	private boolean validateRearFastBump(int rearFastBump) {
-		return rearFastBump >= rearFastBumpMin && rearFastBump <= rearFastBumpMax;
+	private boolean validateRearFastBump(int rearLeftFastBump, int rearRightFastBump) {
+		return rearLeftFastBump >= rearFastBumpMin && rearLeftFastBump <= rearFastBumpMax
+				&& rearRightFastBump >= rearFastBumpMin && rearRightFastBump <= rearFastBumpMax;
 	}
 
-	private boolean validateRearRebound(int rearRebound) {
-		return rearRebound >= rearReboundMin && rearRebound <= rearReboundMax;
+	private boolean validateRearRebound(int rearLeftRebound, int rearRightRebound) {
+		return rearLeftRebound >= rearReboundMin && rearLeftRebound <= rearReboundMax
+				&& rearRightRebound >= rearReboundMin && rearRightRebound <= rearReboundMax;
 	}
 
-	private boolean validateRearFastRebound(int rearFastRebound) {
-		return rearFastRebound >= rearFastReboundMin && rearFastRebound <= rearFastReboundMax;
+	private boolean validateRearFastRebound(int rearLeftFastRebound, int rearRightFastRebound) {
+		return rearLeftFastRebound >= rearFastReboundMin && rearLeftFastRebound <= rearFastReboundMax
+				&& rearRightFastRebound >= rearFastReboundMin && rearRightFastRebound <= rearFastReboundMax;
 	}
 
 }

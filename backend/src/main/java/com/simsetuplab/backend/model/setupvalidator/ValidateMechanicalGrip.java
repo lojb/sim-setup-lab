@@ -43,12 +43,12 @@ public class ValidateMechanicalGrip {
 				&& validateRearAntiRollBar(mechanicalGrip.getRearAntiRollBar())
 				&& validateBrakeBias(mechanicalGrip.getBrakeBias())
 				&& validateSteerRatio(mechanicalGrip.getSteerRatio())
-				&& validateFrontWheelRate(mechanicalGrip.getFrontWheelRate())
-				&& validateRearWheelRate(mechanicalGrip.getRearWheelRate())
-				&& validateFrontBumpStopRate(mechanicalGrip.getFrontBumpstopRate())
-				&& validateRearBumpStopRate(mechanicalGrip.getRearBumpstopRate())
-				&& validateFrontBumpStopRange(mechanicalGrip.getFrontBumpstopRange())
-				&& validateRearBumpStopRange(mechanicalGrip.getRearBumpstopRange())
+				&& validateFrontWheelRate(mechanicalGrip.getFrontLeftWheelRate(), mechanicalGrip.getFrontRightWheelRate())
+				&& validateRearWheelRate(mechanicalGrip.getRearLeftWheelRate(), mechanicalGrip.getRearRightWheelRate())
+				&& validateFrontBumpStopRate(mechanicalGrip.getFrontLeftBumpstopRate(), mechanicalGrip.getFrontRightBumpstopRate())
+				&& validateRearBumpStopRate(mechanicalGrip.getRearLeftBumpstopRate(), mechanicalGrip.getRearRightBumpstopRate())
+				&& validateFrontBumpStopRange(mechanicalGrip.getFrontLeftBumpstopRange(), mechanicalGrip.getFrontRightBumpstopRange())
+				&& validateRearBumpStopRange(mechanicalGrip.getRearLeftBumpstopRange(), mechanicalGrip.getRearRightBumpstopRange())
 				&& validatePreloadDifferential(mechanicalGrip.getPreloadDifferential());
 
 	}
@@ -69,28 +69,34 @@ public class ValidateMechanicalGrip {
 		return steerRatio >= steerRatioMin && steerRatio <= steerRatioMax;
 	}
 
-	private boolean validateFrontWheelRate(int frontWheelRate) {
-		return frontWheelRate >= frontWheelRateMin && frontWheelRate <= frontWheelRateMax;
+	private boolean validateFrontWheelRate(int frontLeftWheelRate, int frontRightWheelRate) {
+		return frontLeftWheelRate >= frontWheelRateMin && frontLeftWheelRate <= frontWheelRateMax
+				&& frontRightWheelRate >= frontWheelRateMin && frontRightWheelRate <= frontWheelRateMax;
 	}
 
-	private boolean validateRearWheelRate(int rearWheelRate) {
-		return rearWheelRate >= rearWheelRateMin && rearWheelRate <= rearWheelRateMax;
+	private boolean validateRearWheelRate(int rearLeftWheelRate, int rearRightWheelRate) {
+		return rearLeftWheelRate >= rearWheelRateMin && rearLeftWheelRate <= rearWheelRateMax
+				&& rearRightWheelRate >= rearWheelRateMin && rearRightWheelRate <= rearWheelRateMax;
 	}
 
-	private boolean validateFrontBumpStopRate(int frontBumpStopRate) {
-		return frontBumpStopRate >= frontBumpStopRateMin && frontBumpStopRate <= frontBumpStopRateMax;
+	private boolean validateFrontBumpStopRate(int frontLeftBumpStopRate, int frontRightBumpStopRate) {
+		return frontLeftBumpStopRate >= frontBumpStopRateMin && frontLeftBumpStopRate <= frontBumpStopRateMax
+				&& frontRightBumpStopRate >= frontBumpStopRateMin && frontRightBumpStopRate <= frontBumpStopRateMax;
 	}
 
-	private boolean validateRearBumpStopRate(int rearBumpStopRate) {
-		return rearBumpStopRate >= rearBumpStopRateMin && rearBumpStopRate <= rearBumpStopRateMax;
+	private boolean validateRearBumpStopRate(int rearLeftBumpStopRate, int rearRightBumpStopRate) {
+		return rearLeftBumpStopRate >= rearBumpStopRateMin && rearLeftBumpStopRate <= rearBumpStopRateMax
+				&& rearRightBumpStopRate >= rearBumpStopRateMin && rearRightBumpStopRate <= rearBumpStopRateMax;
 	}
 
-	private boolean validateFrontBumpStopRange(int frontBumpStopRange) {
-		return frontBumpStopRange >= frontBumpStopRangeMin && frontBumpStopRange <= frontBumpStopRangeMax;
+	private boolean validateFrontBumpStopRange(int frontLeftBumpStopRange, int frontRightBumpStopRange) {
+		return frontLeftBumpStopRange >= frontBumpStopRangeMin && frontLeftBumpStopRange <= frontBumpStopRangeMax
+				&& frontRightBumpStopRange >= frontBumpStopRangeMin && frontRightBumpStopRange <= frontBumpStopRangeMax;
 	}
 
-	private boolean validateRearBumpStopRange(int rearBumpStopRange) {
-		return rearBumpStopRange >= rearBumpStopRangeMin && rearBumpStopRange <= rearBumpStopRangeMax;
+	private boolean validateRearBumpStopRange(int frontLeftBumpStopRange, int frontRightBumpStopRange) {
+		return frontLeftBumpStopRange >= rearBumpStopRangeMin && frontLeftBumpStopRange <= rearBumpStopRangeMax
+				&& frontRightBumpStopRange >= rearBumpStopRangeMin && frontRightBumpStopRange <= rearBumpStopRangeMax;
 	}
 
 	private boolean validatePreloadDifferential(int preloadDifferential) {

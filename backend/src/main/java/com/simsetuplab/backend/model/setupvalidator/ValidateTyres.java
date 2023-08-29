@@ -32,10 +32,10 @@ public class ValidateTyres {
 				&& validateTyrePressure(tyres.getFrontRightTyrePressure())
 				&& validateTyrePressure(tyres.getRearLeftTyrePressure())
 				&& validateTyrePressure(tyres.getRearRightTyrePressure())
-				&& validateFrontCamber(tyres.getFrontCamber())
-				&& validateRearCamber(tyres.getRearCamber())
-				&& validateFrontToe(tyres.getFrontToe())
-				&& validateRearToe(tyres.getRearToe())
+				&& validateFrontCamber(tyres.getFrontLeftCamber(), tyres.getFrontRightCamber())
+				&& validateRearCamber(tyres.getRearLeftCamber(), tyres.getRearRightCamber())
+				&& validateFrontToe(tyres.getFrontLeftToe(), tyres.getFrontRightToe())
+				&& validateRearToe(tyres.getRearLeftToe(), tyres.getRearRightToe())
 				&& validateCaster(tyres.getCaster());
 	}
 
@@ -43,20 +43,24 @@ public class ValidateTyres {
 		return tyrePressure >= tyrePressureMin && tyrePressure <= tyrePressureMax;
 	}
 
-	private boolean validateFrontCamber(float frontCamber) {
-		return frontCamber >= frontCamberMin && frontCamber <= frontCamberMax;
+	private boolean validateFrontCamber(float frontLeftCamber, float frontRightCamber) {
+		return frontLeftCamber >= frontCamberMin && frontLeftCamber <= frontCamberMax
+				&& frontRightCamber >= frontCamberMin && frontRightCamber <= frontCamberMax;
 	}
 
-	private boolean validateRearCamber(float rearCamber) {
-		return rearCamber >= rearCamberMin && rearCamber <= rearCamberMax;
+	private boolean validateRearCamber(float rearLeftCamber, float rearRightCamber) {
+		return rearLeftCamber >= rearCamberMin && rearLeftCamber <= rearCamberMax
+				&& rearRightCamber >= rearCamberMin && rearRightCamber <= rearCamberMax;
 	}
 
-	private boolean validateFrontToe(float frontToe) {
-		return frontToe >= frontToeMin && frontToe <= frontToeMax;
+	private boolean validateFrontToe(float frontLeftToe, float frontRightToe) {
+		return frontLeftToe >= frontToeMin && frontLeftToe <= frontToeMax
+				&& frontRightToe >= frontToeMin && frontRightToe <= frontToeMax;
 	}
 
-	private boolean validateRearToe(float rearToe) {
-		return rearToe >= rearToeMin && rearToe <= rearToeMax;
+	private boolean validateRearToe(float rearLeftToe, float rearRightToe) {
+		return rearLeftToe >= rearToeMin && rearLeftToe <= rearToeMax
+				&& rearRightToe >= rearToeMin && rearRightToe <= rearToeMax;
 	}
 
 	private boolean validateCaster(float caster) {
