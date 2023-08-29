@@ -31,6 +31,5 @@ public class Tyres {
 	private float frontRightToe;
 	private float rearLeftToe;
 	private float rearRightToe;
-	private float casterLeft;
-	private float casterRight;
+	private float caster;
 }

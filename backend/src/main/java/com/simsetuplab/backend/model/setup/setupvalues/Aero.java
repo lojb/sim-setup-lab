@@ -19,10 +19,8 @@ public class Aero {
 	private long id;
 	@OneToOne
 	private Setup setup;
-	private int frontLeftRideHeight;
-	private int frontRightRideHeight;
-	private int rearLeftRideHeight;
-	private int rearRightRideHeight;
+	private int frontRideHeight;
+	private int rearRideHeight;
 	private int splitter;
 	private int rearWing;
 	private int frontBrakeDucts = 3;
