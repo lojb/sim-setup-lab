@@ -1,11 +1,4 @@
-import { Component } from '@angular/core';
-import {TyresComponent} from "./tyres/tyres.component";
-import {ElectronicsComponent} from "./electronics/electronics.component";
-import {FuelStrategyComponent} from "./fuel-strategy/fuel-strategy.component";
-import {MechanicalGripComponent} from "./mechanical-grip/mechanical-grip.component";
-import {DampersComponent} from "./dampers/dampers.component";
-import {AeroComponent} from "./aero/aero.component";
-import {SetupPart} from "./setup-part";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-setup',
@@ -14,16 +7,24 @@ import {SetupPart} from "./setup-part";
 })
 export class SetupComponent {
 
-  selectedSetupPart: SetupPart | undefined;
+  selectedSetupPart: string | undefined;
 
-  toggle(setupPart: SetupPart) {
+  toggle(setupPart: string) {
     this.selectedSetupPart = setupPart;
   }
 
-  protected readonly TyresComponent = TyresComponent;
-  protected readonly ElectronicsComponent = ElectronicsComponent;
-  protected readonly FuelStrategyComponent = FuelStrategyComponent;
-  protected readonly MechanicalGripComponent = MechanicalGripComponent;
-  protected readonly DampersComponent = DampersComponent;
-  protected readonly AeroComponent = AeroComponent;
+  receiveData(data: any) {
+
+  }
+
+
+
+
+
+  /*@ViewChild('TyresComponent', { static: false }) TyresComponent!: TyresComponent;
+  @ViewChild('ElectronicComponent', { static: false }) ElectronicsComponent!: ElectronicsComponent;
+  @ViewChild('FuelStrategyComponent', { static: false }) FuelStrategyComponent!: FuelStrategyComponent;
+  @ViewChild('MechanicalGripComponent', { static: false }) MechanicalGripComponent!: MechanicalGripComponent;
+  @ViewChild('DampersComponent', { static: false }) DampersComponent!: DampersComponent;
+  @ViewChild('AeroComponent', { static: false }) AeroComponent!: AeroComponent;*/
 }
