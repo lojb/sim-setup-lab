@@ -11,6 +11,13 @@ import {RegisterComponent} from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./auth.service";
+import {SetupComponent} from './setup/setup.component';
+import {TyresComponent} from './setup/tyres/tyres.component';
+import {ElectronicsComponent} from './setup/electronics/electronics.component';
+import {FuelStrategyComponent} from './setup/fuel-strategy/fuel-strategy.component';
+import {MechanicalGripComponent} from './setup/mechanical-grip/mechanical-grip.component';
+import {DampersComponent} from './setup/dampers/dampers.component';
+import {AeroComponent} from './setup/aero/aero.component';
 
 
 @NgModule({
@@ -19,7 +26,14 @@ import {AuthService} from "./auth.service";
     HeaderComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    SetupComponent,
+    TyresComponent,
+    ElectronicsComponent,
+    FuelStrategyComponent,
+    MechanicalGripComponent,
+    DampersComponent,
+    AeroComponent
   ],
   imports: [
     BrowserModule,
