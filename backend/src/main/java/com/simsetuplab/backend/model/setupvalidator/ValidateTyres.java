@@ -36,7 +36,7 @@ public class ValidateTyres {
 				&& validateRearCamber(tyres.getRearLeftCamber(), tyres.getRearRightCamber())
 				&& validateFrontToe(tyres.getFrontLeftToe(), tyres.getFrontRightToe())
 				&& validateRearToe(tyres.getRearLeftToe(), tyres.getRearRightToe())
-				&& validateCaster(tyres.getCaster());
+				&& validateCaster(tyres.getCasterLeft(), tyres.getCasterRight());
 	}
 
 	private boolean validateTyrePressure(float tyrePressure) {
@@ -63,7 +63,8 @@ public class ValidateTyres {
 				&& rearRightToe >= rearToeMin && rearRightToe <= rearToeMax;
 	}
 
-	private boolean validateCaster(float caster) {
-		return caster >= casterMin && caster <= casterMax;
+	private boolean validateCaster(float casterLeft, float casterRight) {
+		return casterLeft >= casterMin && casterLeft <= casterMax
+				&& casterRight >= casterMin && casterRight <= casterMax;
 	}
 }
