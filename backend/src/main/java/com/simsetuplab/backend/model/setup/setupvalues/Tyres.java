@@ -23,13 +23,17 @@ public class Tyres {
 	private float frontRightTyrePressure = 25.0f;
 	private float rearLeftTyrePressure = 25.0f;
 	private float rearRightTyrePressure = 25.0f;
+
 	private float frontLeftCamber;
 	private float frontRightCamber;
 	private float rearLeftCamber;
 	private float rearRightCamber;
+
 	private float frontLeftToe;
 	private float frontRightToe;
 	private float rearLeftToe;
 	private float rearRightToe;
-	private float caster;
+
+	private float casterLeft;
+	private float casterRight;
 }
