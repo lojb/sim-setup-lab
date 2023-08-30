@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Dampers} from "../../model/dampers";
 
 @Component({
   selector: 'app-dampers',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class DampersComponent{
 
+  @Input() dampersValues: Dampers;
 }
