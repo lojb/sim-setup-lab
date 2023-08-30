@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Tyres} from "../../model/tyres";
 
 @Component({
   selector: 'app-tyres',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./tyres.component.css']
 })
 export class TyresComponent{
+  @Input() tyresValues: Tyres;
 
 }
