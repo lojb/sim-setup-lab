@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {SetupValues} from "../model/setup-values";
 
 @Component({
   selector: 'app-setup',
@@ -8,23 +9,15 @@ import {Component} from '@angular/core';
 export class SetupComponent {
 
   selectedSetupPart: string | undefined;
+  setupValues = new SetupValues();
 
-  toggle(setupPart: string) {
+
+
+  ToggleSelectedPart(setupPart: string) {
     this.selectedSetupPart = setupPart;
   }
 
-  receiveData(data: any) {
-
+  SubmitSetup() {
+    console.log(this.setupValues)
   }
-
-
-
-
-
-  /*@ViewChild('TyresComponent', { static: false }) TyresComponent!: TyresComponent;
-  @ViewChild('ElectronicComponent', { static: false }) ElectronicsComponent!: ElectronicsComponent;
-  @ViewChild('FuelStrategyComponent', { static: false }) FuelStrategyComponent!: FuelStrategyComponent;
-  @ViewChild('MechanicalGripComponent', { static: false }) MechanicalGripComponent!: MechanicalGripComponent;
-  @ViewChild('DampersComponent', { static: false }) DampersComponent!: DampersComponent;
-  @ViewChild('AeroComponent', { static: false }) AeroComponent!: AeroComponent;*/
 }
