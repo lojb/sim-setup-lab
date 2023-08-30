@@ -19,18 +19,22 @@ public class Dampers {
 	private long id;
 	@OneToOne
 	private Setup setup;
+
 	private int frontLeftBump;
 	private int frontRightBump;
 	private int frontLeftFastBump;
 	private int frontRightFastBump;
+
 	private int frontLeftRebound;
 	private int frontRightRebound;
 	private int frontLeftFastRebound;
 	private int frontRightFastRebound;
+
 	private int rearLeftBump;
 	private int rearRightBump;
 	private int rearLeftFastBump;
 	private int rearRightFastBump;
+
 	private int rearLeftRebound;
 	private int rearRightRebound;
 	private int rearLeftFastRebound;
