@@ -5,25 +5,25 @@
     <div class="one-sided-row">
       <div class="one-sided-row-item">
         <p>Antiroll Bar</p>
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontAntiRollBar">
       </div>
     </div>
     <div class="one-sided-row">
       <div class="one-sided-row-item">
         <p>Brake Power</p>
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.brakePower">
       </div>
     </div>
     <div class="one-sided-row">
       <div class="one-sided-row-item">
         <p>Brake Bias</p>
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.brakeBias">
       </div>
     </div>
     <div class="one-sided-row">
       <div class="one-sided-row-item">
         <p>Steer Ratio</p>
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.steerRatio">
       </div>
     </div>
     <div class="two-sided-row">
@@ -39,35 +39,35 @@
     </div>
     <div class="two-sided-row">
       <div class="two-sided-row-item">
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftWheelRate">
       </div>
       <div class="two-sided-row-item">
-        <p>Front Chamber</p>
+        <p>Wheel Rate</p>
       </div>
       <div class="two-sided-row-item">
-        <input class="input">
-      </div>
-    </div>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
-        <input class="input">
-      </div>
-      <div class="two-sided-row-item">
-        <p>Front Toe</p>
-      </div>
-      <div class="two-sided-row-item">
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontRightWheelRate">
       </div>
     </div>
     <div class="two-sided-row">
       <div class="two-sided-row-item">
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftBumpstopRate">
       </div>
       <div class="two-sided-row-item">
-        <p>Caster</p>
+        <p>Bumpstop Rate</p>
       </div>
       <div class="two-sided-row-item">
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontRightBumpstopRate">
+      </div>
+    </div>
+    <div class="two-sided-row">
+      <div class="two-sided-row-item">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftBumpstopRange">
+      </div>
+      <div class="two-sided-row-item">
+        <p>Bumpstop Range</p>
+      </div>
+      <div class="two-sided-row-item">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontRightBumpstopRange">
       </div>
     </div>
   </div>
@@ -75,47 +75,47 @@
     <h2 class="text-center">Rear</h2>
     <div class="two-sided-row">
       <div class="two-sided-row-item">
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftWheelRate">
       </div>
       <div class="two-sided-row-item">
-        <p>Rear Wheel Rate</p>
+        <p>Wheel Rate</p>
       </div>
       <div class="two-sided-row-item">
-        <input class="input">
-      </div>
-    </div>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
-        <input class="input">
-      </div>
-      <div class="two-sided-row-item">
-        <p>Rear Bumpstop Rate</p>
-      </div>
-      <div class="two-sided-row-item">
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearRightWheelRate">
       </div>
     </div>
     <div class="two-sided-row">
       <div class="two-sided-row-item">
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftBumpstopRate">
       </div>
       <div class="two-sided-row-item">
-        <p>Rear Bumpstop Range</p>
+        <p>Bumpstop Rate</p>
       </div>
       <div class="two-sided-row-item">
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearRightBumpstopRate">
+      </div>
+    </div>
+    <div class="two-sided-row">
+      <div class="two-sided-row-item">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftBumpstopRange">
+      </div>
+      <div class="two-sided-row-item">
+        <p>Bumpstop Range</p>
+      </div>
+      <div class="two-sided-row-item">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearRightBumpstopRange">
       </div>
     </div>
     <div class="one-sided-row">
     <div class="one-sided-row-item">
       <p>Antiroll Bar</p>
-      <input class="input">
+      <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearAntiRollBar">
     </div>
   </div>
     <div class="one-sided-row">
       <div class="one-sided-row-item">
         <p>Preload Differential</p>
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.preloadDifferential">
       </div>
     </div>
   </div>
