@@ -3,25 +3,19 @@
     <div class="one-sided-row">
       <div class="one-sided-row-item">
         <p>Fuel</p>
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="fuelStrategyValues.fuel">
       </div>
     </div>
     <div class="one-sided-row">
       <div class="one-sided-row-item">
         <p>Front Brakes</p>
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="fuelStrategyValues.frontBrakes">
       </div>
     </div>
     <div class="one-sided-row">
       <div class="one-sided-row-item">
         <p>Rear Brakes</p>
-        <input class="input">
-      </div>
-    </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Fuel Per Lap</p>
-        <input class="input">
+        <input class="input" type="number" [(ngModel)]="fuelStrategyValues.rearBrakes">
       </div>
     </div>
   </div>

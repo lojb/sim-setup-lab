@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {FuelStrategy} from "../../model/fuel-strategy";
 
 @Component({
   selector: 'app-fuel-strategy',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./fuel-strategy.component.css']
 })
 export class FuelStrategyComponent{
-
+  @Input() fuelStrategyValues: FuelStrategy;
 }
