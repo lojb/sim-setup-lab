@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Dampers} from "../../model/dampers";
+import {Dampers} from "../../model/setup/dampers";
 
 @Component({
   selector: 'app-dampers',

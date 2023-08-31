@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {FuelStrategy} from "../../model/fuel-strategy";
+import {FuelStrategy} from "../../model/setup/fuel-strategy";
 
 @Component({
   selector: 'app-fuel-strategy',

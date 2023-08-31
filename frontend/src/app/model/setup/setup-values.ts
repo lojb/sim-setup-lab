@@ -6,6 +6,9 @@ import {MechanicalGrip} from "./mechanical-grip";
 import {Tyres} from "./tyres";
 
 export class SetupValues {
+  name: string;
+  user: string | null;
+  carType: string;
   aero = new Aero();
   dampers = new Dampers();
   electronics = new Electronics();

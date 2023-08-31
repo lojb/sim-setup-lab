@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {MechanicalGrip} from "../../model/mechanical-grip";
+import {MechanicalGrip} from "../../model/setup/mechanical-grip";
 
 @Component({
   selector: 'app-mechanical-grip',

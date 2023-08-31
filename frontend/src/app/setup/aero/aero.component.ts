@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Aero} from "../../model/aero";
+import {Aero} from "../../model/setup/aero";
 
 @Component({
   selector: 'app-aero',

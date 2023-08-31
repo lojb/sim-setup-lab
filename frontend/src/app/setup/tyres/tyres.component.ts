@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Tyres} from "../../model/tyres";
+import {Tyres} from "../../model/setup/tyres";
 
 @Component({
   selector: 'app-tyres',

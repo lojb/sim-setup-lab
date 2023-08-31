@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Electronics} from "../../model/electronics";
+import {Electronics} from "../../model/setup/electronics";
 
 @Component({
   selector: 'app-electronics',
