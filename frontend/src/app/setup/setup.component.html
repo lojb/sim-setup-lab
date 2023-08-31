@@ -49,8 +49,11 @@
   <div *ngIf="selectedSetupPart === 'aero'">
     <app-aero [aeroValues]="setupValues.aero"></app-aero>
   </div>
-  <div class="flex justify-center">
-    <button class="w-[20%] border-[1px] border-[#414141] p-[12px] gap-[8px] mt-[8px] rounded-[6px] cursor-pointer bg-blue-700 text-gray-50"
+  <div class="flex flex-col items-center">
+    <p>Name:</p>
+    <input type="text" [(ngModel)]="setupValues.name" class="input">
+    <button class="disabled-button"
+            [disabled]="!setupValues.name"
             (click)="SubmitSetup()">
       Create
     </button>

@@ -51,8 +51,7 @@
     </ng-form>
   </div>
   <div class="flex justify-center items-center">
-    <button class="flex items-start justify-center self-start text-[#717171] font-semibold w-[40%] bg-[#313131] border-[1px] border-[#414141] p-[12px] gap-[8px] mt-[8px] rounded-[6px]
-    enabled:cursor-pointer enabled:hover:bg-blue-700 enabled:hover:text-gray-50"
+    <button class="disabled-button"
             (click)="RegisterUser()" [disabled]="!registerForm.valid">
       Register
     </button>

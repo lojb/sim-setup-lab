@@ -1,4 +1,0 @@
-.login-button {
-  @apply flex justify-center self-start text-[#717171] font-semibold w-[40%] bg-[#313131] border-[1px] border-[#414141] p-[12px] gap-[8px] mt-[8px] rounded-[6px]
-  enabled:cursor-pointer enabled:hover:bg-blue-700 enabled:hover:text-gray-50
-}
