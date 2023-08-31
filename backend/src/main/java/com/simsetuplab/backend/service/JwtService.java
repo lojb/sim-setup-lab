@@ -18,8 +18,8 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-	@Value("${jwt.secret.key}")
-	private static String SECRET_KEY;
+	@Value("${JWT_SECRET_KEY}")
+	private String secretKey;
 
 	public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
 		final Claims claims = extractAllClaims(token);
@@ -71,7 +71,7 @@ public class JwtService {
 	}
 
 	private Key getSignInKey() {
-		byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+		byte[] keyBytes = Decoders.BASE64.decode(secretKey);
 		return Keys.hmacShaKeyFor(keyBytes);
 	}
 }
