@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.simsetuplab.backend.model.setup.Setup;
+import com.simsetuplab.backend.model.setup.SetupDto;
 import com.simsetuplab.backend.service.SetupService;
 
 @RestController
@@ -39,7 +41,8 @@ public class SetupController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Setup> addSetup(Setup setup) {
+	public ResponseEntity<Setup> addSetup(@RequestBody SetupDto setupDto) {
+		Setup setup = setupService.convertDtoToSetup(setupDto);
 		return ResponseEntity.ok(setupService.addOrUpdateSetup(setup));
 	}
 
