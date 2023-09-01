@@ -7,7 +7,7 @@ import {Tyres} from "./tyres";
 
 export class SetupValues {
   name: string;
-  user: string | null;
+  userId: number | null;
   carType: string;
   aero = new Aero();
   dampers = new Dampers();
