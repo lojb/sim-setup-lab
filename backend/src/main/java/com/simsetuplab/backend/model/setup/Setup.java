@@ -9,6 +9,7 @@ import com.simsetuplab.backend.model.setup.setupvalues.MechanicalGrip;
 import com.simsetuplab.backend.model.setup.setupvalues.Tyres;
 import com.simsetuplab.backend.model.user.User;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,19 +27,34 @@ public class Setup {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
 	private CarType carType;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Aero aero;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Dampers dampers;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Electronics electronics;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private FuelStrategy fuelStrategy;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private MechanicalGrip mechanicalGrip;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Tyres tyres;
+
+	public Setup(SetupDto setupDto) {
+		this.name = setupDto.getName();
+		this.carType = CarType.valueOf(setupDto.getCarType());
+		this.aero = setupDto.getAero();
+		this.dampers = setupDto.getDampers();
+		this.electronics = setupDto.getElectronics();
+		this.fuelStrategy = setupDto.getFuelStrategy();
+		this.mechanicalGrip = setupDto.getMechanicalGrip();
+		this.tyres = setupDto.getTyres();
+	}
+
+	public Setup() {
+
+	}
 }
