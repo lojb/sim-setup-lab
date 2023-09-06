@@ -1,6 +1,7 @@
 package com.simsetuplab.backend.model.setup;
 
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
+import com.simsetuplab.backend.enumeration.carsetup.Tracks;
 import com.simsetuplab.backend.model.setup.setupvalues.Aero;
 import com.simsetuplab.backend.model.setup.setupvalues.Dampers;
 import com.simsetuplab.backend.model.setup.setupvalues.Electronics;
@@ -30,6 +31,7 @@ public class Setup {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
 	private CarType carType;
+	private Tracks track;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Aero aero;
 	@OneToOne(cascade = CascadeType.ALL)
@@ -46,6 +48,7 @@ public class Setup {
 	public Setup(SetupDto setupDto) {
 		this.name = setupDto.getName();
 		this.carType = CarType.valueOf(setupDto.getCarType());
+		this.track = Tracks.valueOf(setupDto.getTrack());
 		this.aero = setupDto.getAero();
 		this.dampers = setupDto.getDampers();
 		this.electronics = setupDto.getElectronics();
