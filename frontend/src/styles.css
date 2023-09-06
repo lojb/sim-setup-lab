@@ -13,6 +13,10 @@ body {
   @apply p-[12px] rounded-[8px] text-white bg-transparent border-[1px] border-[#414141] placeholder-opacity-[0.5]
 }
 
+.select {
+  @apply p-[12px] rounded-[8px] text-white bg-transparent border-[1px] border-[#414141] placeholder-opacity-[0.5]
+}
+
 .setup-part {
   @apply flex items-center flex-col font-semibold space-y-4
 }
