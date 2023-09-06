@@ -16,6 +16,7 @@ public class SetupDto {
 	private String name;
 	private long userId;
 	private String carType;
+	private String track;
 	private Aero aero;
 	private Dampers dampers;
 	private Electronics electronics;
