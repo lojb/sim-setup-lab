@@ -22,7 +22,6 @@ Sim Setup Lab is built to enhance the Assetto Corsa Competizione experience by a
 - **User Accounts:** Register and log in to access personalized features.
 - **Create Setups:** Build and save car setups with detailed configuration options.
 - **Browse Setups:** Discover setups shared by the community, filter by car, track, and more.
-- **Comments and Ratings:** Share your thoughts on setups and rate them to help others.
 
 ## Getting Started
 
