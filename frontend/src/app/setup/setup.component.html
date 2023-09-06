@@ -1,61 +1,80 @@
-<div class="group-div">
-  <div class="flex items font-semibold space-x-2">
-    <button class="setup-buttons"
-            [class.active-button]="selectedSetupPart === 'tyres'"
-            (click)="ToggleSelectedPart('tyres')">
-      Tyres
-    </button>
-    <button class="setup-buttons"
-            [class.active-button]="selectedSetupPart === 'electronics'"
-            (click)="ToggleSelectedPart('electronics')">
-      Electronics
-    </button>
-    <button class="setup-buttons"
-            [class.active-button]="selectedSetupPart === 'fuelStrategy'"
-            (click)="ToggleSelectedPart('fuelStrategy')">
-      Fuel & Strategy
-    </button>
-    <button class="setup-buttons"
-            [class.active-button]="selectedSetupPart === 'mechanicalGrip'"
-            (click)="ToggleSelectedPart('mechanicalGrip')">
-      Mechanical Grip
-    </button>
-    <button class="setup-buttons"
-            [class.active-button]="selectedSetupPart === 'dampers'"
-            (click)="ToggleSelectedPart('dampers')">
-      Dampers
-    </button>
-    <button class="setup-buttons"
-            [class.active-button]="selectedSetupPart === 'aero'"
-            (click)="ToggleSelectedPart('aero')">
-      Aero
-    </button>
+<div>
+  <div *ngIf="!selected" class="group-div">
+    <h2>Track</h2>
+    <select class="select" [(ngModel)]="selectedTrack" name="selectedTrack">
+      <option class="select" value="" selected>Select a track</option>
+      <option class="select" *ngFor="let track of tracksList">{{ TransformEnum(track) }}</option>
+    </select>
+    <h2>Car</h2>
+    <select class="select" [(ngModel)]="selectedCar" name="selectedCar">
+      <option class="select" value="" selected>Select a car</option>
+      <option class="select" *ngFor="let car of carsList">{{ TransformEnum(car) }}</option>
+    </select>
+    <div class="flex flex-col items-center">
+      <button class="disabled-button" [disabled]="!selectedTrack || !selectedCar" (click)="StartSetup()">
+        Start
+      </button>
+    </div>
   </div>
-  <div *ngIf="selectedSetupPart === 'tyres'">
-    <app-tyres [tyresValues]="setupValues.tyres"></app-tyres>
-  </div>
-  <div *ngIf="selectedSetupPart === 'electronics'">
-    <app-electronics [electronicsValues]="setupValues.electronics"></app-electronics>
-  </div>
-  <div *ngIf="selectedSetupPart === 'fuelStrategy'">
-    <app-fuel-strategy [fuelStrategyValues]="setupValues.fuelStrategy"></app-fuel-strategy>
-  </div>
-  <div *ngIf="selectedSetupPart === 'mechanicalGrip'">
-    <app-mechanical-grip [mechanicalGripValues]="setupValues.mechanicalGrip"></app-mechanical-grip>
-  </div>
-  <div *ngIf="selectedSetupPart === 'dampers'">
-    <app-dampers [dampersValues]="setupValues.dampers"></app-dampers>
-  </div>
-  <div *ngIf="selectedSetupPart === 'aero'">
-    <app-aero [aeroValues]="setupValues.aero"></app-aero>
-  </div>
-  <div class="flex flex-col items-center">
-    <p>Name:</p>
-    <input type="text" [(ngModel)]="setupValues.name" class="input">
-    <button class="disabled-button"
-            [disabled]="!setupValues.name"
-            (click)="SubmitSetup()">
-      Create
-    </button>
+  <div *ngIf="selected" class="group-div">
+    <div class="flex items font-semibold space-x-2">
+      <button class="setup-buttons"
+              [class.active-button]="selectedSetupPart === 'tyres'"
+              (click)="ToggleSelectedPart('tyres')">
+        Tyres
+      </button>
+      <button class="setup-buttons"
+              [class.active-button]="selectedSetupPart === 'electronics'"
+              (click)="ToggleSelectedPart('electronics')">
+        Electronics
+      </button>
+      <button class="setup-buttons"
+              [class.active-button]="selectedSetupPart === 'fuelStrategy'"
+              (click)="ToggleSelectedPart('fuelStrategy')">
+        Fuel & Strategy
+      </button>
+      <button class="setup-buttons"
+              [class.active-button]="selectedSetupPart === 'mechanicalGrip'"
+              (click)="ToggleSelectedPart('mechanicalGrip')">
+        Mechanical Grip
+      </button>
+      <button class="setup-buttons"
+              [class.active-button]="selectedSetupPart === 'dampers'"
+              (click)="ToggleSelectedPart('dampers')">
+        Dampers
+      </button>
+      <button class="setup-buttons"
+              [class.active-button]="selectedSetupPart === 'aero'"
+              (click)="ToggleSelectedPart('aero')">
+        Aero
+      </button>
+    </div>
+    <div *ngIf="selectedSetupPart === 'tyres'">
+      <app-tyres [tyresValues]="setupValues.tyres"></app-tyres>
+    </div>
+    <div *ngIf="selectedSetupPart === 'electronics'">
+      <app-electronics [electronicsValues]="setupValues.electronics"></app-electronics>
+    </div>
+    <div *ngIf="selectedSetupPart === 'fuelStrategy'">
+      <app-fuel-strategy [fuelStrategyValues]="setupValues.fuelStrategy"></app-fuel-strategy>
+    </div>
+    <div *ngIf="selectedSetupPart === 'mechanicalGrip'">
+      <app-mechanical-grip [mechanicalGripValues]="setupValues.mechanicalGrip"></app-mechanical-grip>
+    </div>
+    <div *ngIf="selectedSetupPart === 'dampers'">
+      <app-dampers [dampersValues]="setupValues.dampers"></app-dampers>
+    </div>
+    <div *ngIf="selectedSetupPart === 'aero'">
+      <app-aero [aeroValues]="setupValues.aero"></app-aero>
+    </div>
+    <div class="flex flex-col items-center">
+      <p>Name:</p>
+      <input type="text" [(ngModel)]="setupValues.name" class="input">
+      <button class="disabled-button"
+              [disabled]="!setupValues.name"
+              (click)="SubmitSetup()">
+        Create
+      </button>
+    </div>
   </div>
 </div>

@@ -11,9 +11,19 @@ export class SetupComponent {
 
   selectedSetupPart: string | undefined;
   setupValues = new SetupValues();
+  carsList: any;
+  tracksList: any;
+  selectedCar: any;
+  selectedTrack: any;
+  selected: boolean;
 
   constructor(private http: HttpClient) {
-
+    this.http.get('/api/v1/setup/enums')
+      .subscribe((data: any) => {
+        console.log(data)
+        this.carsList = data.cars;
+        this.tracksList = data.tracks;
+      })
   }
 
   ToggleSelectedPart(setupPart: string) {
@@ -22,17 +32,42 @@ export class SetupComponent {
 
   SubmitSetup() {
     this.setupValues.userId = Number(localStorage.getItem('userId'));
-    this.setupValues.carType = "mercedes_amg_gt3_evo"
-    console.log(this.setupValues)
+    this.setupValues.carType = this.selectedCar;
+    this.setupValues.track = this.selectedTrack;
+    console.log(this.setupValues);
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
-      });
+    });
 
-    this.http.post(`/api/v1/setup`, this.setupValues, { headers })
+    this.http.post(`/api/v1/setup`, this.setupValues, {headers})
       .subscribe((setup: any) => {
         console.log(setup)
       });
+  }
+
+  StartSetup() {
+    this.selected = this.selectedTrack && this.selectedCar;
+  }
+
+  TransformEnum(input: string):string {
+    const words = input.split('_');
+
+    const capitalizedWords = words.map(word => {
+      if (word.length === 0) {
+        return '';
+      }
+
+      if (word.length <= 3) {
+        return word;
+      }
+
+      const firstChar = word.charAt(0).toUpperCase();
+      const restOfWord = word.slice(1).toLowerCase();
+      return firstChar + restOfWord;
+    });
+
+    return capitalizedWords.join(' ');
   }
 }
