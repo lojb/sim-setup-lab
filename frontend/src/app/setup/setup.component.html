@@ -1,17 +1,17 @@
 <div>
   <div *ngIf="!selected" class="group-div">
     <h2>Track</h2>
-    <select class="select" [(ngModel)]="selectedTrack" name="selectedTrack">
+    <select class="select bg-gray-900" [(ngModel)]="selectedTrack" name="selectedTrack">
       <option class="select" value="" selected>Select a track</option>
-      <option class="select" *ngFor="let track of tracksList">{{ TransformEnum(track) }}</option>
+      <option class="select" *ngFor="let track of tracksList">{{ TransformEnumToString(track) }}</option>
     </select>
     <h2>Car</h2>
     <select class="select" [(ngModel)]="selectedCar" name="selectedCar">
       <option class="select" value="" selected>Select a car</option>
-      <option class="select" *ngFor="let car of carsList">{{ TransformEnum(car) }}</option>
+      <option class="select" *ngFor="let car of carsList">{{ TransformEnumToString(car) }}</option>
     </select>
     <div class="flex flex-col items-center">
-      <button class="disabled-button" [disabled]="!selectedTrack || !selectedCar" (click)="StartSetup()">
+      <button class="disabled-button-20" [disabled]="!selectedTrack || !selectedCar" (click)="StartSetup()">
         Start
       </button>
     </div>
@@ -70,7 +70,7 @@
     <div class="flex flex-col items-center">
       <p>Name:</p>
       <input type="text" [(ngModel)]="setupValues.name" class="input">
-      <button class="disabled-button"
+      <button class="disabled-button-20"
               [disabled]="!setupValues.name"
               (click)="SubmitSetup()">
         Create
