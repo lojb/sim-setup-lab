@@ -32,8 +32,8 @@ export class SetupComponent {
 
   SubmitSetup() {
     this.setupValues.userId = Number(localStorage.getItem('userId'));
-    this.setupValues.carType = this.selectedCar;
-    this.setupValues.track = this.selectedTrack;
+    this.setupValues.carType = this.TransformStringToEnum(this.selectedCar);
+    this.setupValues.track = this.TransformStringToEnum(this.selectedTrack);
     console.log(this.setupValues);
 
     const headers = new HttpHeaders({
@@ -51,7 +51,7 @@ export class SetupComponent {
     this.selected = this.selectedTrack && this.selectedCar;
   }
 
-  TransformEnum(input: string):string {
+  TransformEnumToString(input: string):string {
     const words = input.split('_');
 
     const capitalizedWords = words.map(word => {
@@ -69,5 +69,15 @@ export class SetupComponent {
     });
 
     return capitalizedWords.join(' ');
+  }
+
+  TransformStringToEnum(input: string): string {
+    const words = input.split(' ');
+
+    const capitalizedWords = words.map(word => {
+      return word.toUpperCase();
+    });
+
+    return capitalizedWords.join('_');
   }
 }

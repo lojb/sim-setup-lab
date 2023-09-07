@@ -1,29 +1,25 @@
-<header>
-  <div class="flex flex-row p-5">
-    <div class=" pr-5">
-      <a class="pr-5" routerLink="/">
-        <h1>HOME</h1>
-      </a>
-
-    </div>
-    <div *ngIf="localStorage.getItem('isLoggedIn') === 'true'">
-      <a class="pr-5" routerLink="/profile">
-          {{localStorage.getItem('username')}}
-      </a>
-      <button (click)="LogoutUser()">
-        Logout
-      </button>
-    </div>
-    <div *ngIf="!localStorage.getItem('isLoggedIn')">
-      <a class="pr-5" routerLink="/login">
-        Login
-      </a>
-      <a class="pr-5" routerLink="/register">
-        Register
-      </a>
-    </div>
-    <div>
-      <a href="/setup">Setup</a>
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+  <div class="flex flex-wrap justify-between p-4 flex-1">
+    <a href="/" class="flex items-center">
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sim Setup Lab</span>
+    </a>
+    <div class="w-full md:block md:w-auto px-5" id="navbar-default">
+      <ul *ngIf="!localStorage.getItem('isLoggedIn')" class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="/login" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+        </li>
+        <li>
+          <a href="/register" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Register</a>
+        </li>
+      </ul>
+      <ul *ngIf="localStorage.getItem('isLoggedIn')" class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="/setup"  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Create</a>
+        </li>
+        <li>
+          <a href="/" (click)="LogoutUser()" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
+        </li>
+      </ul>
     </div>
   </div>
-</header>
+</nav>
