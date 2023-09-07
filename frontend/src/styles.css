@@ -14,7 +14,7 @@ body {
 }
 
 .select {
-  @apply p-[12px] rounded-[8px] text-white bg-transparent border-[1px] border-[#414141] placeholder-opacity-[0.5]
+  @apply p-[12px] rounded-[8px] text-white bg-black border-[1px] border-[#414141] placeholder-opacity-[0.5]
 }
 
 .setup-part {
@@ -23,15 +23,20 @@ body {
 
 .group-div {
   @apply w-[90%] sm:w-[60%] md:w-[70%] lg:w-[70%] bg-[#212121] bg-opacity-90 mx-auto p-[24px] text-white
-  flex flex-col gap-[20px] box-border rounded-[16px] border-[1px] border-[#414141] flex-wrap
+  flex flex-col gap-[20px] box-border rounded-[16px] border-[1px] border-[#414141] flex-wrap my-2
 }
 
 .login-register {
-  @apply w-[90%] sm:w-[60%] md:w-[50%] lg:w-[40%] bg-[#212121] bg-opacity-90 mx-auto p-[24px] text-white flex flex-col gap-[20px] box-border rounded-[16px]
+  @apply w-[90%] sm:w-[60%] md:w-[50%] lg:w-[40%] bg-[#212121] bg-opacity-90 my-2 mx-auto p-[24px] text-white flex flex-col gap-[20px] box-border rounded-[16px]
 }
 
-.disabled-button {
+.disabled-button-40 {
   @apply flex justify-center text-[#717171] font-semibold w-[40%] bg-[#313131] border-[1px] border-[#414141] p-[12px] gap-[8px] mt-[8px] rounded-[6px]
+  enabled:cursor-pointer enabled:hover:bg-blue-700 enabled:hover:text-gray-50
+}
+
+.disabled-button-20 {
+  @apply flex justify-center text-[#717171] font-semibold w-[20%] bg-[#313131] border-[1px] border-[#414141] p-[12px] gap-[8px] mt-[8px] rounded-[6px]
   enabled:cursor-pointer enabled:hover:bg-blue-700 enabled:hover:text-gray-50
 }
 
