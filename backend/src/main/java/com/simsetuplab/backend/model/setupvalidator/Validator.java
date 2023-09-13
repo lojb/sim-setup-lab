@@ -3,6 +3,7 @@ package com.simsetuplab.backend.model.setupvalidator;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setup.Setup;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Validator {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(unique = true)
 	private CarType carType;
 	@OneToOne
 	private ValidateAero validateAero;
