@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 body {
-    background-image: url("./assets/images/menu_background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
+  background-image: url("./assets/images/menu_background.png");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
 }
 
 .input {
@@ -46,7 +46,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number]{
+input[type=number] {
   -moz-appearance: textfield;
 }
 
