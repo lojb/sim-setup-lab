@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setupvalidator.ValidateSetup;
-import com.simsetuplab.backend.service.ValidatorService;
+import com.simsetuplab.backend.service.ValidateSetupService;
 
 @RestController
-@RequestMapping(path = "api/v1/setup")
+@RequestMapping(path = "api/v1/validatesetup")
 public class ValidateSetupController {
-	private final ValidatorService validatorService;
+	private final ValidateSetupService validatorService;
 
 	@Autowired
-	public ValidateSetupController(ValidatorService validatorService) {
+	public ValidateSetupController(ValidateSetupService validatorService) {
 		this.validatorService = validatorService;
 	}
 

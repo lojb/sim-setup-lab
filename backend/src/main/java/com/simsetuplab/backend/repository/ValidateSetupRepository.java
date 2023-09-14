@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setupvalidator.ValidateSetup;
 
-public interface ValidatorRepository extends JpaRepository<ValidateSetup, Long> {
+public interface ValidateSetupRepository extends JpaRepository<ValidateSetup, Long> {
 	ValidateSetup getValidatorByCarType(CarType carType);
 }
