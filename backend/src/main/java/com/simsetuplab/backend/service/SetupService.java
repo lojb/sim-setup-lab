@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
+import com.simsetuplab.backend.enumeration.carsetup.SetupType;
 import com.simsetuplab.backend.enumeration.carsetup.Tracks;
 import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.EnumData;
@@ -53,6 +54,13 @@ public class SetupService {
 		List<Tracks> tracks = Arrays.asList(Tracks.values());
 
 		return new EnumData(cars, tracks);
+	}
+
+	public Setup getDefaultSetup(String trackString, String carString) {
+		Tracks track = Tracks.valueOf(trackString);
+		CarType carType = CarType.valueOf(carString);
+
+		return setupRepository.findSetupBySetupTypeAndTrackAndCarType(SetupType.DEFAULT, track, carType);
 	}
 
 	public Setup convertDtoToSetup(SetupDto setupDto) {

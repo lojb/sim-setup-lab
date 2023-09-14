@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.simsetuplab.backend.model.setup.EnumData;
 import com.simsetuplab.backend.model.setup.Setup;
@@ -36,6 +37,11 @@ public class SetupController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Setup> getSetupById(@PathVariable("id") Long id) {
 		return ResponseEntity.ok(setupService.getSetupById(id));
+	}
+
+	@GetMapping("/default")
+	public ResponseEntity<Setup> getDefaultSetup(@RequestParam String trackString, @RequestParam String carString) {
+		return ResponseEntity.ok(setupService.getDefaultSetup(trackString, carString));
 	}
 
 	@GetMapping("/user/{userId}")
