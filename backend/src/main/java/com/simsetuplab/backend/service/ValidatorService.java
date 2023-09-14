@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
-import com.simsetuplab.backend.model.setupvalidator.Validator;
+import com.simsetuplab.backend.model.setupvalidator.ValidateSetup;
 import com.simsetuplab.backend.repository.ValidatorRepository;
 
 @Service
@@ -16,19 +16,19 @@ public class ValidatorService {
 		this.validatorRepository = validatorRepository;
 	}
 
-	public List<Validator> getAllValidators() {
+	public List<ValidateSetup> getAllValidators() {
 		return validatorRepository.findAll();
 	}
 
-	public Validator getValidatorByCarType(CarType carType) {
+	public ValidateSetup getValidatorByCarType(CarType carType) {
 		return validatorRepository.getValidatorByCarType(carType);
 	}
 
-	public Validator addOrUpdateValidator(Validator validator) {
+	public ValidateSetup addOrUpdateValidator(ValidateSetup validator) {
 		return validatorRepository.save(validator);
 	}
 
-	public void deleteValidator(Validator validator) {
+	public void deleteValidator(ValidateSetup validator) {
 		validatorRepository.delete(validator);
 	}
 }
