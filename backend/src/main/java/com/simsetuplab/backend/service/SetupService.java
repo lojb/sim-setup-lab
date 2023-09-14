@@ -1,10 +1,14 @@
 package com.simsetuplab.backend.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.simsetuplab.backend.enumeration.carsetup.CarType;
+import com.simsetuplab.backend.enumeration.carsetup.Tracks;
 import com.simsetuplab.backend.exception.ApiRequestException;
+import com.simsetuplab.backend.model.setup.EnumData;
 import com.simsetuplab.backend.model.setup.Setup;
 import com.simsetuplab.backend.model.setup.SetupDto;
 import com.simsetuplab.backend.model.user.User;
@@ -34,12 +38,21 @@ public class SetupService {
 		return setupRepository.findAllByUserId(id);
 	}
 
-	public Setup addOrUpdateSetup(Setup setup) {
+	public Setup addOrUpdateSetup(SetupDto setupDto) {
+		Setup setup = convertDtoToSetup(setupDto);
+
 		return setupRepository.save(setup);
 	}
 
 	public void deleteSetup(Setup setup) {
 		setupRepository.delete(setup);
+	}
+
+	public EnumData getEnumData() {
+		List<CarType> cars = Arrays.asList(CarType.values());
+		List<Tracks> tracks = Arrays.asList(Tracks.values());
+
+		return new EnumData(cars, tracks);
 	}
 
 	public Setup convertDtoToSetup(SetupDto setupDto) {
