@@ -10,6 +10,7 @@ export class SetupValues {
   userId: number | null;
   carType: string;
   track: string;
+  setupType: string;
   aero = new Aero();
   dampers = new Dampers();
   electronics = new Electronics();

@@ -34,6 +34,7 @@ export class SetupComponent {
     this.setupValues.userId = Number(localStorage.getItem('userId'));
     this.setupValues.carType = this.TransformStringToEnum(this.selectedCar);
     this.setupValues.track = this.TransformStringToEnum(this.selectedTrack);
+    this.setupValues.setupType = 'CUSTOM';
     console.log(this.setupValues);
 
     const headers = new HttpHeaders({
