@@ -53,6 +53,7 @@ public class Setup {
 		this.name = setupDto.getName();
 		this.carType = CarType.valueOf(setupDto.getCarType());
 		this.track = Tracks.valueOf(setupDto.getTrack());
+		this.setupType = SetupType.valueOf(setupDto.getSetupType());
 		this.aero = setupDto.getAero();
 		this.dampers = setupDto.getDampers();
 		this.electronics = setupDto.getElectronics();
