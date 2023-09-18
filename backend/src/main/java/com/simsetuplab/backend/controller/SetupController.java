@@ -40,8 +40,8 @@ public class SetupController {
 	}
 
 	@GetMapping("/default")
-	public ResponseEntity<Setup> getDefaultSetup(@RequestParam String trackString, @RequestParam String carString) {
-		return ResponseEntity.ok(setupService.getDefaultSetup(trackString, carString));
+	public ResponseEntity<Setup> getDefaultSetup(@RequestParam String track, @RequestParam String car) {
+		return ResponseEntity.ok(setupService.getDefaultSetup(track, car));
 	}
 
 	@GetMapping("/user/{userId}")
