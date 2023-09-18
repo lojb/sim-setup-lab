@@ -9,7 +9,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class SetupComponent {
 
-  selectedSetupPart: string | undefined;
+  selectedSetupPart: string = 'tyres';
   setupValues = new SetupValues();
   carsList: any;
   tracksList: any;
@@ -49,10 +49,21 @@ export class SetupComponent {
   }
 
   StartSetup() {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+
+    this.http.get(`/api/v1/setup/default?track=${this.TransformStringToEnum(this.selectedTrack)}&car=${this.TransformStringToEnum(this.selectedCar)}`, {headers})
+      .subscribe((setup: any) => {
+        this.setupValues = setup;
+        this.setupValues.name = "";
+      })
     this.selected = this.selectedTrack && this.selectedCar;
   }
 
-  TransformEnumToString(input: string):string {
+  TransformEnumToString(input: string): string {
     const words = input.split('_');
 
     const capitalizedWords = words.map(word => {
