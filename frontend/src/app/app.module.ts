@@ -18,6 +18,7 @@ import {FuelStrategyComponent} from './setup/fuel-strategy/fuel-strategy.compone
 import {MechanicalGripComponent} from './setup/mechanical-grip/mechanical-grip.component';
 import {DampersComponent} from './setup/dampers/dampers.component';
 import {AeroComponent} from './setup/aero/aero.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {AeroComponent} from './setup/aero/aero.component';
     NgOptimizedImage,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
