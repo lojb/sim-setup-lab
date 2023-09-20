@@ -1,21 +1,21 @@
-<div class="flex items flex-col font-semibold space-x-2 space-y-4">
-  <div class="group-div">
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Fuel (liter)</p>
-        <input class="input" type="number" [(ngModel)]="fuelStrategyValues.fuel">
+<div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="fuel">Fuel (liter)</label>
+        <input id="fuel" class="form-control w-50 number-input" type="number" [(ngModel)]="fuelStrategyValues.fuel">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Front Brakes</p>
-        <input class="input" type="number" [(ngModel)]="fuelStrategyValues.frontBrakes">
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="frontBrakes">Front Brakes</label>
+        <input id="frontBrakes" class="form-control w-50 number-input" type="number" [(ngModel)]="fuelStrategyValues.frontBrakes">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Rear Brakes</p>
-        <input class="input" type="number" [(ngModel)]="fuelStrategyValues.rearBrakes">
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="rearBrakes">Rear Brakes</label>
+        <input id="rearBrakes" class="form-control w-50 number-input" type="number" [(ngModel)]="fuelStrategyValues.rearBrakes">
       </div>
     </div>
   </div>
