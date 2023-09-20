@@ -1,59 +1,60 @@
-<div
-  class="login-register">
-  <button class="active:scale-[0.95]"></button>
-  <div class="flex flex-col gap-[20px]">
-    <ng-form class="flex flex-col gap-[2px]" [formGroup]="registerForm">
-      <label class="mb-[5px] text-[#717171] font-semibold text-[12px]">
-        Username
-      </label>
-      <input type="text" formControlName="username" name="username"
-             class="input">
-      <p class="text text-danger" *ngIf="Username.errors?.['required'] && Username.touched">
-        Username is required
-      </p>
-      <p class="text text-danger" *ngIf="Username.errors?.['minlength'] && Username.touched">
-        Username needs to be at least 5 characters
-      </p>
+<div class="d-flex align-items-center justify-content-center container m-auto rounded-5 glass mh-75">
+  <div
+    class="d-flex flex-column justify-content-center align-items-center bg-body-tertiary bg-opacity-50 rounded-3 m-2 w-75 mt-2">
+    <div>
+      <ng-form class="d-flex flex-column w-auto" [formGroup]="registerForm">
+        <label>
+          Username
+        </label>
+        <input type="text" formControlName="username" name="username"
+               class="form-control number-input">
+        <p class="text text-warning" *ngIf="Username.errors?.['required'] && Username.touched">
+          Username is required
+        </p>
+        <p class="text text-warning" *ngIf="Username.errors?.['minlength'] && Username.touched">
+          Username needs to be at least 5 characters
+        </p>
 
-      <label class="mb-[5px] text-[#717171] font-semibold text-[12px]">
-        Email
-      </label>
-      <input type="text" name="email" formControlName="email"
-             class="input">
-      <p class="text text-danger" *ngIf="Email.errors?.['required'] && Email.touched">
-        Email is required
-      </p>
-      <p class="text text-danger" *ngIf="Email.errors?.['email'] && Email.touched">
-        Email is not valid
-      </p>
-      <label class="mb-[5px] text-[#717171] font-semibold text-[12px]">
-        Password
-      </label>
-      <input type="password" formControlName="password" name="password"
-             class="input">
-      <p class="text text-danger" *ngIf="Password.errors?.['required'] && Password.touched">
-        Password is required
-      </p>
-      <p class="text text-danger" *ngIf="Password.errors?.['minlength'] && Password.touched">
-        Password needs to be at least 8 characters
-      </p>
-      <label class="mb-[5px] text-[#717171] font-semibold text-[12px]">
-        Confirm Password
-      </label>
-      <input type="password" formControlName="confirmPassword" name="confirmPassword"
-             class="input">
-      <p class="text text-danger" *ngIf="ConfirmPassword.touched && Password.value != ConfirmPassword.value">
-        Passwords do not match
-      </p>
-      <p class="flex justify-center items-center">Already registered? login
-        <a routerLink="/login" class="text-blue-700 underline pl-1">here</a>
-      </p>
-    </ng-form>
-  </div>
-  <div class="flex justify-center items-center">
-    <button class="disabled-button-40"
-            (click)="RegisterUser()" [disabled]="!registerForm.valid">
-      Register
-    </button>
+        <label>
+          Email
+        </label>
+        <input type="text" name="email" formControlName="email"
+               class="form-control number-input">
+        <p class="text text-warning" *ngIf="Email.errors?.['required'] && Email.touched">
+          Email is required
+        </p>
+        <p class="text text-warning" *ngIf="Email.errors?.['email'] && Email.touched">
+          Email is not valid
+        </p>
+        <label>
+          Password
+        </label>
+        <input type="password" formControlName="password" name="password"
+               class="form-control number-input">
+        <p class="text text-warning" *ngIf="Password.errors?.['required'] && Password.touched">
+          Password is required
+        </p>
+        <p class="text text-warning" *ngIf="Password.errors?.['minlength'] && Password.touched">
+          Password needs to be at least 8 characters
+        </p>
+        <label>
+          Confirm Password
+        </label>
+        <input type="password" formControlName="confirmPassword" name="confirmPassword"
+               class="form-control number-input">
+        <p class="text text-warning" *ngIf="ConfirmPassword.touched && Password.value != ConfirmPassword.value">
+          Passwords do not match
+        </p>
+        <p class="flex justify-center items-center">Already registered? login
+          <a routerLink="/login" class="text-blue-700 underline pl-1">here</a>
+        </p>
+      </ng-form>
+    </div>
+    <div class="flex justify-center items-center">
+      <button class="btn btn-primary m-1"
+              (click)="RegisterUser()" [disabled]="!registerForm.valid">
+        Register
+      </button>
+    </div>
   </div>
 </div>
