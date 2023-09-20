@@ -19,6 +19,9 @@ import {MechanicalGripComponent} from './setup/mechanical-grip/mechanical-grip.c
 import {DampersComponent} from './setup/dampers/dampers.component';
 import {AeroComponent} from './setup/aero/aero.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FuelStrategyComponent,
     MechanicalGripComponent,
     DampersComponent,
-    AeroComponent
+    AeroComponent,
+    AdminComponent,
+    UserComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
