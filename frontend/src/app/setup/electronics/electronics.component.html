@@ -1,27 +1,27 @@
-<div class="flex items flex-col font-semibold space-x-2 space-y-4">
-  <div class="group-div">
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Traction Control</p>
-        <input class="input" type="number" [(ngModel)]="electronicsValues.tractionControl">
+<div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="tc">Traction Control</label>
+        <input id="tc" class="form-control w-50 number-input" type="number" [(ngModel)]="electronicsValues.tractionControl">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>ABS</p>
-        <input class="input" type="number" [(ngModel)]="electronicsValues.abs">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="abs">ABS</label>
+        <input id="abs" class="form-control w-50 number-input" type="number" [(ngModel)]="electronicsValues.abs">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>ECU Map</p>
-        <input class="input" type="number" [(ngModel)]="electronicsValues.ecuMap">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center my-1">
+        <label for="ecuMap">ECU Map</label>
+        <input id="ecuMap" class="form-control w-50 number-input m-0" type="number" [(ngModel)]="electronicsValues.ecuMap">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Telemetry Laps</p>
-        <input class="input" type="number" [(ngModel)]="electronicsValues.telemetryLaps">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="telemetryLaps">Telemetry Laps</label>
+        <input id="telemetryLaps" class="form-control w-50 number-input" type="number" [(ngModel)]="electronicsValues.telemetryLaps">
       </div>
     </div>
   </div>
