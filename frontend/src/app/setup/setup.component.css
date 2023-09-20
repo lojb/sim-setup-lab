@@ -1,7 +1,0 @@
-.setup-buttons {
-  @apply text-[#717171] w-[15%] bg-[#313131] border-[1px] border-[#414141] p-[12px] gap-[8px] mt-[8px] rounded-[6px] cursor-pointer hover:bg-blue-700 hover:text-gray-50;
-}
-
-.active-button {
-  @apply bg-blue-700 text-gray-50;
-}

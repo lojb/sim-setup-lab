@@ -15,7 +15,7 @@ export class SetupComponent {
   tracksList: any;
   selectedCar: any;
   selectedTrack: any;
-  selected: boolean;
+  allSelected: boolean;
 
   constructor(private http: HttpClient) {
     this.http.get('/api/v1/setup/enums')
@@ -60,7 +60,7 @@ export class SetupComponent {
         this.setupValues = setup;
         this.setupValues.name = "";
       })
-    this.selected = this.selectedTrack && this.selectedCar;
+    this.allSelected = this.selectedTrack && this.selectedCar;
   }
 
   TransformEnumToString(input: string): string {
