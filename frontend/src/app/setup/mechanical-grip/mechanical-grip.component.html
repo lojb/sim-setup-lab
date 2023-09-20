@@ -1,121 +1,117 @@
-<div class="setup-part">
-  <div
-    class="group-div">
+<div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
+  <div class="d-flex flex-column align-items-center">
     <h2 class="text-center">Front</h2>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Antiroll Bar</p>
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontAntiRollBar">
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="frontAntiRollBar">Front Antiroll Bar</label>
+        <input id="frontAntiRollBar" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontAntiRollBar">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Brake Power (%)</p>
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.brakePower">
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="brakePower">Brake Power (%)</label>
+        <input id="brakePower" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.brakePower">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Brake Bias (%)</p>
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.brakeBias">
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="brakeBias">Brake Bias (%)</label>
+        <input id="brakeBias" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.brakeBias">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Steer Ratio</p>
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.steerRatio">
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="steerRatio">Steer Ratio</label>
+        <input id="steerRatio" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.steerRatio">
       </div>
     </div>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
+    <div class="d-flex flex-row">
+      <div class="mx-5">
         <p>Left</p>
       </div>
-      <div class="two-sided-row-item">
-
-      </div>
-      <div class="two-sided-row-item">
+      <div class="mx-5">
         <p>Right</p>
       </div>
     </div>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftWheelRate">
+    <div class="d-flex flex-row w-75">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftWheelRate">
       </div>
-      <div class="two-sided-row-item">
+      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
         <p>Wheel Rate (N/m)</p>
       </div>
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontRightWheelRate">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontRightWheelRate">
       </div>
     </div>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftBumpstopRate">
+    <div class="d-flex flex-row w-75">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftBumpstopRate">
       </div>
-      <div class="two-sided-row-item">
+      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
         <p>Bumpstop Rate (N)</p>
       </div>
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontRightBumpstopRate">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontRightBumpstopRate">
       </div>
     </div>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftBumpstopRange">
+    <div class="d-flex flex-row w-75">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftBumpstopRange">
       </div>
-      <div class="two-sided-row-item">
+      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
         <p>Bumpstop Range</p>
       </div>
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.frontRightBumpstopRange">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontRightBumpstopRange">
       </div>
     </div>
   </div>
-  <div class="group-div">
+  <div class="d-flex flex-column align-items-center">
     <h2 class="text-center">Rear</h2>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftWheelRate">
+    <div class="d-flex flex-row w-75">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftWheelRate">
       </div>
-      <div class="two-sided-row-item">
+      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
         <p>Wheel Rate (N/m)</p>
       </div>
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearRightWheelRate">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearRightWheelRate">
       </div>
     </div>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftBumpstopRate">
+    <div class="d-flex flex-row w-75">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftBumpstopRate">
       </div>
-      <div class="two-sided-row-item">
+      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
         <p>Bumpstop Rate (N)</p>
       </div>
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearRightBumpstopRate">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearRightBumpstopRate">
       </div>
     </div>
-    <div class="two-sided-row">
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftBumpstopRange">
+    <div class="d-flex flex-row w-75">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftBumpstopRange">
       </div>
-      <div class="two-sided-row-item">
+      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
         <p>Bumpstop Range</p>
       </div>
-      <div class="two-sided-row-item">
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearRightBumpstopRange">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearRightBumpstopRange">
       </div>
     </div>
-    <div class="one-sided-row">
-    <div class="one-sided-row-item">
-      <p>Antiroll Bar</p>
-      <input class="input" type="number" [(ngModel)]="mechanicalGripValues.rearAntiRollBar">
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="rearAntiRollBar">Rear Antiroll Bar</label>
+      <input id="rearAntiRollBar" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearAntiRollBar">
     </div>
   </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Preload Differential (Nm)</p>
-        <input class="input" type="number" [(ngModel)]="mechanicalGripValues.preloadDifferential">
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="preload">Preload Differential (Nm)</label>
+        <input id="preload" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.preloadDifferential">
       </div>
     </div>
   </div>
