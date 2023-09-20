@@ -1,43 +1,43 @@
-<div class="setup-part">
-  <div class="group-div">
+<div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
+  <div class="d-flex flex-column">
     <h2 class="text-center">Front</h2>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Ride Height (mm)</p>
-        <input class="input" type="number" [(ngModel)]="aeroValues.frontRideHeight">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="frontRideHeight">Ride Height</label>
+        <input id="frontRideHeight" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.frontRideHeight">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Splitter (mm)</p>
-        <input class="input" type="number" [(ngModel)]="aeroValues.splitter">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="splitter">Splitter</label>
+        <input id="splitter" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.splitter">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Brake Ducts</p>
-        <input class="input" type="number" [(ngModel)]="aeroValues.frontBrakeDucts">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="frontBrakeDucts">Brake Ducts</label>
+        <input id="frontBrakeDucts" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.frontBrakeDucts">
       </div>
     </div>
   </div>
   <div class="group-div">
     <h2 class="text-center">Rear</h2>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Ride Height (mm)</p>
-        <input class="input" type="number" [(ngModel)]="aeroValues.rearRideHeight">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="rearRideHeight">Ride Height</label>
+        <input id="rearRideHeight" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.rearRideHeight">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Rear Wing</p>
-        <input class="input" type="number" [(ngModel)]="aeroValues.rearWing">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="rearWing">Rear Wing</label>
+        <input id="rearWing" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.rearWing">
       </div>
     </div>
-    <div class="one-sided-row">
-      <div class="one-sided-row-item">
-        <p>Brake Ducts</p>
-        <input class="input" type="number" [(ngModel)]="aeroValues.rearBrakeDucts">
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <label for="rearBrakeDucts">Brake Ducts</label>
+        <input id="rearBrakeDucts" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.rearBrakeDucts">
       </div>
     </div>
   </div>
