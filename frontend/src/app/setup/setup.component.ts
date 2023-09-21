@@ -57,10 +57,22 @@ export class SetupComponent {
 
     this.http.get(`/api/v1/setup/default?track=${this.TransformStringToEnum(this.selectedTrack)}&car=${this.TransformStringToEnum(this.selectedCar)}`, {headers})
       .subscribe((setup: any) => {
-        this.setupValues = setup;
-        this.setupValues.name = "";
+        this.LoadDefaultSetup(setup);
       })
     this.allSelected = this.selectedTrack && this.selectedCar;
+  }
+
+  LoadDefaultSetup(setup: any) {
+    delete setup.id;
+    delete setup.aero.id;
+    delete setup.dampers.id;
+    delete setup.electronics.id;
+    delete setup.fuelStrategy.id;
+    delete setup.mechanicalGrip.id;
+    delete setup.tyres.id;
+    delete setup.user;
+    setup.name = "";
+    this.setupValues = setup;
   }
 
   TransformEnumToString(input: string): string {
@@ -92,4 +104,6 @@ export class SetupComponent {
 
     return capitalizedWords.join('_');
   }
+
+
 }
