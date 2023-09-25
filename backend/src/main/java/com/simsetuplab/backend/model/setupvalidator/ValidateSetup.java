@@ -3,7 +3,7 @@ package com.simsetuplab.backend.model.setupvalidator;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setup.Setup;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,19 +19,18 @@ public class ValidateSetup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true)
 	private CarType carType;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private ValidateAero validateAero;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private ValidateDampers validateDampers;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private ValidateElectronics validateElectronics;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private ValidateFuelStrategy validateFuelStrategy;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private ValidateMechanicalGrip validateMechanicalGrip;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private ValidateTyres validateTyres;
 
 	public boolean validate(Setup setup) {
