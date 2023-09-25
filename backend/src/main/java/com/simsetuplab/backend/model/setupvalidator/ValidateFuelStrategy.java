@@ -15,7 +15,7 @@ public class ValidateFuelStrategy {
 	private Long id;
 	private int fuelMin = 2;
 	private int fuelMax;
-	private TyreType tyreTypeMin = TyreType.DRY;
+	private TyreType tyreType = TyreType.DRY;
 	private int brakesMin = 1;
 	private int brakesMax = 4;
 	private double fuelPerLap;
