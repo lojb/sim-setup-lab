@@ -1,5 +1,6 @@
 package com.simsetuplab.backend.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +25,11 @@ public class ValidateSetupController {
 		this.validatorService = validatorService;
 	}
 
+	@GetMapping
+	public ResponseEntity<List<ValidateSetup>> getAllValidators() {
+		return ResponseEntity.ok(validatorService.getAllValidators());
+	}
+
 	@GetMapping("/{carType}")
 	public ResponseEntity<ValidateSetup> getValidatorByCarType(@PathVariable("carType") String carTypeString) {
 		CarType carType = CarType.valueOf(carTypeString);
@@ -36,12 +42,12 @@ public class ValidateSetupController {
 	}
 
 	@PutMapping
-	public ResponseEntity<ValidateSetup> updateSetup(ValidateSetup validateSetup) {
+	public ResponseEntity<ValidateSetup> updateValidator(ValidateSetup validateSetup) {
 		return ResponseEntity.ok(validatorService.addOrUpdateValidator(validateSetup));
 	}
 
 	@DeleteMapping
-	public ResponseEntity<Void> deleteSetup(ValidateSetup validator) {
+	public ResponseEntity<Void> deleteValidator(ValidateSetup validator) {
 		validatorService.deleteValidator(validator);
 		return ResponseEntity.ok().build();
 	}
