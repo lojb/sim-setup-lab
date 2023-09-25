@@ -1,5 +1,6 @@
 package com.simsetuplab.backend.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
@@ -13,6 +14,10 @@ public class ValidateSetupService {
 	@Autowired
 	public ValidateSetupService(ValidateSetupRepository validatorRepository) {
 		this.validatorRepository = validatorRepository;
+	}
+
+	public List<ValidateSetup> getAllValidators() {
+		return validatorRepository.findAll();
 	}
 
 	public ValidateSetup getValidatorByCarType(CarType carType) {
