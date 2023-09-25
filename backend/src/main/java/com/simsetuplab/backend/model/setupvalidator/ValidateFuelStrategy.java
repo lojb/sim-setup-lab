@@ -1,6 +1,5 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
-import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.enumeration.carsetup.TyreType;
 import com.simsetuplab.backend.model.setup.setupvalues.FuelStrategy;
 
@@ -14,7 +13,6 @@ public class ValidateFuelStrategy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private CarType car;
 	private int fuelMin = 2;
 	private int fuelMax;
 	private TyreType tyreTypeMin = TyreType.DRY;

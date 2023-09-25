@@ -1,6 +1,5 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
-import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setup.setupvalues.MechanicalGrip;
 
 import jakarta.persistence.Entity;
@@ -13,7 +12,6 @@ public class ValidateMechanicalGrip {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private CarType car;
 	private int frontAntiRollBarMin;
 	private int frontAntiRollBarMax;
 	private int rearAntiRollBarMin;

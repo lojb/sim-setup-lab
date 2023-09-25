@@ -1,6 +1,5 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
-import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setup.setupvalues.Tyres;
 
 import jakarta.persistence.Entity;
@@ -13,7 +12,6 @@ public class ValidateTyres {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private CarType car;
 	private float tyrePressureMin = 25.0f;
 	private float tyrePressureMax = 25.0f;
 	private float frontCamberMin;

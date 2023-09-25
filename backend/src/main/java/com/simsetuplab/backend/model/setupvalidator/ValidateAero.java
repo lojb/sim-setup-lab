@@ -1,6 +1,5 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
-import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setup.setupvalues.Aero;
 
 import jakarta.persistence.Entity;
@@ -15,7 +14,6 @@ public class ValidateAero {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private CarType car;
 	private int frontRideHeightMin;
 	private int frontRideHeightMax;
 	private int rearRideHeightMin;

@@ -1,6 +1,5 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
-import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setup.setupvalues.Dampers;
 
 import jakarta.persistence.Entity;
@@ -15,7 +14,6 @@ public class ValidateDampers {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private CarType car;
 	private int frontBumpMin;
 	private int frontBumpMax;
 	private int frontFastBumpMin;
