@@ -12,19 +12,25 @@ import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.EnumData;
 import com.simsetuplab.backend.model.setup.Setup;
 import com.simsetuplab.backend.model.setup.SetupDto;
+import com.simsetuplab.backend.model.setupvalidator.ValidateSetup;
 import com.simsetuplab.backend.model.user.User;
 import com.simsetuplab.backend.repository.SetupRepository;
 import com.simsetuplab.backend.repository.UserRepository;
+import com.simsetuplab.backend.repository.ValidateSetupRepository;
 
 @Service
 public class SetupService {
 	private final SetupRepository setupRepository;
 	private final UserRepository userRepository;
 
+	private final ValidateSetupRepository validateSetupRepository;
+
 	@Autowired
-	public SetupService(SetupRepository setupRepository, UserRepository userRepository) {
+	public SetupService(SetupRepository setupRepository, UserRepository userRepository, ValidateSetupRepository validateSetupRepository) {
 		this.setupRepository = setupRepository;
 		this.userRepository = userRepository;
+		this.validateSetupRepository = validateSetupRepository;
+
 	}
 
 	public List<Setup> getAllSetups() {
@@ -42,7 +48,14 @@ public class SetupService {
 	public Setup addOrUpdateSetup(SetupDto setupDto) {
 		Setup setup = convertDtoToSetup(setupDto);
 
-		return setupRepository.save(setup);
+		ValidateSetup validator = this.validateSetupRepository.getValidatorByCarType(setup.getCarType());
+
+		if (validator.validate(setup)) {
+			return setupRepository.save(setup);
+		} else {
+			throw new ApiRequestException("Error validating setup.");
+		}
+
 	}
 
 	public void deleteSetup(Setup setup) {
