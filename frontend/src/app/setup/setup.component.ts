@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {SetupValues} from "../model/setup/setup-values";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {ValidateSetup} from "../model/validateSetup/validate-setup";
 
 @Component({
   selector: 'app-setup',
@@ -10,7 +11,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class SetupComponent {
 
   selectedSetupPart: string = 'tyres';
-  setupValues = new SetupValues();
+  setupValues: SetupValues;
+  validator: ValidateSetup;
   carsList: any;
   tracksList: any;
   selectedCar: any;
@@ -60,19 +62,24 @@ export class SetupComponent {
         this.LoadDefaultSetup(setup);
       })
     this.allSelected = this.selectedTrack && this.selectedCar;
+
+    this.http.get(`/api/v1/validatesetup/${this.TransformStringToEnum(this.selectedCar)}`, {headers})
+      .subscribe((validator: any) => {
+        this.validator = validator;
+      })
   }
 
-  LoadDefaultSetup(setup: any) {
-    delete setup.id;
-    delete setup.aero.id;
-    delete setup.dampers.id;
-    delete setup.electronics.id;
-    delete setup.fuelStrategy.id;
-    delete setup.mechanicalGrip.id;
-    delete setup.tyres.id;
-    delete setup.user;
-    setup.name = "";
-    this.setupValues = setup;
+  LoadDefaultSetup(defaultSetup: any) {
+    delete defaultSetup.id;
+    delete defaultSetup.aero.id;
+    delete defaultSetup.dampers.id;
+    delete defaultSetup.electronics.id;
+    delete defaultSetup.fuelStrategy.id;
+    delete defaultSetup.mechanicalGrip.id;
+    delete defaultSetup.tyres.id;
+    delete defaultSetup.user;
+    defaultSetup.name = "";
+    this.setupValues = defaultSetup;
   }
 
   TransformEnumToString(input: string): string {
