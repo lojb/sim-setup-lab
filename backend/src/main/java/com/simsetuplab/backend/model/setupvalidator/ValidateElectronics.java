@@ -1,5 +1,6 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
+import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.Electronics;
 
 import jakarta.persistence.Entity;
@@ -22,26 +23,35 @@ public class ValidateElectronics {
 	private int telemetryLapsMax;
 
 	public boolean validate(Electronics electronics) {
+		validatetractionControl(electronics.getTractionControl());
+		validateAbs(electronics.getAbs());
+		validateEcuMap(electronics.getEcuMap());
+		validateTelemetryLaps(electronics.getTelemetryLaps());
 
-		return validatetractionControl(electronics.getTractionControl())
-				&& validateAbs(electronics.getAbs())
-				&& validateEcuMap(electronics.getEcuMap())
-				&& validateTelemetryLaps(electronics.getTelemetryLaps());
+		return true;
 	}
 
-	private boolean validatetractionControl(int tractionControl) {
-		return tractionControl >= tractionControlMin && tractionControl <= tractionControlMax;
+	private void validatetractionControl(int tractionControl) {
+		if (!(tractionControl >= tractionControlMin && tractionControl <= tractionControlMax)) {
+			throw new ApiRequestException("Invalid traction control value");
+		}
 	}
 
-	private boolean validateAbs(int abs) {
-		return abs >= absMin && abs <= absMax;
+	private void validateAbs(int abs) {
+		if (!(abs >= absMin && abs <= absMax)) {
+			throw new ApiRequestException("Invalid ABS value");
+		}
 	}
 
-	private boolean validateEcuMap(int ecuMap) {
-		return ecuMap >= ecuMapMin && ecuMap <= ecuMapMax;
+	private void validateEcuMap(int ecuMap) {
+		if (!(ecuMap >= ecuMapMin && ecuMap <= ecuMapMax)) {
+			throw new ApiRequestException("Invalid ECU map value");
+		}
 	}
 
-	private boolean validateTelemetryLaps(int telemetryLaps) {
-		return telemetryLaps >= telemetryLapsMin && telemetryLaps <= telemetryLapsMax;
+	private void validateTelemetryLaps(int telemetryLaps) {
+		if (!(telemetryLaps >= telemetryLapsMin && telemetryLaps <= telemetryLapsMax)) {
+			throw new ApiRequestException("Invalid telemetry laps value");
+		}
 	}
 }
