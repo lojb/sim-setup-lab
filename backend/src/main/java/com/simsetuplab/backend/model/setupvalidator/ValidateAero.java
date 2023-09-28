@@ -1,5 +1,6 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
+import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.Aero;
 
 import jakarta.persistence.Entity;
@@ -27,36 +28,50 @@ public class ValidateAero {
 	private int rearBrakeDuctsMin;
 	private int rearBrakeDuctsMax;
 
-	public boolean validate(Aero aero) {
-		return validateFrontRideHeight(aero.getFrontRideHeight())
-				&& validateRearRideHeight(aero.getRearRideHeight())
-				&& validateSplitter(aero.getSplitter())
-				&& validateRearWing(aero.getRearWing())
-				&& validateFrontBrakeDucts(aero.getFrontBrakeDucts())
-				&& validateRearBrakeDucts(aero.getRearBrakeDucts());
+	public boolean validation(Aero aero) {
+		validateFrontRideHeight(aero.getFrontRideHeight());
+		validateRearRideHeight(aero.getRearRideHeight());
+		validateSplitter(aero.getSplitter());
+		validateRearWing(aero.getRearWing());
+		validateFrontBrakeDucts(aero.getFrontBrakeDucts());
+		validateRearBrakeDucts(aero.getRearBrakeDucts());
+
+		return true;
 	}
 
-	private boolean validateFrontRideHeight(int frontRideHeight) {
-		return frontRideHeight >= frontRideHeightMin && frontRideHeight <= frontRideHeightMax;
+	private void validateFrontRideHeight(int frontRideHeight) {
+		if (!(frontRideHeight >= frontRideHeightMin && frontRideHeight <= frontRideHeightMax)) {
+			throw new ApiRequestException("Invalid front ride height value");
+		}
 	}
 
-	private boolean validateRearRideHeight(int rearRideHeight) {
-		return rearRideHeight >= rearRideHeightMin && rearRideHeight <= rearRideHeightMax;
+	private void validateRearRideHeight(int rearRideHeight) {
+		if (!(rearRideHeight >= rearRideHeightMin && rearRideHeight <= rearRideHeightMax)) {
+			throw new ApiRequestException("Invalid rear ride height Value");
+		}
 	}
 
-	private boolean validateSplitter(int splitter) {
-		return splitter >= splitterMin && splitter <= splitterMax;
+	private void validateSplitter(int splitter) {
+		if (!(splitter >= splitterMin && splitter <= splitterMax)) {
+			throw new ApiRequestException("Invalid splitter value");
+		}
 	}
 
-	private boolean validateRearWing(int rearWing) {
-		return rearWing >= rearWingMin && rearWing <= rearWingMax;
+	private void validateRearWing(int rearWing) {
+		if (!(rearWing >= rearWingMin && rearWing <= rearWingMax)) {
+			throw new ApiRequestException("Invalid rear wing value");
+		}
 	}
 
-	private boolean validateFrontBrakeDucts(int frontBrakeDucts) {
-		return frontBrakeDucts >= frontBrakeDuctsMin && frontBrakeDucts <= frontBrakeDuctsMax;
+	private void validateFrontBrakeDucts(int frontBrakeDucts) {
+		if (!(frontBrakeDucts >= frontBrakeDuctsMin && frontBrakeDucts <= frontBrakeDuctsMax)) {
+			throw new ApiRequestException("Invalid front brake ducts value");
+		}
 	}
 
-	private boolean validateRearBrakeDucts(int rearBrakeDucts) {
-		return rearBrakeDucts >= rearBrakeDuctsMin && rearBrakeDucts <= rearBrakeDuctsMax;
+	private void validateRearBrakeDucts(int rearBrakeDucts) {
+		if (!(rearBrakeDucts >= rearBrakeDuctsMin && rearBrakeDucts <= rearBrakeDuctsMax)) {
+			throw new ApiRequestException("Invalid rear brake ducts value");
+		}
 	}
 }
