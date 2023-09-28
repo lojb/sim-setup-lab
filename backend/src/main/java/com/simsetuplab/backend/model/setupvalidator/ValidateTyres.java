@@ -1,5 +1,6 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
+import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.Tyres;
 
 import jakarta.persistence.Entity;
@@ -26,43 +27,57 @@ public class ValidateTyres {
 	private float casterMax;
 
 	public boolean validate(Tyres tyres) {
-		return validateTyrePressure(tyres.getFrontLeftTyrePressure())
-				&& validateTyrePressure(tyres.getFrontRightTyrePressure())
-				&& validateTyrePressure(tyres.getRearLeftTyrePressure())
-				&& validateTyrePressure(tyres.getRearRightTyrePressure())
-				&& validateFrontCamber(tyres.getFrontLeftCamber(), tyres.getFrontRightCamber())
-				&& validateRearCamber(tyres.getRearLeftCamber(), tyres.getRearRightCamber())
-				&& validateFrontToe(tyres.getFrontLeftToe(), tyres.getFrontRightToe())
-				&& validateRearToe(tyres.getRearLeftToe(), tyres.getRearRightToe())
-				&& validateCaster(tyres.getCasterLeft(), tyres.getCasterRight());
+		validateTyrePressure(tyres.getFrontLeftTyrePressure());
+		validateTyrePressure(tyres.getFrontRightTyrePressure());
+		validateTyrePressure(tyres.getRearLeftTyrePressure());
+		validateTyrePressure(tyres.getRearRightTyrePressure());
+		validateFrontCamber(tyres.getFrontLeftCamber(), tyres.getFrontRightCamber());
+		validateRearCamber(tyres.getRearLeftCamber(), tyres.getRearRightCamber());
+		validateFrontToe(tyres.getFrontLeftToe(), tyres.getFrontRightToe());
+		validateRearToe(tyres.getRearLeftToe(), tyres.getRearRightToe());
+		validateCaster(tyres.getCasterLeft(), tyres.getCasterRight());
+
+		return true;
 	}
 
-	private boolean validateTyrePressure(float tyrePressure) {
-		return tyrePressure >= tyrePressureMin && tyrePressure <= tyrePressureMax;
+	private void validateTyrePressure(float tyrePressure) {
+		if (!(tyrePressure >= tyrePressureMin && tyrePressure <= tyrePressureMax)) {
+			throw new ApiRequestException("Invalid tyre pressure values");
+		}
 	}
 
-	private boolean validateFrontCamber(float frontLeftCamber, float frontRightCamber) {
-		return frontLeftCamber >= frontCamberMin && frontLeftCamber <= frontCamberMax
-				&& frontRightCamber >= frontCamberMin && frontRightCamber <= frontCamberMax;
+	private void validateFrontCamber(float frontLeftCamber, float frontRightCamber) {
+		if (!(frontLeftCamber >= frontCamberMin && frontLeftCamber <= frontCamberMax
+				&& frontRightCamber >= frontCamberMin && frontRightCamber <= frontCamberMax)) {
+			throw new ApiRequestException("Invalid front camber values");
+		}
 	}
 
-	private boolean validateRearCamber(float rearLeftCamber, float rearRightCamber) {
-		return rearLeftCamber >= rearCamberMin && rearLeftCamber <= rearCamberMax
-				&& rearRightCamber >= rearCamberMin && rearRightCamber <= rearCamberMax;
+	private void validateRearCamber(float rearLeftCamber, float rearRightCamber) {
+		if (!(rearLeftCamber >= rearCamberMin && rearLeftCamber <= rearCamberMax
+				&& rearRightCamber >= rearCamberMin && rearRightCamber <= rearCamberMax)) {
+			throw new ApiRequestException("Invalid rear camber values");
+		}
 	}
 
-	private boolean validateFrontToe(float frontLeftToe, float frontRightToe) {
-		return frontLeftToe >= frontToeMin && frontLeftToe <= frontToeMax
-				&& frontRightToe >= frontToeMin && frontRightToe <= frontToeMax;
+	private void validateFrontToe(float frontLeftToe, float frontRightToe) {
+		if (!(frontLeftToe >= frontToeMin && frontLeftToe <= frontToeMax
+				&& frontRightToe >= frontToeMin && frontRightToe <= frontToeMax)) {
+			throw new ApiRequestException("Invalid front toe values");
+		}
 	}
 
-	private boolean validateRearToe(float rearLeftToe, float rearRightToe) {
-		return rearLeftToe >= rearToeMin && rearLeftToe <= rearToeMax
-				&& rearRightToe >= rearToeMin && rearRightToe <= rearToeMax;
+	private void validateRearToe(float rearLeftToe, float rearRightToe) {
+		if (!(rearLeftToe >= rearToeMin && rearLeftToe <= rearToeMax
+				&& rearRightToe >= rearToeMin && rearRightToe <= rearToeMax)) {
+			throw new ApiRequestException("Invalid rear toe values");
+		}
 	}
 
-	private boolean validateCaster(float casterLeft, float casterRight) {
-		return casterLeft >= casterMin && casterLeft <= casterMax
-				&& casterRight >= casterMin && casterRight <= casterMax;
+	private void validateCaster(float casterLeft, float casterRight) {
+		if (!(casterLeft >= casterMin && casterLeft <= casterMax
+				&& casterRight >= casterMin && casterRight <= casterMax)) {
+			throw new ApiRequestException("Invalid caster values");
+		}
 	}
 }
