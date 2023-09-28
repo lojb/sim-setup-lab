@@ -28,7 +28,7 @@ public class ValidateAero {
 	private int rearBrakeDuctsMin;
 	private int rearBrakeDuctsMax;
 
-	public boolean validation(Aero aero) {
+	public boolean validate(Aero aero) {
 		validateFrontRideHeight(aero.getFrontRideHeight());
 		validateRearRideHeight(aero.getRearRideHeight());
 		validateSplitter(aero.getSplitter());
