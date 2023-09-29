@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Aero} from "../../model/setup/aero";
+import {ValidateAero} from "../../model/validateSetup/validate-aero";
 
 @Component({
   selector: 'app-aero',
@@ -9,4 +10,5 @@ import {Aero} from "../../model/setup/aero";
 export class AeroComponent {
 
   @Input() aeroValues: Aero;
+  @Input() validateAero: ValidateAero;
 }
