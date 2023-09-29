@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Electronics} from "../../model/setup/electronics";
+import {ValidateElectronics} from "../../model/validateSetup/validate-electronics";
 
 @Component({
   selector: 'app-electronics',
@@ -8,4 +9,5 @@ import {Electronics} from "../../model/setup/electronics";
 })
 export class ElectronicsComponent{
   @Input() electronicsValues: Electronics;
+  @Input() validateElectronics: ValidateElectronics;
 }
