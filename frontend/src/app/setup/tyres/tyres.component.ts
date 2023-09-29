@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Tyres} from "../../model/setup/tyres";
+import {ValidateTyres} from "../../model/validateSetup/validate-tyres";
 
 @Component({
   selector: 'app-tyres',
@@ -8,5 +9,5 @@ import {Tyres} from "../../model/setup/tyres";
 })
 export class TyresComponent{
   @Input() tyresValues: Tyres;
-
+  @Input() validateTyres: ValidateTyres;
 }
