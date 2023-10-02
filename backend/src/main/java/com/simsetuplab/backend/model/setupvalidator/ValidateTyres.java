@@ -7,14 +7,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class ValidateTyres {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private float tyrePressureMin = 25.0f;
-	private float tyrePressureMax = 25.0f;
+	private float tyrePressureMin;
+	private float tyrePressureMax;
 	private float frontCamberMin;
 	private float frontCamberMax;
 	private float rearCamberMin;

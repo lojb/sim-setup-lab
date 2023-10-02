@@ -42,7 +42,7 @@ public class ValidateSetupController {
 	}
 
 	@PutMapping
-	public ResponseEntity<ValidateSetup> updateValidator(ValidateSetup validateSetup) {
+	public ResponseEntity<ValidateSetup> updateValidator(@RequestBody ValidateSetup validateSetup) {
 		return ResponseEntity.ok(validatorService.addOrUpdateValidator(validateSetup));
 	}
 
