@@ -23,7 +23,7 @@ public class ValidateElectronics {
 	private int telemetryLapsMax;
 
 	public boolean validate(Electronics electronics) {
-		validatetractionControl(electronics.getTractionControl());
+		validateTractionControl(electronics.getTractionControl());
 		validateAbs(electronics.getAbs());
 		validateEcuMap(electronics.getEcuMap());
 		validateTelemetryLaps(electronics.getTelemetryLaps());
@@ -31,7 +31,7 @@ public class ValidateElectronics {
 		return true;
 	}
 
-	private void validatetractionControl(int tractionControl) {
+	private void validateTractionControl(int tractionControl) {
 		if (!(tractionControl >= tractionControlMin && tractionControl <= tractionControlMax)) {
 			throw new ApiRequestException("Invalid traction control value");
 		}
