@@ -1,44 +1,70 @@
 <div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
-  <div class="d-flex flex-column">
-    <h2 class="text-center">Front</h2>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="frontRideHeight">Ride Height</label>
-        <input id="frontRideHeight" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.frontRideHeight">
+  <ng-form [formGroup]="aeroForm">
+    <div class="d-flex flex-column">
+      <h2 class="text-center">Front</h2>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="frontRideHeight">Ride Height</label>
+          <input id="frontRideHeight" class="form-control w-50 number-input" type="number"
+                 formControlName="frontRideHeight"
+                 required [min]="validateAero.frontRideHeightMin" [max]="validateAero.frontRideHeightMax">
+          <p class="text text-warning" *ngIf="aeroForm.get('frontRideHeight')?.hasError('min')">Minimum value is: {{ validateAero.frontRideHeightMin }}</p>
+          <p class="text text-warning" *ngIf="aeroForm.get('frontRideHeight')?.hasError('max')">Maximum value is: {{ validateAero.frontRideHeightMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="splitter">Splitter</label>
+          <input id="splitter" class="form-control w-50 number-input" type="number" formControlName="splitter">
+          <p class="text text-warning" *ngIf="aeroForm.controls['splitter'].errors?.['min']">Minimum value
+            is: {{this.validateAero.splitterMin}}</p>
+          <p class="text text-warning" *ngIf="aeroForm.controls['splitter'].errors?.['max']">Maximum value
+            is: {{this.validateAero.splitterMax}}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="frontBrakeDucts">Brake Ducts</label>
+          <input id="frontBrakeDucts" class="form-control w-50 number-input" type="number" formControlName="frontBrakeDucts">
+          <p class="text text-warning" *ngIf="aeroForm.controls['frontBrakeDucts'].errors?.['min']">Minimum value
+            is: {{this.validateAero.frontBrakeDuctsMin}}</p>
+          <p class="text text-warning" *ngIf="aeroForm.controls['frontBrakeDucts'].errors?.['max']">Maximum value
+            is: {{this.validateAero.frontBrakeDuctsMax}}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="splitter">Splitter</label>
-        <input id="splitter" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.splitter">
+    <div class="d-flex flex-column">
+      <h2 class="text-center">Rear</h2>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="rearRideHeight">Ride Height</label>
+          <input id="rearRideHeight" class="form-control w-50 number-input" type="number" formControlName="rearRideHeight">
+          <p class="text text-warning" *ngIf="aeroForm.controls['rearRideHeight'].errors?.['min']">Minimum value
+            is: {{this.validateAero.rearRideHeightMin}}</p>
+          <p class="text text-warning" *ngIf="aeroForm.controls['rearRideHeight'].errors?.['max']">Maximum value
+            is: {{this.validateAero.rearRideHeightMax}}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="rearWing">Rear Wing</label>
+          <input id="rearWing" class="form-control w-50 number-input" type="number" formControlName="rearWing">
+          <p class="text text-warning" *ngIf="aeroForm.controls['rearWing'].errors?.['min']">Minimum value
+            is: {{this.validateAero.rearWingMin}}</p>
+          <p class="text text-warning" *ngIf="aeroForm.controls['rearWing'].errors?.['max']">Maximum value
+            is: {{this.validateAero.rearWingMax}}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="rearBrakeDucts">Brake Ducts</label>
+          <input id="rearBrakeDucts" class="form-control w-50 number-input" type="number" formControlName="rearBrakeDucts">
+          <p class="text text-warning" *ngIf="aeroForm.controls['rearBrakeDucts'].errors?.['min']">Minimum value
+            is: {{this.validateAero.rearBrakeDuctsMin}}</p>
+          <p class="text text-warning" *ngIf="aeroForm.controls['rearBrakeDucts'].errors?.['max']">Maximum value
+            is: {{this.validateAero.rearBrakeDuctsMax}}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="frontBrakeDucts">Brake Ducts</label>
-        <input id="frontBrakeDucts" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.frontBrakeDucts">
-      </div>
-    </div>
-  </div>
-  <div class="group-div">
-    <h2 class="text-center">Rear</h2>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="rearRideHeight">Ride Height</label>
-        <input id="rearRideHeight" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.rearRideHeight">
-      </div>
-    </div>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="rearWing">Rear Wing</label>
-        <input id="rearWing" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.rearWing">
-      </div>
-    </div>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="rearBrakeDucts">Brake Ducts</label>
-        <input id="rearBrakeDucts" class="form-control w-50 number-input" type="number" [(ngModel)]="aeroValues.rearBrakeDucts">
-      </div>
-    </div>
-  </div>
+  </ng-form>
 </div>
