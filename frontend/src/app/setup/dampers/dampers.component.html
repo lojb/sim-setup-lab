@@ -1,104 +1,138 @@
 <div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
-  <div class="d-flex flex-column align-items-center">
-    <h2>Front</h2>
-    <div class="d-flex flex-row">
-      <div class="mx-5">
-        <p>Left</p>
+  <ng-form [formGroup]="dampersForm">
+    <div class="d-flex flex-column align-items-center">
+      <h2>Front</h2>
+      <div class="d-flex flex-row">
+        <div class="mx-5">
+          <p>Left</p>
+        </div>
+        <div class="mx-5">
+          <p>Right</p>
+        </div>
       </div>
-      <div class="mx-5">
-        <p>Right</p>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontLeftBump">
+          <p class="text text-warning" *ngIf="dampersForm.get('frontLeftBump')?.hasError('min')">Min. value is: {{ validateDampers.frontBumpMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('frontLeftBump')?.hasError('max')">Max. value is: {{ validateDampers.frontBumpMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Front Bump</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontRightBump">
+          <p class="text text-warning" *ngIf="dampersForm.get('frontRightBump')?.hasError('min')">Min. value is: {{ validateDampers.frontBumpMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('frontRightBump')?.hasError('max')">Max. value is: {{ validateDampers.frontBumpMax }}</p>
+        </div>
       </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.frontLeftBump">
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontLeftFastBump">
+          <p class="text text-warning" *ngIf="dampersForm.get('frontLeftFastBump')?.hasError('min')">Min. value is: {{ validateDampers.frontFastBumpMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('frontLeftFastBump')?.hasError('max')">Max. value is: {{ validateDampers.frontFastBumpMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Front Fast Bump</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontRightFastBump">
+          <p class="text text-warning" *ngIf="dampersForm.get('frontRightFastBump')?.hasError('min')">Min. value is: {{ validateDampers.frontFastBumpMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('frontRightFastBump')?.hasError('max')">Max. value is: {{ validateDampers.frontFastBumpMax }}</p>
+        </div>
       </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Front Bump</p>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontLeftRebound">
+          <p class="text text-warning" *ngIf="dampersForm.get('frontLeftRebound')?.hasError('min')">Min. value is: {{ validateDampers.frontReboundMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('frontLeftRebound')?.hasError('max')">Max. value is: {{ validateDampers.frontReboundMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Front Rebound</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontRightRebound">
+          <p class="text text-warning" *ngIf="dampersForm.get('frontRightRebound')?.hasError('min')">Min. value is: {{ validateDampers.frontReboundMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('frontRightRebound')?.hasError('max')">Max. value is: {{ validateDampers.frontReboundMax }}</p>
+        </div>
       </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.frontRightBump">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.frontLeftFastBump">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Front Fast Bump</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.frontRightFastBump">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.frontLeftRebound">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Front Rebound</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.frontRightRebound">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.frontLeftFastRebound">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Front Fast Rebound</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.frontRightFastRebound">
-      </div>
-    </div>
-  </div>
-  <div class="d-flex flex-column align-items-center">
-    <h2 class="text-center">Rear</h2>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.rearLeftBump">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Rear Bump</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.rearRightBump">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.rearLeftFastBump">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Rear Fast Bump</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.rearRightFastBump">
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontLeftFastRebound">
+          <p class="text text-warning" *ngIf="dampersForm.get('frontLeftFastRebound')?.hasError('min')">Min. value is: {{ validateDampers.frontFastReboundMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('frontLeftFastRebound')?.hasError('max')">Max. value is: {{ validateDampers.frontFastReboundMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Front Fast Rebound</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontRightFastRebound">
+          <p class="text text-warning" *ngIf="dampersForm.get('frontRightFastRebound')?.hasError('min')">Min. value is: {{ validateDampers.frontFastReboundMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('frontRightFastRebound')?.hasError('max')">Max. value is: {{ validateDampers.frontFastReboundMax }}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.rearLeftRebound">
+    <div class="d-flex flex-column align-items-center">
+      <h2 class="text-center">Rear</h2>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearLeftBump">
+          <p class="text text-warning" *ngIf="dampersForm.get('rearLeftBump')?.hasError('min')">Min. value is: {{ validateDampers.rearBumpMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('rearLeftBump')?.hasError('max')">Max. value is: {{ validateDampers.rearBumpMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Rear Bump</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearRightBump">
+          <p class="text text-warning" *ngIf="dampersForm.get('rearRightBump')?.hasError('min')">Min. value is: {{ validateDampers.rearBumpMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('rearRightBump')?.hasError('max')">Max. value is: {{ validateDampers.rearBumpMax }}</p>
+        </div>
       </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Rear Rebound</p>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-row justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearLeftFastBump">
+          <p class="text text-warning" *ngIf="dampersForm.get('rearLeftFastBump')?.hasError('min')">Min. value is: {{ validateDampers.rearFastBumpMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('rearLeftFastBump')?.hasError('max')">Max. value is: {{ validateDampers.rearFastBumpMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Rear Fast Bump</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearRightFastBump">
+          <p class="text text-warning" *ngIf="dampersForm.get('rearRightFastBump')?.hasError('min')">Min. value is: {{ validateDampers.rearFastBumpMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('rearRightFastBump')?.hasError('max')">Max. value is: {{ validateDampers.rearFastBumpMax }}</p>
+        </div>
       </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.rearRightRebound">
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearLeftRebound">
+          <p class="text text-warning" *ngIf="dampersForm.get('rearLeftRebound')?.hasError('min')">Min. value is: {{ validateDampers.rearReboundMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('rearLeftRebound')?.hasError('max')">Max. value is: {{ validateDampers.rearReboundMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Rear Rebound</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearRightRebound">
+          <p class="text text-warning" *ngIf="dampersForm.get('rearRightRebound')?.hasError('min')">Min. value is: {{ validateDampers.rearReboundMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('rearRightRebound')?.hasError('max')">Max. value is: {{ validateDampers.rearReboundMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearLeftFastRebound">
+          <p class="text text-warning" *ngIf="dampersForm.get('rearLeftFastRebound')?.hasError('min')">Min. value is: {{ validateDampers.rearFastReboundMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('rearLeftFastRebound')?.hasError('max')">Max. value is: {{ validateDampers.rearFastReboundMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Rear Fast Rebound</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearRightFastRebound">
+          <p class="text text-warning" *ngIf="dampersForm.get('rearRightFastRebound')?.hasError('min')">Min. value is: {{ validateDampers.rearFastReboundMin }}</p>
+          <p class="text text-warning" *ngIf="dampersForm.get('rearRightFastRebound')?.hasError('max')">Max. value is: {{ validateDampers.rearFastReboundMax }}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.rearLeftFastRebound">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Rear Fast Rebound</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="dampersValues.rearRightFastRebound">
-      </div>
-    </div>
-  </div>
+  </ng-form>
 </div>
