@@ -71,7 +71,7 @@
       <app-electronics [electronicsValues]="setupValues.electronics" [validateElectronics]="validator.validateElectronics"></app-electronics>
     </div>
     <div *ngIf="selectedSetupPart === 'fuelStrategy'">
-      <app-fuel-strategy [fuelStrategyValues]="setupValues.fuelStrategy" [validateFuelStratgy]="validator.validateFuelStrategy"></app-fuel-strategy>
+      <app-fuel-strategy [fuelStrategyValues]="setupValues.fuelStrategy" [validateFuelStrategy]="validator.validateFuelStrategy"></app-fuel-strategy>
     </div>
     <div *ngIf="selectedSetupPart === 'mechanicalGrip'">
       <app-mechanical-grip [mechanicalGripValues]="setupValues.mechanicalGrip" [validateMechanicalGrip]="validator.validateMechanicalGrip"></app-mechanical-grip>
