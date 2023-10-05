@@ -89,7 +89,7 @@
         </div>
       </div>
       <div class="d-flex flex-row w-75">
-        <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
           <input class="form-control w-50 number-input" type="number" formControlName="rearLeftFastBump">
           <p class="text text-warning" *ngIf="dampersForm.get('rearLeftFastBump')?.hasError('min')">Min. value is: {{ validateDampers.rearFastBumpMin }}</p>
           <p class="text text-warning" *ngIf="dampersForm.get('rearLeftFastBump')?.hasError('max')">Max. value is: {{ validateDampers.rearFastBumpMax }}</p>
