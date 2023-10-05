@@ -1,71 +1,113 @@
 <div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
-  <div class="d-flex flex-column align-items-center">
-    <h2>Front</h2>
-    <div class="d-flex flex-row">
-      <div class="mx-5">
-        <p>Left</p>
+  <ng-form [formGroup]="tyresForm">
+    <div class="d-flex flex-column align-items-center">
+      <h2>Front</h2>
+      <div class="d-flex flex-row">
+        <div class="mx-5">
+          <p>Left</p>
+        </div>
+        <div class="mx-5">
+          <p>Right</p>
+        </div>
       </div>
-      <div class="mx-5">
-        <p>Right</p>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center text-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontLeftToe">
+          <p class="text text-warning" *ngIf="tyresForm.get('frontLeftToe')?.hasError('min')">Min. value
+            is: {{ validateTyres.frontToeMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('frontLeftToe')?.hasError('max')">Max. value
+            is: {{ validateTyres.frontToeMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Front Toe (°)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontRightToe">
+          <p class="text text-warning" *ngIf="tyresForm.get('frontRightToe')?.hasError('min')">Min. value
+            is: {{ validateTyres.frontToeMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('frontRightToe')?.hasError('max')">Max. value
+            is: {{ validateTyres.frontToeMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontLeftCamber">
+          <p class="text text-warning" *ngIf="tyresForm.get('frontLeftCamber')?.hasError('min')">Min. value
+            is: {{ validateTyres.frontCamberMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('frontLeftCamber')?.hasError('max')">Max. value
+            is: {{ validateTyres.frontCamberMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Front Camber (°)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="frontRightCamber">
+          <p class="text text-warning" *ngIf="tyresForm.get('frontRightCamber')?.hasError('min')">Min. value
+            is: {{ validateTyres.frontCamberMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('frontRightCamber')?.hasError('max')">Max. value
+            is: {{ validateTyres.frontCamberMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="casterLeft">
+          <p class="text text-warning" *ngIf="tyresForm.get('casterLeft')?.hasError('min')">Min. value
+            is: {{ validateTyres.casterMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('casterLeft')?.hasError('max')">Max. value
+            is: {{ validateTyres.casterMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Caster (°)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="casterRight">
+          <p class="text text-warning" *ngIf="tyresForm.get('casterRight')?.hasError('min')">Min. value
+            is: {{ validateTyres.casterMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('casterRight')?.hasError('max')">Max. value
+            is: {{ validateTyres.casterMax }}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center text-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.frontLeftToe">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <h2 class="">Rear</h2>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearLeftToe">
+          <p class="text text-warning" *ngIf="tyresForm.get('rearLeftToe')?.hasError('min')">Min. value
+            is: {{ validateTyres.rearToeMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('rearLeftToe')?.hasError('max')">Max. value
+            is: {{ validateTyres.rearToeMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Rear Toe (°)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearRightToe">
+          <p class="text text-warning" *ngIf="tyresForm.get('rearRightToe')?.hasError('min')">Min. value
+            is: {{ validateTyres.rearToeMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('rearRightToe')?.hasError('max')">Max. value
+            is: {{ validateTyres.rearToeMax }}</p>
+        </div>
       </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Front Toe (°)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.frontRightToe">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.frontLeftCamber">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Front Camber (°)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.frontRightCamber">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.casterLeft">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Caster (°)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.casterRight">
-      </div>
-    </div>
-  </div>
-  <div class="d-flex flex-column justify-content-center align-items-center">
-    <h2 class="">Rear</h2>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.rearLeftToe">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Rear Toe (°)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.rearRightToe">
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearLeftCamber">
+          <p class="text text-warning" *ngIf="tyresForm.get('rearLeftCamber')?.hasError('min')">Min. value
+            is: {{ validateTyres.rearCamberMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('rearLeftCamber')?.hasError('max')">Max. value
+            is: {{ validateTyres.rearCamberMin }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <p>Rear Camber (°)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-50 number-input" type="number" formControlName="rearRightCamber">
+          <p class="text text-warning" *ngIf="tyresForm.get('rearRightCamber')?.hasError('min')">Min. value
+            is: {{ validateTyres.rearCamberMin }}</p>
+          <p class="text text-warning" *ngIf="tyresForm.get('rearRightCamber')?.hasError('max')">Max. value
+            is: {{ validateTyres.rearCamberMin }}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.rearLeftCamber">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center w-50">
-        <p>Rear Camber (°)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-50 number-input" type="number" [(ngModel)]="tyresValues.rearRightCamber">
-      </div>
-    </div>
-  </div>
+  </ng-form>
 </div>
