@@ -1,22 +1,32 @@
 <div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
-  <div class="d-flex flex-column">
+  <ng-form [formGroup]="fuelStrategyForm">
     <div class="d-flex flex-column">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="fuel">Fuel (liter)</label>
-        <input id="fuel" class="form-control w-50 number-input" type="number" [(ngModel)]="fuelStrategyValues.fuel">
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="fuel">Fuel (liter)</label>
+          <input id="fuel" class="form-control w-50 number-input" type="number" formControlName="fuel">
+          <p class="text text-warning" *ngIf="fuelStrategyForm.get('fuel')?.hasError('min')">Min. value is: {{ validateFuelStrategy.fuelMin }}</p>
+          <p class="text text-warning" *ngIf="fuelStrategyForm.get('fuel')?.hasError('max')">Max. value is: {{ validateFuelStrategy.fuelMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="frontBrakes">Front Brakes</label>
+          <input id="frontBrakes" class="form-control w-50 number-input" type="number"
+                 formControlName="frontBrakes">
+          <p class="text text-warning" *ngIf="fuelStrategyForm.get('frontBrakes')?.hasError('min')">Min. value is: {{ validateFuelStrategy.brakesMin }}</p>
+          <p class="text text-warning" *ngIf="fuelStrategyForm.get('frontBrakes')?.hasError('max')">Max. value is: {{ validateFuelStrategy.brakesMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="rearBrakes">Rear Brakes</label>
+          <input id="rearBrakes" class="form-control w-50 number-input" type="number"
+                 formControlName="rearBrakes">
+          <p class="text text-warning" *ngIf="fuelStrategyForm.get('rearBrakes')?.hasError('min')">Min. value is: {{ validateFuelStrategy.brakesMin }}</p>
+          <p class="text text-warning" *ngIf="fuelStrategyForm.get('rearBrakes')?.hasError('max')">Max. value is: {{ validateFuelStrategy.brakesMax }}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-column">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="frontBrakes">Front Brakes</label>
-        <input id="frontBrakes" class="form-control w-50 number-input" type="number" [(ngModel)]="fuelStrategyValues.frontBrakes">
-      </div>
-    </div>
-    <div class="d-flex flex-column">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="rearBrakes">Rear Brakes</label>
-        <input id="rearBrakes" class="form-control w-50 number-input" type="number" [(ngModel)]="fuelStrategyValues.rearBrakes">
-      </div>
-    </div>
-  </div>
+  </ng-form>
 </div>
