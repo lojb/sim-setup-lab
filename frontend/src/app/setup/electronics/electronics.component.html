@@ -1,28 +1,49 @@
 <div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
-  <div class="d-flex flex-column">
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="tc">Traction Control</label>
-        <input id="tc" class="form-control w-50 number-input" type="number" [(ngModel)]="electronicsValues.tractionControl">
+  <ng-form [formGroup]="electronicsForm">
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="tc">Traction Control</label>
+          <input id="tc" class="form-control w-50 number-input" type="number"
+                 formControlName="tractionControl">
+          <p class="text text-warning" *ngIf="electronicsForm.get('tractionControl')?.hasError('min')">Min. value
+            is: {{ validateElectronics.tractionControlMin }}</p>
+          <p class="text text-warning" *ngIf="electronicsForm.get('tractionControl')?.hasError('max')">Max. value
+            is: {{ validateElectronics.tractionControlMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="abs">ABS</label>
+          <input id="abs" class="form-control w-50 number-input" type="number" formControlName="abs">
+          <p class="text text-warning" *ngIf="electronicsForm.get('abs')?.hasError('min')">Min. value
+            is: {{ validateElectronics.absMin }}</p>
+          <p class="text text-warning" *ngIf="electronicsForm.get('abs')?.hasError('max')">Max. value
+            is: {{ validateElectronics.absMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center my-1">
+          <label for="ecuMap">ECU Map</label>
+          <input id="ecuMap" class="form-control w-50 number-input m-0" type="number"
+                 formControlName="ecuMap">
+          <p class="text text-warning" *ngIf="electronicsForm.get('ecuMap')?.hasError('min')">Min. value
+            is: {{ validateElectronics.ecuMapMin }}</p>
+          <p class="text text-warning" *ngIf="electronicsForm.get('ecuMap')?.hasError('max')">Max. value
+            is: {{ validateElectronics.ecuMapMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="telemetryLaps">Telemetry Laps</label>
+          <input id="telemetryLaps" class="form-control w-50 number-input" type="number"
+                 formControlName="telemetryLaps">
+          <p class="text text-warning" *ngIf="electronicsForm.get('telemetryLaps')?.hasError('min')">Min. value
+            is: {{ validateElectronics.telemetryLapsMin }}</p>
+          <p class="text text-warning" *ngIf="electronicsForm.get('telemetryLaps')?.hasError('max')">Max. value
+            is: {{ validateElectronics.telemetryLapsMax }}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="abs">ABS</label>
-        <input id="abs" class="form-control w-50 number-input" type="number" [(ngModel)]="electronicsValues.abs">
-      </div>
-    </div>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center my-1">
-        <label for="ecuMap">ECU Map</label>
-        <input id="ecuMap" class="form-control w-50 number-input m-0" type="number" [(ngModel)]="electronicsValues.ecuMap">
-      </div>
-    </div>
-    <div class="d-flex flex-row justify-content-center align-items-center">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="telemetryLaps">Telemetry Laps</label>
-        <input id="telemetryLaps" class="form-control w-50 number-input" type="number" [(ngModel)]="electronicsValues.telemetryLaps">
-      </div>
-    </div>
-  </div>
+  </ng-form>
 </div>
