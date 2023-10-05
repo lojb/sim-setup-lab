@@ -33,33 +33,27 @@
   <div *ngIf="allSelected"
        class="d-flex flex-column justify-content-center align-items-center bg-body-tertiary bg-opacity-50 rounded-3 m-2">
     <div class="d-flex justify-content-around align-items-center flex-wrap mt-2">
-      <button class="btn btn-primary m-1 w-auto"
-              [class.active-button]="selectedSetupPart === 'tyres'"
+      <button [ngClass]="selectedSetupPart === 'tyres' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
               (click)="ToggleSelectedPart('tyres')">
         Tyres
       </button>
-      <button class="btn btn-primary m-1 w-auto"
-              [class.active-button]="selectedSetupPart === 'electronics'"
+      <button [ngClass]="selectedSetupPart === 'electronics' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
               (click)="ToggleSelectedPart('electronics')">
         Electronics
       </button>
-      <button class="btn btn-primary m-1 w-auto"
-              [class.active-button]="selectedSetupPart === 'fuelStrategy'"
+      <button [ngClass]="selectedSetupPart === 'fuelStrategy' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
               (click)="ToggleSelectedPart('fuelStrategy')">
         Fuel & Strategy
       </button>
-      <button class="btn btn-primary m-1 w-auto"
-              [class.active-button]="selectedSetupPart === 'mechanicalGrip'"
+      <button [ngClass]="selectedSetupPart === 'mechanicalGrip' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
               (click)="ToggleSelectedPart('mechanicalGrip')">
         Mechanical Grip
       </button>
-      <button class="btn btn-primary m-1 w-auto"
-              [class.active-button]="selectedSetupPart === 'dampers'"
+      <button [ngClass]="selectedSetupPart === 'dampers' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
               (click)="ToggleSelectedPart('dampers')">
         Dampers
       </button>
-      <button class="btn btn-primary m-1 w-auto"
-              [class.active-button]="selectedSetupPart === 'aero'"
+      <button [ngClass]="selectedSetupPart === 'aero' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
               (click)="ToggleSelectedPart('aero')">
         Aero
       </button>
