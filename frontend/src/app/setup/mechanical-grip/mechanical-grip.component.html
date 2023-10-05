@@ -1,118 +1,174 @@
 <div class="d-flex flex-column justify-content-center align-items-center rounded-4 blurred">
-  <div class="d-flex flex-column align-items-center">
-    <h2 class="text-center">Front</h2>
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="frontAntiRollBar">Front Antiroll Bar</label>
-        <input id="frontAntiRollBar" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontAntiRollBar">
+  <ng-form [formGroup]="mechanicalGripForm">
+    <div class="d-flex flex-column align-items-center">
+      <h2 class="text-center">Front</h2>
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="frontAntiRollBar">Front Antiroll Bar</label>
+          <input id="frontAntiRollBar" class="form-control w-50 number-input" type="number"
+                 formControlName="frontAntiRollBar">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontAntiRollBar')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.frontAntiRollBarMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontAntiRollBar')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.frontAntiRollBarMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="brakePower">Brake Power (%)</label>
+          <input id="brakePower" class="form-control w-50 number-input" type="number"
+                 formControlName="brakePower">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('brakePower')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.brakePower }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('brakePower')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.brakePower }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="brakeBias">Brake Bias (%)</label>
+          <input id="brakeBias" class="form-control w-50 number-input" type="number"
+                 formControlName="brakeBias">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('brakeBias')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.brakeBiasMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('brakeBias')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.brakeBiasMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="steerRatio">Steer Ratio</label>
+          <input id="steerRatio" class="form-control w-50 number-input" type="number"
+                 formControlName="steerRatio">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('steerRatio')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.steerRatioMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('steerRatio')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.steerRatioMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="mx-5">
+          <p>Left</p>
+        </div>
+        <div class="mx-5">
+          <p>Right</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="frontLeftWheelRate">
+          <p class="text text-warning text-center" *ngIf="mechanicalGripForm.get('frontLeftWheelRate')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.frontWheelRateMin }}</p>
+          <p class="text text-warning text-center" *ngIf="mechanicalGripForm.get('frontLeftWheelRate')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.frontWheelRateMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
+          <p>Wheel Rate (N/m)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="frontRightWheelRate">
+          <p class="text text-warning text-center" *ngIf="mechanicalGripForm.get('frontRightWheelRate')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.frontWheelRateMin }}</p>
+          <p class="text text-warning text-center" *ngIf="mechanicalGripForm.get('frontRightWheelRate')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.frontWheelRateMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="frontLeftBumpstopRate">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontLeftBumpstopRate')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.frontBumpStopRateMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontLeftBumpstopRate')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.frontBumpStopRateMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
+          <p>Bumpstop Rate (N)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="frontRightBumpstopRate">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontRightBumpstopRate')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.frontBumpStopRateMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontRightBumpstopRate')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.frontBumpStopRateMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="frontLeftBumpstopRange">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontLeftBumpstopRange')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.frontBumpStopRangeMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontLeftBumpstopRange')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.frontBumpStopRangeMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
+          <p>Bumpstop Range</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="frontRightBumpstopRange">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontRightBumpstopRange')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.frontBumpStopRangeMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('frontRightBumpstopRange')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.frontBumpStopRangeMax }}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="brakePower">Brake Power (%)</label>
-        <input id="brakePower" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.brakePower">
+    <div class="d-flex flex-column align-items-center">
+      <h2 class="text-center">Rear</h2>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="rearLeftWheelRate">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearLeftWheelRate')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.rearWheelRateMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearLeftWheelRate')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.rearWheelRateMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
+          <p>Wheel Rate (N/m)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="rearRightWheelRate">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearRightWheelRate')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.rearWheelRateMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearRightWheelRate')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.rearWheelRateMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="rearLeftBumpstopRate">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearLeftBumpstopRate')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.rearBumpStopRateMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearLeftBumpstopRate')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.rearBumpStopRateMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
+          <p>Bumpstop Rate (N)</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="rearRightBumpstopRate">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearRightBumpstopRate')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.rearBumpStopRateMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearRightBumpstopRate')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.rearBumpStopRateMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="rearLeftBumpstopRange">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearLeftBumpstopRange')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.rearBumpStopRangeMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearLeftBumpstopRange')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.rearBumpStopRangeMax }}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
+          <p>Bumpstop Range</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <input class="form-control w-75 number-input" type="number"
+                 formControlName="rearRightBumpstopRange">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearRightBumpstopRange')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.rearBumpStopRangeMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearRightBumpstopRange')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.rearBumpStopRangeMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="rearAntiRollBar">Rear Antiroll Bar</label>
+          <input id="rearAntiRollBar" class="form-control w-50 number-input" type="number"
+                 formControlName="rearAntiRollBar">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearAntiRollBar')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.rearAntiRollBarMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('rearAntiRollBar')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.rearAntiRollBarMax }}</p>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <label for="preload">Preload Differential (Nm)</label>
+          <input id="preload" class="form-control w-50 number-input" type="number"
+                 formControlName="preloadDifferential">
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('preloadDifferential')?.hasError('min')">Min. value is: {{ validateMechanicalGrip.preloadDifferentialMin }}</p>
+          <p class="text text-warning" *ngIf="mechanicalGripForm.get('preloadDifferential')?.hasError('max')">Max. value is: {{ validateMechanicalGrip.preloadDifferentialMax }}</p>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="brakeBias">Brake Bias (%)</label>
-        <input id="brakeBias" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.brakeBias">
-      </div>
-    </div>
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="steerRatio">Steer Ratio</label>
-        <input id="steerRatio" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.steerRatio">
-      </div>
-    </div>
-    <div class="d-flex flex-row">
-      <div class="mx-5">
-        <p>Left</p>
-      </div>
-      <div class="mx-5">
-        <p>Right</p>
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftWheelRate">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
-        <p>Wheel Rate (N/m)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontRightWheelRate">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftBumpstopRate">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
-        <p>Bumpstop Rate (N)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontRightBumpstopRate">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontLeftBumpstopRange">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
-        <p>Bumpstop Range</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.frontRightBumpstopRange">
-      </div>
-    </div>
-  </div>
-  <div class="d-flex flex-column align-items-center">
-    <h2 class="text-center">Rear</h2>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftWheelRate">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
-        <p>Wheel Rate (N/m)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearRightWheelRate">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftBumpstopRate">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
-        <p>Bumpstop Rate (N)</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearRightBumpstopRate">
-      </div>
-    </div>
-    <div class="d-flex flex-row w-75">
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearLeftBumpstopRange">
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center p-10px w-50">
-        <p>Bumpstop Range</p>
-      </div>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <input class="form-control w-75 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearRightBumpstopRange">
-      </div>
-    </div>
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="rearAntiRollBar">Rear Antiroll Bar</label>
-      <input id="rearAntiRollBar" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.rearAntiRollBar">
-    </div>
-  </div>
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <label for="preload">Preload Differential (Nm)</label>
-        <input id="preload" class="form-control w-50 number-input" type="number" [(ngModel)]="mechanicalGripValues.preloadDifferential">
-      </div>
-    </div>
-  </div>
+  </ng-form>
 </div>
