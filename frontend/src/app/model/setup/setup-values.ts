@@ -11,10 +11,10 @@ export class SetupValues {
   carType: string;
   track: string;
   setupType: string;
-  aero : Aero;
-  dampers: Dampers;
-  electronics: Electronics;
-  fuelStrategy : FuelStrategy;
-  mechanicalGrip: MechanicalGrip;
+  aero : Aero = new Aero();
+  dampers: Dampers = new Dampers();
+  electronics: Electronics = new Electronics();
+  fuelStrategy : FuelStrategy = new FuelStrategy() ;
+  mechanicalGrip: MechanicalGrip = new MechanicalGrip();
   tyres: Tyres;
 }

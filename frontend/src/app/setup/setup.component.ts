@@ -11,7 +11,7 @@ import {ValidateSetup} from "../model/validateSetup/validate-setup";
 export class SetupComponent {
 
   selectedSetupPart: string = 'tyres';
-  setupValues: SetupValues;
+  setupValues: SetupValues = new SetupValues();
   validator: ValidateSetup;
   carsList: any;
   tracksList: any;
