@@ -4,11 +4,11 @@ import com.simsetuplab.backend.enumeration.carsetup.TyreType;
 import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.FuelStrategy;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,23 +23,26 @@ public class ValidateFuelStrategy {
 	private int brakesMax = 4;
 	private double fuelPerLap = 0;
 
-	public boolean validate(FuelStrategy fuelStrategy) {
+	@Transient
+	List<String> errorList = new ArrayList<>();
+
+	public List<String> validate(FuelStrategy fuelStrategy) {
 		validateFuel(fuelStrategy.getFuel());
 		validateBrakes(fuelStrategy.getFrontBrakes());
 		validateBrakes(fuelStrategy.getRearBrakes());
 
-		return true;
+		return errorList;
 	}
 
 	private void validateFuel(int fuel) {
 		if (!(fuel >= fuelMin && fuel <= fuelMax)) {
-			throw new ApiRequestException("Invalid fuel value");
+			errorList.add("fuel value");
 		}
 	}
 
 	private void validateBrakes(int brakes) {
 		if (!(brakes >= brakesMin && brakes <= brakesMax)) {
-			throw new ApiRequestException("Invalid brakes values");
+			errorList.add("brakes values");
 		}
 	}
 }
