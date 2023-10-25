@@ -1,7 +1,6 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
 import com.simsetuplab.backend.enumeration.carsetup.TyreType;
-import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.FuelStrategy;
 
 import jakarta.persistence.*;

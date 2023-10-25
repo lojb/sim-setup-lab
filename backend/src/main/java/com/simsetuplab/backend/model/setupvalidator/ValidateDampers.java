@@ -1,6 +1,5 @@
 package com.simsetuplab.backend.model.setupvalidator;
 
-import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.Dampers;
 
 import jakarta.persistence.*;
