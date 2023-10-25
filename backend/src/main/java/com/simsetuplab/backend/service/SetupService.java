@@ -50,10 +50,12 @@ public class SetupService {
 
 		ValidateSetup validator = this.validateSetupRepository.getValidatorByCarType(setup.getCarType());
 
-		if (validator.validate(setup)) {
+		List<String> errorList = validator.validate(setup);
+
+		if (errorList.isEmpty()) {
 			return setupRepository.save(setup);
 		} else {
-			throw new ApiRequestException("Error validating setup.");
+			throw new ApiRequestException("The following fields are invalid: " + errorList);
 		}
 
 	}
