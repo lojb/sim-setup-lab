@@ -3,11 +3,11 @@ package com.simsetuplab.backend.model.setupvalidator;
 import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.MechanicalGrip;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -39,7 +39,10 @@ public class ValidateMechanicalGrip {
 	private int preloadDifferentialMin;
 	private int preloadDifferentialMax;
 
-	public boolean validate(MechanicalGrip mechanicalGrip) {
+	@Transient
+	List<String> errorList = new ArrayList<>();
+
+	public List<String> validate(MechanicalGrip mechanicalGrip) {
 		validateFrontAntiRollBar(mechanicalGrip.getFrontAntiRollBar());
 		validateRearAntiRollBar(mechanicalGrip.getRearAntiRollBar());
 		validateBrakeBias(mechanicalGrip.getBrakeBias());
@@ -52,78 +55,78 @@ public class ValidateMechanicalGrip {
 		validateRearBumpStopRange(mechanicalGrip.getRearLeftBumpstopRange(), mechanicalGrip.getRearRightBumpstopRange());
 		validatePreloadDifferential(mechanicalGrip.getPreloadDifferential());
 
-		return true;
+		return errorList;
 	}
 
 	private void validateFrontAntiRollBar(int frontAntiRollBar) {
 		if (!(frontAntiRollBar >= frontAntiRollBarMin && frontAntiRollBar <= frontAntiRollBarMax)) {
-			throw new ApiRequestException("Invalid front anti roll bar values");
+			errorList.add("front anti roll bar");
 		}
 	}
 
 	private void validateRearAntiRollBar(int rearAntiRollBar) {
 		if (!(rearAntiRollBar >= rearAntiRollBarMin && rearAntiRollBar <= rearAntiRollBarMax)) {
-			throw new ApiRequestException("Invalid rear anti roll bar values");
+			errorList.add("rear anti roll bar");
 		}
 	}
 
 	private void validateBrakeBias(float brakeBias) {
 		if (!(brakeBias >= brakeBiasMin && brakeBias <= brakeBiasMax)) {
-			throw new ApiRequestException("Invalid brake bias value");
+			errorList.add("brake bias");
 		}
 	}
 
 	private void validateSteerRatio(int steerRatio) {
 		if (!(steerRatio >= steerRatioMin && steerRatio <= steerRatioMax)) {
-			throw new ApiRequestException("Invalid steer ratio value");
+			errorList.add("steer ratio");
 		}
 	}
 
 	private void validateFrontWheelRate(int frontLeftWheelRate, int frontRightWheelRate) {
 		if (!(frontLeftWheelRate >= frontWheelRateMin && frontLeftWheelRate <= frontWheelRateMax
 				&& frontRightWheelRate >= frontWheelRateMin && frontRightWheelRate <= frontWheelRateMax)) {
-			throw new ApiRequestException("Invalid front wheelrate value");
+			errorList.add("front wheel rate");
 		}
 	}
 
 	private void validateRearWheelRate(int rearLeftWheelRate, int rearRightWheelRate) {
 		if (!(rearLeftWheelRate >= rearWheelRateMin && rearLeftWheelRate <= rearWheelRateMax
 				&& rearRightWheelRate >= rearWheelRateMin && rearRightWheelRate <= rearWheelRateMax)) {
-			throw new ApiRequestException("Invalid rear wheelrate value");
+			errorList.add("rear wheel rate");
 		}
 	}
 
 	private void validateFrontBumpStopRate(int frontLeftBumpStopRate, int frontRightBumpStopRate) {
 		if (!(frontLeftBumpStopRate >= frontBumpStopRateMin && frontLeftBumpStopRate <= frontBumpStopRateMax
 				&& frontRightBumpStopRate >= frontBumpStopRateMin && frontRightBumpStopRate <= frontBumpStopRateMax)) {
-			throw new ApiRequestException("Invalid front bumpstop rate value");
+			errorList.add("front bumpstop rate");
 		}
 	}
 
 	private void validateRearBumpStopRate(int rearLeftBumpStopRate, int rearRightBumpStopRate) {
 		if (!(rearLeftBumpStopRate >= rearBumpStopRateMin && rearLeftBumpStopRate <= rearBumpStopRateMax
 				&& rearRightBumpStopRate >= rearBumpStopRateMin && rearRightBumpStopRate <= rearBumpStopRateMax)) {
-			throw new ApiRequestException("Invalid rear bumpstop rate value");
+			errorList.add("rear bumpstop rate");
 		}
 	}
 
 	private void validateFrontBumpStopRange(int frontLeftBumpStopRange, int frontRightBumpStopRange) {
 		if (!(frontLeftBumpStopRange >= frontBumpStopRangeMin && frontLeftBumpStopRange <= frontBumpStopRangeMax
 				&& frontRightBumpStopRange >= frontBumpStopRangeMin && frontRightBumpStopRange <= frontBumpStopRangeMax)) {
-			throw new ApiRequestException("Invalid front bumpstop range value");
+			errorList.add("front bumpstop range");
 		}
 	}
 
 	private void validateRearBumpStopRange(int frontLeftBumpStopRange, int frontRightBumpStopRange) {
 		if (!(frontLeftBumpStopRange >= rearBumpStopRangeMin && frontLeftBumpStopRange <= rearBumpStopRangeMax
 				&& frontRightBumpStopRange >= rearBumpStopRangeMin && frontRightBumpStopRange <= rearBumpStopRangeMax)) {
-			throw new ApiRequestException("Invalid rear bumpstop range value");
+			errorList.add("rear bumpstop range");
 		}
 	}
 
 	private void validatePreloadDifferential(int preloadDifferential) {
 		if (!(preloadDifferential >= preloadDifferentialMin && preloadDifferential <= preloadDifferentialMax)) {
-			throw new ApiRequestException("Invalid preload differential value");
+			errorList.add("preload differential");
 		}
 	}
 }
