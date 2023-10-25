@@ -3,11 +3,11 @@ package com.simsetuplab.backend.model.setupvalidator;
 import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.Dampers;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,7 +32,10 @@ public class ValidateDampers {
 	private int rearFastReboundMin;
 	private int rearFastReboundMax;
 
-	public boolean validate(Dampers dampers) {
+	@Transient
+	List<String> errorList = new ArrayList<>();
+
+	public List<String> validate(Dampers dampers) {
 		validateFrontBump(dampers.getFrontLeftBump(), dampers.getFrontRightBump());
 		validateFrontFastBump(dampers.getFrontLeftFastBump(), dampers.getFrontRightFastBump());
 		validateFrontRebound(dampers.getFrontLeftRebound(), dampers.getFrontRightRebound());
@@ -42,62 +45,62 @@ public class ValidateDampers {
 		validateRearRebound(dampers.getRearLeftRebound(), dampers.getRearRightRebound());
 		validateRearFastRebound(dampers.getRearLeftFastRebound(), dampers.getRearRightFastRebound());
 
-		return true;
+		return errorList;
 	}
 
 	private void validateFrontBump(int frontLeftBump, int frontRightBump) {
 		if (!(frontLeftBump >= frontBumpMin && frontLeftBump <= frontBumpMax
 				&& frontRightBump >= frontBumpMin && frontRightBump <= frontBumpMax)) {
-			throw new ApiRequestException("Invalid front bump values");
+			errorList.add("front bump");
 		}
 	}
 
 	private void validateFrontFastBump(int frontLeftFastBump, int frontRightFastBump) {
 		if (!(frontLeftFastBump >= frontFastBumpMin && frontLeftFastBump <= frontFastBumpMax
 				&& frontRightFastBump >= frontFastBumpMin && frontRightFastBump <= frontFastBumpMax)) {
-			throw new ApiRequestException("Invalid front fast bump values");
+			errorList.add("front fast bump");
 		}
 	}
 
 	private void validateFrontRebound(int frontLeftRebound, int frontRightRebound) {
 		if (!(frontLeftRebound >= frontReboundMin && frontLeftRebound <= frontReboundMax
 				&& frontRightRebound >= frontReboundMin && frontRightRebound <= frontReboundMax)) {
-			throw new ApiRequestException("Invalid front rebound values");
+			errorList.add("front rebound");
 		}
 	}
 
 	private void validateFrontFastRebound(int frontLeftFastRebound, int frontRightFastRebound) {
 		if (!(frontLeftFastRebound >= frontFastReboundMin && frontLeftFastRebound <= frontFastReboundMax
 				&& frontRightFastRebound >= frontFastReboundMin && frontRightFastRebound <= frontFastReboundMax)) {
-			throw new ApiRequestException("Invalid front fast rebound values");
+			errorList.add("front fast rebound");
 		}
 	}
 
 	private void validateRearBump(int rearLeftBump, int rearRightBump) {
 		if (!(rearLeftBump >= rearBumpMin && rearLeftBump <= rearBumpMax
 				&& rearRightBump >= rearBumpMin && rearRightBump <= rearBumpMax)) {
-			throw new ApiRequestException("Invalid rear bump values");
+			errorList.add("rear bump");
 		}
 	}
 
 	private void validateRearFastBump(int rearLeftFastBump, int rearRightFastBump) {
 		if (!(rearLeftFastBump >= rearFastBumpMin && rearLeftFastBump <= rearFastBumpMax
 				&& rearRightFastBump >= rearFastBumpMin && rearRightFastBump <= rearFastBumpMax)) {
-			throw new ApiRequestException("Invalid rear fast bump values");
+			errorList.add("rear fast bump");
 		}
 	}
 
 	private void validateRearRebound(int rearLeftRebound, int rearRightRebound) {
 		if (!(rearLeftRebound >= rearReboundMin && rearLeftRebound <= rearReboundMax
 				&& rearRightRebound >= rearReboundMin && rearRightRebound <= rearReboundMax)) {
-			throw new ApiRequestException("Invalid rear rebound values");
+			errorList.add("rear rebound");
 		}
 	}
 
 	private void validateRearFastRebound(int rearLeftFastRebound, int rearRightFastRebound) {
 		if (!(rearLeftFastRebound >= rearFastReboundMin && rearLeftFastRebound <= rearFastReboundMax
 				&& rearRightFastRebound >= rearFastReboundMin && rearRightFastRebound <= rearFastReboundMax)) {
-			throw new ApiRequestException("Invalid rear fast rebound values");
+			errorList.add("rear fast rebound");
 		}
 	}
 
