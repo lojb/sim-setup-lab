@@ -12,6 +12,9 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -33,12 +36,17 @@ public class ValidateSetup {
 	@OneToOne(cascade = CascadeType.ALL)
 	private ValidateTyres validateTyres;
 
-	public boolean validate(Setup setup) {
-		return validateAero.validate(setup.getAero())
-				&& validateDampers.validate(setup.getDampers())
-				&& validateElectronics.validate(setup.getElectronics())
-				&& validateFuelStrategy.validate(setup.getFuelStrategy())
-				&& validateMechanicalGrip.validate(setup.getMechanicalGrip())
-				&& validateTyres.validate(setup.getTyres());
+	public List<String> validate(Setup setup) {
+
+		List<String> errorList = new ArrayList<>();
+
+		errorList.addAll(validateAero.validate(setup.getAero()));
+		errorList.addAll(validateDampers.validate(setup.getDampers()));
+		errorList.addAll(validateElectronics.validate(setup.getElectronics()));
+		errorList.addAll(validateFuelStrategy.validate(setup.getFuelStrategy()));
+		errorList.addAll(validateMechanicalGrip.validate(setup.getMechanicalGrip()));
+		errorList.addAll(validateTyres.validate(setup.getTyres()));
+
+		return errorList;
 	}
 }
