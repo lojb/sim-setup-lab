@@ -3,11 +3,11 @@ package com.simsetuplab.backend.model.setupvalidator;
 import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.setupvalues.Electronics;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,36 +24,39 @@ public class ValidateElectronics {
 	private int telemetryLapsMin;
 	private int telemetryLapsMax;
 
-	public boolean validate(Electronics electronics) {
+	@Transient
+	List<String> errorList = new ArrayList<>();
+
+	public List<String> validate(Electronics electronics) {
 		validateTractionControl(electronics.getTractionControl());
 		validateAbs(electronics.getAbs());
 		validateEcuMap(electronics.getEcuMap());
 		validateTelemetryLaps(electronics.getTelemetryLaps());
 
-		return true;
+		return errorList;
 	}
 
 	private void validateTractionControl(int tractionControl) {
 		if (!(tractionControl >= tractionControlMin && tractionControl <= tractionControlMax)) {
-			throw new ApiRequestException("Invalid traction control value");
+			errorList.add("traction control");
 		}
 	}
 
 	private void validateAbs(int abs) {
 		if (!(abs >= absMin && abs <= absMax)) {
-			throw new ApiRequestException("Invalid ABS value");
+			errorList.add("ABS");
 		}
 	}
 
 	private void validateEcuMap(int ecuMap) {
 		if (!(ecuMap >= ecuMapMin && ecuMap <= ecuMapMax)) {
-			throw new ApiRequestException("Invalid ECU map value");
+			errorList.add("ECU map");
 		}
 	}
 
 	private void validateTelemetryLaps(int telemetryLaps) {
 		if (!(telemetryLaps >= telemetryLapsMin && telemetryLaps <= telemetryLapsMax)) {
-			throw new ApiRequestException("Invalid telemetry laps value");
+			errorList.add("telemetry laps");
 		}
 	}
 }
