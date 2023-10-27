@@ -3,12 +3,7 @@ package com.simsetuplab.backend.model.setupvalidator;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.model.setup.Setup;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "validate_setup", schema = "public")
 public class ValidateSetup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

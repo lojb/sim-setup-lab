@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "validate_fuel_strategy", schema = "public")
 public class ValidateFuelStrategy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

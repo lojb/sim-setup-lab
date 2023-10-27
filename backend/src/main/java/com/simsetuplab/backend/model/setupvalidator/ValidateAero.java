@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "validate_aero", schema = "public")
 public class ValidateAero {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
