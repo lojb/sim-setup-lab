@@ -23,6 +23,8 @@ SET row_security = off;
 -- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
 --
 
+DROP SCHEMA IF EXISTS public CASCADE;
+
 CREATE SCHEMA IF NOT EXISTS public;
 
 
@@ -90,8 +92,8 @@ ALTER TABLE public.setup_aero OWNER TO postgres;
 -- Name: setup_aero_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_aero_id_seq
-    START WITH 4
+CREATE SEQUENCE IF NOT EXISTS public.setup_aero_id_seq
+    START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -114,9 +116,9 @@ ALTER SEQUENCE public.setup_aero_id_seq OWNED BY public.setup_aero.id;
 -- Name: setup_aero_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_aero_seq
-    START WITH 4
-    INCREMENT BY 50
+CREATE SEQUENCE IF NOT EXISTS public.setup_aero_seq
+    START WITH 1
+    INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
@@ -157,8 +159,8 @@ ALTER TABLE public.setup_dampers OWNER TO postgres;
 -- Name: setup_dampers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_dampers_id_seq
-    START WITH 4
+CREATE SEQUENCE IF NOT EXISTS public.setup_dampers_id_seq
+    START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -181,9 +183,9 @@ ALTER SEQUENCE public.setup_dampers_id_seq OWNED BY public.setup_dampers.id;
 -- Name: setup_dampers_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_dampers_seq
-    START WITH 4
-    INCREMENT BY 50
+CREATE SEQUENCE IF NOT EXISTS public.setup_dampers_seq
+    START WITH 1
+    INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
@@ -212,7 +214,7 @@ ALTER TABLE public.setup_electronics OWNER TO postgres;
 -- Name: setup_electronics_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_electronics_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_electronics_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -236,9 +238,9 @@ ALTER SEQUENCE public.setup_electronics_id_seq OWNED BY public.setup_electronics
 -- Name: setup_electronics_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_electronics_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_electronics_seq
     START WITH 4
-    INCREMENT BY 50
+    INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
@@ -269,7 +271,7 @@ ALTER TABLE public.setup_fuel_strategy OWNER TO postgres;
 -- Name: setup_fuel_strategy_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_fuel_strategy_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_fuel_strategy_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -293,9 +295,9 @@ ALTER SEQUENCE public.setup_fuel_strategy_id_seq OWNED BY public.setup_fuel_stra
 -- Name: setup_fuel_strategy_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_fuel_strategy_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_fuel_strategy_seq
     START WITH 4
-    INCREMENT BY 50
+    INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
@@ -308,7 +310,7 @@ ALTER SEQUENCE public.setup_fuel_strategy_seq OWNER TO postgres;
 -- Name: setup_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -362,7 +364,7 @@ ALTER TABLE public.setup_mechanical_grip OWNER TO postgres;
 -- Name: setup_mechanical_grip_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_mechanical_grip_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_mechanical_grip_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -386,9 +388,9 @@ ALTER SEQUENCE public.setup_mechanical_grip_id_seq OWNED BY public.setup_mechani
 -- Name: setup_mechanical_grip_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_mechanical_grip_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_mechanical_grip_seq
     START WITH 4
-    INCREMENT BY 50
+    INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
@@ -427,7 +429,7 @@ ALTER TABLE public.setup_tyres OWNER TO postgres;
 -- Name: setup_tyres_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_tyres_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_tyres_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -451,9 +453,9 @@ ALTER SEQUENCE public.setup_tyres_id_seq OWNED BY public.setup_tyres.id;
 -- Name: setup_tyres_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.setup_tyres_seq
+CREATE SEQUENCE IF NOT EXISTS public.setup_tyres_seq
     START WITH 4
-    INCREMENT BY 50
+    INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
@@ -483,7 +485,7 @@ ALTER TABLE public.users OWNER TO postgres;
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.users_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.users_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -531,7 +533,7 @@ ALTER TABLE public.validate_aero OWNER TO postgres;
 -- Name: validate_aero_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.validate_aero_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.validate_aero_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -583,7 +585,7 @@ ALTER TABLE public.validate_dampers OWNER TO postgres;
 -- Name: validate_dampers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.validate_dampers_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.validate_dampers_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -627,7 +629,7 @@ ALTER TABLE public.validate_electronics OWNER TO postgres;
 -- Name: validate_electronics_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.validate_electronics_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.validate_electronics_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -670,7 +672,7 @@ ALTER TABLE public.validate_fuel_strategy OWNER TO postgres;
 -- Name: validate_fuel_strategy_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.validate_fuel_strategy_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.validate_fuel_strategy_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -729,7 +731,7 @@ ALTER TABLE public.validate_mechanical_grip OWNER TO postgres;
 -- Name: validate_mechanical_grip_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.validate_mechanical_grip_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.validate_mechanical_grip_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -773,7 +775,7 @@ ALTER TABLE public.validate_setup OWNER TO postgres;
 -- Name: validate_setup_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.validate_setup_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.validate_setup_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -821,7 +823,7 @@ ALTER TABLE public.validate_tyres OWNER TO postgres;
 -- Name: validate_tyres_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.validate_tyres_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.validate_tyres_id_seq
     START WITH 4
     INCREMENT BY 1
     NO MINVALUE
@@ -1043,8 +1045,7 @@ INSERT INTO public.setup_tyres VALUES (3, 12.1, 12.1, -4, -0.1, 25, -4, -0.1, 25
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.users VALUES (1, 'admin@admin.com', '$2a$10$h.ZI50pDChoNxLJ.xCYVSem4da8F08XcU6ID3hsVwS2axhV12SQOy', 'ADMIN', 'admin') ON CONFLICT DO NOTHING;
-INSERT INTO public.users VALUES (2, 'admin1@admin.com', '$2a$10$w3PQa6ULGXJsEblqOTpN6OiJfQ.B8Rb0Sxkp38U9DAR4UI5KaPYqG', 'USER', 'admin1') ON CONFLICT DO NOTHING;
+INSERT INTO public.users VALUES (1, 'admin@admin.com', '$2a$10$w3PQa6ULGXJsEblqOTpN6OiJfQ.B8Rb0Sxkp38U9DAR4UI5KaPYqG', 'ADMIN', 'admin') ON CONFLICT DO NOTHING;
 
 
 --
