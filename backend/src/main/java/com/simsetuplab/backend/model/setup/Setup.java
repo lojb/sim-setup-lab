@@ -11,19 +11,14 @@ import com.simsetuplab.backend.model.setup.setupvalues.MechanicalGrip;
 import com.simsetuplab.backend.model.setup.setupvalues.Tyres;
 import com.simsetuplab.backend.model.user.User;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "setup", schema = "public")
 public class Setup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

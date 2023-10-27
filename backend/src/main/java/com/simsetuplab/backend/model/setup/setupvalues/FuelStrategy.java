@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 
 @Entity
-@Table(name = "setup_fuel_strategy")
+@Table(name = "setup_fuel_strategy", schema = "public")
 @Getter
 public class FuelStrategy {
 	@Id

@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 
 @Entity
-@Table(name = "setup_aero")
+@Table(name = "setup_aero", schema = "public")
 @Getter
 public class Aero {
 	@Id

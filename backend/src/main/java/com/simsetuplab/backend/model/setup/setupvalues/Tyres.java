@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 
 @Entity
-@Table(name = "setup_tyres")
+@Table(name = "setup_tyres", schema = "public")
 @Getter
 public class Tyres {
 	@Id
