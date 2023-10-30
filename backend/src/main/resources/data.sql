@@ -92,8 +92,8 @@ ALTER TABLE public.setup_aero OWNER TO postgres;
 -- Name: setup_aero_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE IF NOT EXISTS public.setup_aero_id_seq
-    START WITH 1
+CREATE SEQUENCE public.setup_aero_id_seq
+    START WITH 4
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -117,7 +117,7 @@ ALTER SEQUENCE public.setup_aero_id_seq OWNED BY public.setup_aero.id;
 --
 
 CREATE SEQUENCE IF NOT EXISTS public.setup_aero_seq
-    START WITH 1
+    START WITH 4
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -160,7 +160,7 @@ ALTER TABLE public.setup_dampers OWNER TO postgres;
 --
 
 CREATE SEQUENCE IF NOT EXISTS public.setup_dampers_id_seq
-    START WITH 1
+    START WITH 4
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -184,7 +184,7 @@ ALTER SEQUENCE public.setup_dampers_id_seq OWNED BY public.setup_dampers.id;
 --
 
 CREATE SEQUENCE IF NOT EXISTS public.setup_dampers_seq
-    START WITH 1
+    START WITH 4
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -1123,195 +1123,6 @@ INSERT INTO public.validate_setup VALUES (3, 2, 3, 3, 3, 3, 3, 3) ON CONFLICT DO
 INSERT INTO public.validate_tyres VALUES (2, 16.3, 5.3, -1.5, -4, 0.48, -0.48, -1, -3.5, 0.4, -0.1, 35, 20.3) ON CONFLICT DO NOTHING;
 INSERT INTO public.validate_tyres VALUES (3, 12.4, 6.5, -1.5, -4, 0.4, -0.4, -1, -3.5, 0.4, -0.4, 35, 20.3) ON CONFLICT DO NOTHING;
 INSERT INTO public.validate_tyres VALUES (1, 14.1, 6, -1.5, -4, 0.4, -0.4, -1, -3.5, 0.4, -0.4, 35, 20.3) ON CONFLICT DO NOTHING;
-
-
---
--- TOC entry 5003 (class 0 OID 0)
--- Dependencies: 217
--- Name: setup_aero_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_aero_id_seq', 22, true);
-
-
---
--- TOC entry 5004 (class 0 OID 0)
--- Dependencies: 245
--- Name: setup_aero_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_aero_seq', 1, true);
-
-
---
--- TOC entry 5005 (class 0 OID 0)
--- Dependencies: 219
--- Name: setup_dampers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_dampers_id_seq', 19, true);
-
-
---
--- TOC entry 5006 (class 0 OID 0)
--- Dependencies: 246
--- Name: setup_dampers_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_dampers_seq', 1, true);
-
-
---
--- TOC entry 5007 (class 0 OID 0)
--- Dependencies: 221
--- Name: setup_electronics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_electronics_id_seq', 16, true);
-
-
---
--- TOC entry 5008 (class 0 OID 0)
--- Dependencies: 247
--- Name: setup_electronics_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_electronics_seq', 1, true);
-
-
---
--- TOC entry 5009 (class 0 OID 0)
--- Dependencies: 223
--- Name: setup_fuel_strategy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_fuel_strategy_id_seq', 13, true);
-
-
---
--- TOC entry 5010 (class 0 OID 0)
--- Dependencies: 248
--- Name: setup_fuel_strategy_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_fuel_strategy_seq', 1, true);
-
-
---
--- TOC entry 5011 (class 0 OID 0)
--- Dependencies: 215
--- Name: setup_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_id_seq', 4, true);
-
-
---
--- TOC entry 5012 (class 0 OID 0)
--- Dependencies: 225
--- Name: setup_mechanical_grip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_mechanical_grip_id_seq', 10, true);
-
-
---
--- TOC entry 5013 (class 0 OID 0)
--- Dependencies: 249
--- Name: setup_mechanical_grip_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_mechanical_grip_seq', 1, true);
-
-
---
--- TOC entry 5014 (class 0 OID 0)
--- Dependencies: 227
--- Name: setup_tyres_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_tyres_id_seq', 7, true);
-
-
---
--- TOC entry 5015 (class 0 OID 0)
--- Dependencies: 250
--- Name: setup_tyres_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.setup_tyres_seq', 1, true);
-
-
---
--- TOC entry 5016 (class 0 OID 0)
--- Dependencies: 229
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.users_id_seq', 2, true);
-
-
---
--- TOC entry 5017 (class 0 OID 0)
--- Dependencies: 231
--- Name: validate_aero_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.validate_aero_id_seq', 1, false);
-
-
---
--- TOC entry 5018 (class 0 OID 0)
--- Dependencies: 233
--- Name: validate_dampers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.validate_dampers_id_seq', 1, false);
-
-
---
--- TOC entry 5019 (class 0 OID 0)
--- Dependencies: 235
--- Name: validate_electronics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.validate_electronics_id_seq', 1, false);
-
-
---
--- TOC entry 5020 (class 0 OID 0)
--- Dependencies: 237
--- Name: validate_fuel_strategy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.validate_fuel_strategy_id_seq', 1, false);
-
-
---
--- TOC entry 5021 (class 0 OID 0)
--- Dependencies: 239
--- Name: validate_mechanical_grip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.validate_mechanical_grip_id_seq', 1, false);
-
-
---
--- TOC entry 5022 (class 0 OID 0)
--- Dependencies: 241
--- Name: validate_setup_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.validate_setup_id_seq', 1, false);
-
-
---
--- TOC entry 5023 (class 0 OID 0)
--- Dependencies: 243
--- Name: validate_tyres_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.validate_tyres_id_seq', 1, false);
 
 
 --
