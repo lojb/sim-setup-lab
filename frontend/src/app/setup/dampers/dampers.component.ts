@@ -1,7 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Dampers} from "../../model/setup/dampers";
 import {ValidateDampers} from "../../model/validateSetup/validate-dampers";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Aero} from "../../model/setup/aero";
 
 @Component({
   selector: 'app-dampers',
@@ -9,16 +10,22 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./dampers.component.css']
 })
 
-export class DampersComponent{
+export class DampersComponent implements OnInit{
 
   @Input() dampersValues: Dampers;
   @Input() validateDampers: ValidateDampers;
+  @Output() dataUpdate = new EventEmitter<Dampers>();
   dampersForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initializeForm();
+
+    this.dampersForm.valueChanges.subscribe((formValue) => {
+      this.dampersValues = formValue;
+      this.dataUpdate.emit(this.dampersForm.value);
+    });
   }
 
   initializeForm() {
