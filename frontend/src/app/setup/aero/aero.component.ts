@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, NgModule, OnInit, Output} from '@angular
 import {Aero} from "../../model/setup/aero";
 import {ValidateAero} from "../../model/validateSetup/validate-aero";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Tyres} from "../../model/setup/tyres";
 
 @Component({
   selector: 'app-aero',

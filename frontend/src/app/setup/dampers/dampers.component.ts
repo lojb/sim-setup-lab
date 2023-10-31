@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Dampers} from "../../model/setup/dampers";
 import {ValidateDampers} from "../../model/validateSetup/validate-dampers";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Aero} from "../../model/setup/aero";
 
 @Component({
   selector: 'app-dampers',
