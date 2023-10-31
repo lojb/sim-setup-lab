@@ -1,23 +1,29 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Electronics} from "../../model/setup/electronics";
 import {ValidateElectronics} from "../../model/validateSetup/validate-electronics";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Aero} from "../../model/setup/aero";
 
 @Component({
   selector: 'app-electronics',
   templateUrl: './electronics.component.html',
   styleUrls: ['./electronics.component.css']
 })
-export class ElectronicsComponent{
+export class ElectronicsComponent implements OnInit{
   @Input() electronicsValues: Electronics;
   @Input() validateElectronics: ValidateElectronics;
-
+  @Output() dataUpdate = new EventEmitter<Electronics>();
   electronicsForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initializeForm();
+
+    this.electronicsForm.valueChanges.subscribe((formValue) => {
+      this.electronicsValues = formValue;
+      this.dataUpdate.emit(this.electronicsForm.value);
+    });
   }
 
   initializeForm() {
