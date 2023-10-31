@@ -16,5 +16,5 @@ export class SetupValues {
   electronics: Electronics = new Electronics();
   fuelStrategy : FuelStrategy = new FuelStrategy() ;
   mechanicalGrip: MechanicalGrip = new MechanicalGrip();
-  tyres: Tyres;
+  tyres: Tyres = new Tyres();
 }
