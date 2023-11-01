@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Tyres} from "../../model/setup/tyres";
 import {ValidateTyres} from "../../model/validateSetup/validate-tyres";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -8,15 +8,21 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   templateUrl: './tyres.component.html',
   styleUrls: ['./tyres.component.css']
 })
-export class TyresComponent{
+export class TyresComponent implements OnInit{
   @Input() tyresValues: Tyres;
   @Input() validateTyres: ValidateTyres;
+  @Output() dataUpdate = new EventEmitter<Tyres>();
   tyresForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initializeForm();
+
+    this.tyresForm.valueChanges.subscribe((formValue) => {
+      this.tyresValues = formValue;
+      this.dataUpdate.emit(this.tyresForm.value);
+    });
   }
 
   initializeForm() {
