@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MechanicalGrip} from "../../model/setup/mechanical-grip";
 import {ValidateMechanicalGrip} from "../../model/validateSetup/validate-mechanical-grip";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -8,15 +8,21 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   templateUrl: './mechanical-grip.component.html',
   styleUrls: ['./mechanical-grip.component.css']
 })
-export class MechanicalGripComponent{
+export class MechanicalGripComponent implements OnInit{
   @Input() mechanicalGripValues: MechanicalGrip;
   @Input() validateMechanicalGrip: ValidateMechanicalGrip;
+  @Output() dataUpdate = new EventEmitter<MechanicalGrip>();
   mechanicalGripForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initializeForm();
+
+    this.mechanicalGripForm.valueChanges.subscribe((formValue) => {
+      this.mechanicalGripValues = formValue;
+      this.dataUpdate.emit(this.mechanicalGripForm.value);
+    });
   }
 
   initializeForm() {
