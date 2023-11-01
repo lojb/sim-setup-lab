@@ -2,6 +2,12 @@ import {Component} from '@angular/core';
 import {SetupValues} from "../model/setup/setup-values";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ValidateSetup} from "../model/validateSetup/validate-setup";
+import {Tyres} from "../model/setup/tyres";
+import {Electronics} from "../model/setup/electronics";
+import {FuelStrategy} from "../model/setup/fuel-strategy";
+import {MechanicalGrip} from "../model/setup/mechanical-grip";
+import {Dampers} from "../model/setup/dampers";
+import {Aero} from "../model/setup/aero";
 
 @Component({
   selector: 'app-setup',
@@ -112,5 +118,27 @@ export class SetupComponent {
     return capitalizedWords.join('_');
   }
 
+  handleTyresUpdate(tyres: Tyres) {
+    this.setupValues.tyres = tyres;
+  }
 
+  handleElectronicsUpdate(electronics: Electronics) {
+    this.setupValues.electronics = electronics;
+  }
+
+  handleFuelStrategyUpdate(fuelStrategy: FuelStrategy) {
+    this.setupValues.fuelStrategy = fuelStrategy;
+  }
+
+  handleMechanicalGripUpdate(mechanicalGrip: MechanicalGrip) {
+    this.setupValues.mechanicalGrip = mechanicalGrip;
+  }
+
+  handleDampersUpdate(dampers: Dampers) {
+    this.setupValues.dampers = dampers;
+  }
+
+  handleAeroUpdate(aero: Aero) {
+    this.setupValues.aero = aero;
+  }
 }

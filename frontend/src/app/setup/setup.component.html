@@ -41,12 +41,14 @@
               (click)="ToggleSelectedPart('electronics')">
         Electronics
       </button>
-      <button [ngClass]="selectedSetupPart === 'fuelStrategy' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
-              (click)="ToggleSelectedPart('fuelStrategy')">
+      <button
+        [ngClass]="selectedSetupPart === 'fuelStrategy' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
+        (click)="ToggleSelectedPart('fuelStrategy')">
         Fuel & Strategy
       </button>
-      <button [ngClass]="selectedSetupPart === 'mechanicalGrip' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
-              (click)="ToggleSelectedPart('mechanicalGrip')">
+      <button
+        [ngClass]="selectedSetupPart === 'mechanicalGrip' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
+        (click)="ToggleSelectedPart('mechanicalGrip')">
         Mechanical Grip
       </button>
       <button [ngClass]="selectedSetupPart === 'dampers' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
@@ -58,32 +60,43 @@
         Aero
       </button>
     </div>
-    <div *ngIf="selectedSetupPart === 'tyres'">
-      <app-tyres [tyresValues]="setupValues.tyres" [validateTyres]="validator.validateTyres"></app-tyres>
-    </div>
-    <div *ngIf="selectedSetupPart === 'electronics'">
-      <app-electronics [electronicsValues]="setupValues.electronics" [validateElectronics]="validator.validateElectronics"></app-electronics>
-    </div>
-    <div *ngIf="selectedSetupPart === 'fuelStrategy'">
-      <app-fuel-strategy [fuelStrategyValues]="setupValues.fuelStrategy" [validateFuelStrategy]="validator.validateFuelStrategy"></app-fuel-strategy>
-    </div>
-    <div *ngIf="selectedSetupPart === 'mechanicalGrip'">
-      <app-mechanical-grip [mechanicalGripValues]="setupValues.mechanicalGrip" [validateMechanicalGrip]="validator.validateMechanicalGrip"></app-mechanical-grip>
-    </div>
-    <div *ngIf="selectedSetupPart === 'dampers'">
-      <app-dampers [dampersValues]="setupValues.dampers" [validateDampers]="validator.validateDampers"></app-dampers>
-    </div>
-    <div *ngIf="selectedSetupPart === 'aero'">
-      <app-aero [aeroValues]="setupValues.aero" [validateAero]="validator.validateAero"></app-aero>
-    </div>
-    <div class="d-flex flex-column justify-content-center align-items-center m-2">
-      <label for="create" class="col-sm-2">
-        <span class="h6 small text-muted pt-1 pl-2 pr-2">Name</span>
-      </label>
-      <input id="create" type="text" [(ngModel)]="setupValues.name" class="form-control">
-      <button class="btn btn-primary m-1" [disabled]="!setupValues.name" (click)="SubmitSetup()">
-        Create
-      </button>
-    </div>
+    <ng-container>
+      <div *ngIf="selectedSetupPart === 'tyres'">
+        <app-tyres [tyresValues]="setupValues.tyres" [validateTyres]="validator.validateTyres"
+                   (dataUpdate)="handleTyresUpdate($event)"></app-tyres>
+      </div>
+      <div *ngIf="selectedSetupPart === 'electronics'">
+        <app-electronics [electronicsValues]="setupValues.electronics"
+                         [validateElectronics]="validator.validateElectronics"
+                         (dataUpdate)="handleElectronicsUpdate($event)"></app-electronics>
+      </div>
+      <div *ngIf="selectedSetupPart === 'fuelStrategy'">
+        <app-fuel-strategy [fuelStrategyValues]="setupValues.fuelStrategy"
+                           [validateFuelStrategy]="validator.validateFuelStrategy"
+                           (dataUpdate)="handleFuelStrategyUpdate($event)"></app-fuel-strategy>
+      </div>
+      <div *ngIf="selectedSetupPart === 'mechanicalGrip'">
+        <app-mechanical-grip [mechanicalGripValues]="setupValues.mechanicalGrip"
+                             [validateMechanicalGrip]="validator.validateMechanicalGrip"
+                             (dataUpdate)="handleMechanicalGripUpdate($event)"></app-mechanical-grip>
+      </div>
+      <div *ngIf="selectedSetupPart === 'dampers'">
+        <app-dampers [dampersValues]="setupValues.dampers" [validateDampers]="validator.validateDampers"
+                     (dataUpdate)="handleDampersUpdate($event)"></app-dampers>
+      </div>
+      <div *ngIf="selectedSetupPart === 'aero'">
+        <app-aero [aeroValues]="setupValues.aero" [validateAero]="validator.validateAero"
+                  (dataUpdate)="handleAeroUpdate($event)"></app-aero>
+      </div>
+      <div class="d-flex flex-column justify-content-center align-items-center m-2">
+        <label for="create" class="col-sm-2">
+          <span class="h6 small text-muted pt-1 pl-2 pr-2">Name</span>
+        </label>
+        <input id="create" type="text" [(ngModel)]="setupValues.name" class="form-control">
+        <button class="btn btn-primary m-1" [disabled]="!setupValues.name" (click)="SubmitSetup()">
+          Create
+        </button>
+      </div>
+    </ng-container>
   </div>
 </div>
