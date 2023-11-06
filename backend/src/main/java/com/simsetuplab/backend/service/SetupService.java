@@ -12,7 +12,7 @@ import com.simsetuplab.backend.exception.ApiRequestException;
 import com.simsetuplab.backend.model.setup.EnumData;
 import com.simsetuplab.backend.model.setup.Setup;
 import com.simsetuplab.backend.model.setup.SetupDto;
-import com.simsetuplab.backend.model.setupvalidator.ValidateSetup;
+import com.simsetuplab.backend.model.setupValidator.ValidateSetup;
 import com.simsetuplab.backend.model.user.User;
 import com.simsetuplab.backend.repository.SetupRepository;
 import com.simsetuplab.backend.repository.UserRepository;

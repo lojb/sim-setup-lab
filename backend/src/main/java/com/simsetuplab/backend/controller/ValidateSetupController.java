@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
-import com.simsetuplab.backend.model.setupvalidator.ValidateSetup;
+import com.simsetuplab.backend.model.setupValidator.ValidateSetup;
 import com.simsetuplab.backend.service.ValidateSetupService;
 
 @RestController

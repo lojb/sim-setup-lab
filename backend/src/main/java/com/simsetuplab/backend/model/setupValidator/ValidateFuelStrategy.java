@@ -1,4 +1,4 @@
-package com.simsetuplab.backend.model.setupvalidator;
+package com.simsetuplab.backend.model.setupValidator;
 
 import com.simsetuplab.backend.enumeration.carsetup.TyreType;
 import com.simsetuplab.backend.model.setup.setupvalues.FuelStrategy;
