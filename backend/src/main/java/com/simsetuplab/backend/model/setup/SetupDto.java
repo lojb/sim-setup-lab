@@ -7,23 +7,25 @@ import com.simsetuplab.backend.model.setup.setupvalues.FuelStrategy;
 import com.simsetuplab.backend.model.setup.setupvalues.MechanicalGrip;
 import com.simsetuplab.backend.model.setup.setupvalues.Tyres;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SetupDto {
-	private String name;
-	private long userId;
+    private String name;
+    private long userId;
 
-	private String carType;
-	private String track;
-	private String setupType;
+    private String carType;
+    private String track;
+    private String setupType;
 
-	private Aero aero;
-	private Dampers dampers;
-	private Electronics electronics;
-	private FuelStrategy fuelStrategy;
-	private MechanicalGrip mechanicalGrip;
-	private Tyres tyres;
+    private Aero aero;
+    private Dampers dampers;
+    private Electronics electronics;
+    private FuelStrategy fuelStrategy;
+    private MechanicalGrip mechanicalGrip;
+    private Tyres tyres;
 }
