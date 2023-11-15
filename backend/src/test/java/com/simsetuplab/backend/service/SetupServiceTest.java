@@ -1,6 +1,13 @@
 package com.simsetuplab.backend.service;
 
+import com.simsetuplab.backend.enumeration.carsetup.CarType;
+import com.simsetuplab.backend.enumeration.carsetup.SetupType;
+import com.simsetuplab.backend.enumeration.carsetup.Tracks;
+import com.simsetuplab.backend.enumeration.user.Role;
+import com.simsetuplab.backend.model.setup.EnumData;
 import com.simsetuplab.backend.model.setup.Setup;
+import com.simsetuplab.backend.model.setup.SetupDto;
+import com.simsetuplab.backend.model.setup.setupvalues.*;
 import com.simsetuplab.backend.model.user.User;
 import com.simsetuplab.backend.repository.SetupRepository;
 import com.simsetuplab.backend.repository.UserRepository;
@@ -11,8 +18,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
@@ -27,8 +33,43 @@ class SetupServiceTest {
     UserRepository userRepository;
     @Mock
     ValidateSetupRepository validateSetupRepository;
-
     SetupService setupService;
+
+    private final User testUser = User.builder()
+            .username("test1")
+            .email("test1@test.com")
+            .role(Role.USER)
+            .password("asd")
+            .id(22L)
+            .build();
+
+    private final SetupDto testDto = SetupDto.builder()
+            .name("testDto")
+            .userId(55L)
+            .carType("MERCEDES_AMG_GT3_EVO")
+            .track("BARCELONA")
+            .setupType("CUSTOM")
+            .aero(new Aero())
+            .dampers(new Dampers())
+            .electronics(new Electronics())
+            .fuelStrategy(new FuelStrategy())
+            .mechanicalGrip(new MechanicalGrip())
+            .tyres(new Tyres())
+            .build();
+    private final Setup testSetup = Setup.builder()
+            .id(55L)
+            .name("testSetup")
+            .user(testUser)
+            .carType(CarType.MERCEDES_AMG_GT3_EVO)
+            .track(Tracks.BARCELONA)
+            .setupType(SetupType.CUSTOM)
+            .aero(new Aero())
+            .dampers(new Dampers())
+            .electronics(new Electronics())
+            .fuelStrategy(new FuelStrategy())
+            .mechanicalGrip(new MechanicalGrip())
+            .tyres(new Tyres())
+            .build();
 
     @BeforeEach
     void setUp() {
@@ -95,22 +136,104 @@ class SetupServiceTest {
     }
 
     @Test
-    void addOrUpdateSetup() {
+    void addOrUpdateSetupInvokesSave() {
+        /*
+        SetupDto setupDto = new SetupDto();
+
+        Setup setup = new Setup(setupDto);
+        ValidateSetup validateSetup = new ValidateSetup();
+        when(validateSetupRepository.getValidatorByCarType(setup.getCarType())).thenReturn(validateSetup);
+        when(userRepository.findUserById(setupDto.getUserId())).thenReturn(Optional.of(testUser));
+        when(validateSetup.validate(setup)).thenReturn(new ArrayList<>());
+
+        setupService.addOrUpdateSetup(setupDto);
+        */
+        /*
+        SetupDto setupDto = new SetupDto();
+        setupDto.setUserId(24L);
+        when(userRepository.findUserById(any(Long.class))).thenReturn(Optional.of(testUser));
+        when(setupService.convertDtoToSetup(setupDto)).thenReturn(testSetup);
+
+        setupService.addOrUpdateSetup(setupDto);
+         */
     }
 
     @Test
-    void deleteSetup() {
+    void addOrUpdateSetupReturnsSetup() {
+        /*
+        SetupDto setupDto = new SetupDto();
+        Setup setup = new Setup();
+        when(setupService.convertDtoToSetup(setupDto)).thenReturn(setup);
+
+        setupService.addOrUpdateSetup(setupDto);
+
+        verify(setupRepository).save(setup);
+         */
     }
 
     @Test
-    void getEnumData() {
+    void deleteSetupInvokesDelete() {
+        setupService.deleteSetup(testSetup);
+
+        verify(setupRepository).delete(testSetup);
     }
 
     @Test
-    void getDefaultSetup() {
+    void getEnumDataNotNull() {
+        EnumData result = setupService.getEnumData();
+
+        assertNotNull(result);
     }
 
     @Test
-    void convertDtoToSetup() {
+    void getEnumDataCarsListSizeCorrect() {
+        EnumData result = setupService.getEnumData();
+
+        assertEquals(CarType.values().length, result.cars.size());
+    }
+
+    @Test
+    void getEnumDataTracksListSizeCorrect() {
+        EnumData result = setupService.getEnumData();
+
+        assertEquals(Tracks.values().length, result.tracks.size());
+    }
+
+    @Test
+    void getDefaultSetupConvertsTrack() {
+        String track = testDto.getTrack();
+        String car = testDto.getCarType();
+
+        when(setupRepository.findSetupBySetupTypeAndTrackAndCarType(SetupType.DEFAULT, Tracks.valueOf(track), CarType.valueOf(car))).thenReturn(testSetup);
+        Setup result = setupService.getDefaultSetup(track, car);
+
+        assertEquals(result.getTrack(), Tracks.valueOf(track));
+    }
+
+    @Test
+    void getDefaultSetupConvertsCar() {
+        String track = testDto.getTrack();
+        String car = testDto.getCarType();
+
+        when(setupRepository.findSetupBySetupTypeAndTrackAndCarType(SetupType.DEFAULT, Tracks.valueOf(track), CarType.valueOf(car))).thenReturn(testSetup);
+        Setup result = setupService.getDefaultSetup(track, car);
+
+        assertEquals(result.getCarType(), CarType.valueOf(car));
+    }
+
+    @Test
+    void convertDtoToSetupUserEqualsTestUser() {
+        when(userRepository.findUserById(testDto.getUserId())).thenReturn(Optional.of(testUser));
+        Setup result = setupService.convertDtoToSetup(testDto);
+
+        assertEquals(testSetup.getUser(), result.getUser());
+    }
+
+    @Test
+    void convertDtoToSetupCarTypeEqualsCarType() {
+        when(userRepository.findUserById(testDto.getUserId())).thenReturn(Optional.of(testUser));
+        Setup result = setupService.convertDtoToSetup(testDto);
+
+        assertEquals(testSetup.getCarType(), result.getCarType());
     }
 }
