@@ -8,6 +8,7 @@ import {FuelStrategy} from "../model/setup/fuel-strategy";
 import {MechanicalGrip} from "../model/setup/mechanical-grip";
 import {Dampers} from "../model/setup/dampers";
 import {Aero} from "../model/setup/aero";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-setup',
@@ -24,6 +25,7 @@ export class SetupComponent {
   selectedCar: any;
   selectedTrack: any;
   allSelected: boolean;
+  setupForm: FormGroup;
 
   constructor(private http: HttpClient) {
     this.http.get('/api/v1/setup/enums')
@@ -88,7 +90,7 @@ export class SetupComponent {
     this.setupValues = defaultSetup;
   }
 
-  TransformEnumToString(input: string): string {
+  public TransformEnumToString(input: string): string {
     const words = input.split('_');
 
     const capitalizedWords = words.map(word => {
