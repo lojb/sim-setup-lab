@@ -20,7 +20,7 @@ import {DampersComponent} from './setup/dampers/dampers.component';
 import {AeroComponent} from './setup/aero/aero.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
+import { MySetupsComponent } from './mySetups/mySetups.component';
 import { FooterComponent } from './footer/footer.component';
 
 
@@ -39,7 +39,7 @@ import { FooterComponent } from './footer/footer.component';
     DampersComponent,
     AeroComponent,
     AdminComponent,
-    UserComponent,
+    MySetupsComponent,
     FooterComponent
   ],
   imports: [
