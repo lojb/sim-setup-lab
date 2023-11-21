@@ -5,7 +5,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {SetupComponent} from "./setup/setup.component";
 import {AdminComponent} from "./admin/admin.component";
-import {UserComponent} from "./user/user.component";
+import {MySetupsComponent} from "./mySetups/mySetups.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'setup', component: SetupComponent},
   {path: 'admin', component: AdminComponent},
-  {path: 'user/:userId', component: UserComponent}
+  {path: 'user/:userId', component: MySetupsComponent}
 ];
 
 @NgModule({
