@@ -3,6 +3,7 @@ package com.simsetuplab.backend.service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
@@ -20,72 +21,71 @@ import com.simsetuplab.backend.repository.ValidateSetupRepository;
 
 @Service
 public class SetupService {
-	private final SetupRepository setupRepository;
-	private final UserRepository userRepository;
+    private final SetupRepository setupRepository;
+    private final UserRepository userRepository;
 
-	private final ValidateSetupRepository validateSetupRepository;
+    private final ValidateSetupRepository validateSetupRepository;
 
-	@Autowired
-	public SetupService(SetupRepository setupRepository, UserRepository userRepository, ValidateSetupRepository validateSetupRepository) {
-		this.setupRepository = setupRepository;
-		this.userRepository = userRepository;
-		this.validateSetupRepository = validateSetupRepository;
+    @Autowired
+    public SetupService(SetupRepository setupRepository, UserRepository userRepository, ValidateSetupRepository validateSetupRepository) {
+        this.setupRepository = setupRepository;
+        this.userRepository = userRepository;
+        this.validateSetupRepository = validateSetupRepository;
+    }
 
-	}
+    public List<Setup> getAllSetups() {
+        return setupRepository.findAll();
+    }
 
-	public List<Setup> getAllSetups() {
-		return setupRepository.findAll();
-	}
+    public Setup getSetupById(Long id) {
+        return setupRepository.findSetupById(id);
+    }
 
-	public Setup getSetupById(Long id) {
-		return setupRepository.findSetupById(id);
-	}
+    public List<Setup> getSetupsByUserId(Long id) {
+        return setupRepository.findAllByUserId(id);
+    }
 
-	public List<Setup> getSetupsByUserId(Long id) {
-		return setupRepository.findAllByUserId(id);
-	}
+    public Setup addOrUpdateSetup(SetupDto setupDto) {
+        Setup setup = convertDtoToSetup(setupDto);
 
-	public Setup addOrUpdateSetup(SetupDto setupDto) {
-		Setup setup = convertDtoToSetup(setupDto);
+        ValidateSetup validator = this.validateSetupRepository.getValidatorByCarType(setup.getCarType());
 
-		ValidateSetup validator = this.validateSetupRepository.getValidatorByCarType(setup.getCarType());
+        List<String> errorList = validator.validate(setup);
 
-		List<String> errorList = validator.validate(setup);
+        if (errorList.isEmpty()) {
+            return setupRepository.save(setup);
+        } else {
+            throw new ApiRequestException("The following fields are invalid: " + errorList);
+        }
 
-		if (errorList.isEmpty()) {
-			return setupRepository.save(setup);
-		} else {
-			throw new ApiRequestException("The following fields are invalid: " + errorList);
-		}
+    }
 
-	}
+    public void deleteSetup(Setup setup) {
+        setupRepository.delete(setup);
+    }
 
-	public void deleteSetup(Setup setup) {
-		setupRepository.delete(setup);
-	}
+    public EnumData getEnumData() {
+        List<CarType> cars = Arrays.asList(CarType.values());
+        List<Tracks> tracks = Arrays.asList(Tracks.values());
 
-	public EnumData getEnumData() {
-		List<CarType> cars = Arrays.asList(CarType.values());
-		List<Tracks> tracks = Arrays.asList(Tracks.values());
+        return new EnumData(cars, tracks);
+    }
 
-		return new EnumData(cars, tracks);
-	}
+    public Setup getDefaultSetup(String trackString, String carString) {
+        Tracks track = Tracks.valueOf(trackString);
+        CarType carType = CarType.valueOf(carString);
 
-	public Setup getDefaultSetup(String trackString, String carString) {
-		Tracks track = Tracks.valueOf(trackString);
-		CarType carType = CarType.valueOf(carString);
+        return setupRepository.findSetupBySetupTypeAndTrackAndCarType(SetupType.DEFAULT, track, carType);
+    }
 
-		return setupRepository.findSetupBySetupTypeAndTrackAndCarType(SetupType.DEFAULT, track, carType);
-	}
+    public Setup convertDtoToSetup(SetupDto setupDto) {
+        Optional<User> user = userRepository.findUserById(setupDto.getUserId());
 
-	public Setup convertDtoToSetup(SetupDto setupDto) {
-		Optional<User> user = userRepository.findUserById(setupDto.getUserId());
-
-		if (user.isPresent()) {
-			Setup setup = new Setup(setupDto);
-			setup.setUser(user.get());
-			return setup;
-		} else
-			throw new ApiRequestException("User does not exist");
-	}
+        if (user.isPresent()) {
+            Setup setup = new Setup(setupDto);
+            setup.setUser(user.get());
+            return setup;
+        } else
+            throw new ApiRequestException("User does not exist");
+    }
 }
