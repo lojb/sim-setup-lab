@@ -93,7 +93,7 @@
           <span class="h6 small text-muted pt-1 pl-2 pr-2">Name</span>
         </label>
         <input id="create" type="text" [(ngModel)]="setupValues.name" class="form-control">
-        <button class="btn btn-primary m-1" [disabled]="!setupValues.name" (click)="SubmitSetup()">
+        <button class="btn btn-primary m-1" [disabled]="setupValues.name.length < 3" (click)="SubmitSetup()">
           Create
         </button>
       </div>
