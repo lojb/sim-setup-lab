@@ -3,25 +3,25 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HeaderComponent} from './header/header.component';
+import {HeaderComponent} from './components/header/header.component';
 import {NgOptimizedImage} from "@angular/common";
-import {LoginComponent} from './login/login.component';
-import {HomeComponent} from './home/home.component';
-import {RegisterComponent} from './register/register.component';
+import {LoginComponent} from './components/login/login.component';
+import {HomeComponent} from './components/home/home.component';
+import {RegisterComponent} from './components/register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {AuthService} from "./auth.service";
-import {SetupComponent} from './setup/setup.component';
-import {TyresComponent} from './setup/tyres/tyres.component';
-import {ElectronicsComponent} from './setup/electronics/electronics.component';
-import {FuelStrategyComponent} from './setup/fuel-strategy/fuel-strategy.component';
-import {MechanicalGripComponent} from './setup/mechanical-grip/mechanical-grip.component';
-import {DampersComponent} from './setup/dampers/dampers.component';
-import {AeroComponent} from './setup/aero/aero.component';
+import {AuthService} from "./service/authentication/auth.service";
+import {SetupComponent} from './components/setup/setup.component';
+import {TyresComponent} from './components/setup/tyres/tyres.component';
+import {ElectronicsComponent} from './components/setup/electronics/electronics.component';
+import {FuelStrategyComponent} from './components/setup/fuel-strategy/fuel-strategy.component';
+import {MechanicalGripComponent} from './components/setup/mechanical-grip/mechanical-grip.component';
+import {DampersComponent} from './components/setup/dampers/dampers.component';
+import {AeroComponent} from './components/setup/aero/aero.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AdminComponent } from './admin/admin.component';
-import { MySetupsComponent } from './mySetups/mySetups.component';
-import { FooterComponent } from './footer/footer.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { MySetupsComponent } from './components/mySetups/mySetups.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
