@@ -49,16 +49,18 @@ public class Setup {
     private Tyres tyres;
 
     public Setup(SetupDto setupDto) {
-        this.name = setupDto.getName();
-        this.carType = CarType.valueOf(setupDto.getCarType());
-        this.track = Tracks.valueOf(setupDto.getTrack());
-        this.setupType = SetupType.valueOf(setupDto.getSetupType());
-        this.aero = setupDto.getAero();
-        this.dampers = setupDto.getDampers();
-        this.electronics = setupDto.getElectronics();
-        this.fuelStrategy = setupDto.getFuelStrategy();
-        this.mechanicalGrip = setupDto.getMechanicalGrip();
-        this.tyres = setupDto.getTyres();
+        setName(setupDto.getName());
+
+        setCarType(CarType.valueOf(setupDto.getCarType()));
+        setTrack(Tracks.valueOf(setupDto.getTrack()));
+        setSetupType(SetupType.valueOf(setupDto.getSetupType()));
+
+        setAero(setupDto.getAero());
+        setDampers(setupDto.getDampers());
+        setElectronics(setupDto.getElectronics());
+        setFuelStrategy(setupDto.getFuelStrategy());
+        setMechanicalGrip(setupDto.getMechanicalGrip());
+        setTyres(setupDto.getTyres());
     }
 
     public Setup() {
