@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MechanicalGrip} from "../../model/setup/mechanical-grip";
-import {ValidateMechanicalGrip} from "../../model/validateSetup/validate-mechanical-grip";
+import {MechanicalGrip} from "../../../model/setup/mechanical-grip";
+import {ValidateMechanicalGrip} from "../../../model/validateSetup/validate-mechanical-grip";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({

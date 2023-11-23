@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, NgModule, OnInit, Output} from '@angular/core';
-import {Aero} from "../../model/setup/aero";
-import {ValidateAero} from "../../model/validateSetup/validate-aero";
+import {Aero} from "../../../model/setup/aero";
+import {ValidateAero} from "../../../model/validateSetup/validate-aero";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({

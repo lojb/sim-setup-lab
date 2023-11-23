@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Tyres} from "../../model/setup/tyres";
-import {ValidateTyres} from "../../model/validateSetup/validate-tyres";
+import {Tyres} from "../../../model/setup/tyres";
+import {ValidateTyres} from "../../../model/validateSetup/validate-tyres";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({

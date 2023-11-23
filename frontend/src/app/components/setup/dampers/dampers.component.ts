@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Dampers} from "../../model/setup/dampers";
-import {ValidateDampers} from "../../model/validateSetup/validate-dampers";
+import {Dampers} from "../../../model/setup/dampers";
+import {ValidateDampers} from "../../../model/validateSetup/validate-dampers";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({

@@ -9,7 +9,7 @@
           </label>
           <select id="trackSelect" class="form-select" [(ngModel)]="selectedTrack" name="selectedCar">
             <option class="select" value="" selected>Select a track</option>
-            <option class="select" *ngFor="let track of tracksList">{{ TransformEnumToString(track) }}</option>
+            <option class="select" *ngFor="let track of tracksList">{{ transformEnumToString(track) }}</option>
           </select>
         </div>
         <div class="d-sm-flex flex-column justify-content-center w-auto">
@@ -18,12 +18,12 @@
           </label>
           <select id="carSelect" class="form-select" [(ngModel)]="selectedCar" name="selectedCar">
             <option class="select" value="" selected>Select a car</option>
-            <option class="select" *ngFor="let car of carsList">{{ TransformEnumToString(car) }}</option>
+            <option class="select" *ngFor="let car of carsList">{{ transformEnumToString(car) }}</option>
           </select>
         </div>
         <div class="d-flex justify-content-center align-items-center m-2">
           <button type="button" class="btn btn-primary" [disabled]="!selectedTrack || !selectedCar"
-                  (click)="StartSetup()">
+                  (click)="startSetup()">
             Start
           </button>
         </div>
@@ -34,29 +34,29 @@
        class="d-flex flex-column justify-content-center align-items-center bg-body-tertiary bg-opacity-50 rounded-3 m-2">
     <div class="d-flex justify-content-around align-items-center flex-wrap mt-2">
       <button [ngClass]="selectedSetupPart === 'tyres' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
-              (click)="ToggleSelectedPart('tyres')">
+              (click)="toggleSelectedPart('tyres')">
         Tyres
       </button>
       <button [ngClass]="selectedSetupPart === 'electronics' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
-              (click)="ToggleSelectedPart('electronics')">
+              (click)="toggleSelectedPart('electronics')">
         Electronics
       </button>
       <button
         [ngClass]="selectedSetupPart === 'fuelStrategy' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
-        (click)="ToggleSelectedPart('fuelStrategy')">
+        (click)="toggleSelectedPart('fuelStrategy')">
         Fuel & Strategy
       </button>
       <button
         [ngClass]="selectedSetupPart === 'mechanicalGrip' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
-        (click)="ToggleSelectedPart('mechanicalGrip')">
+        (click)="toggleSelectedPart('mechanicalGrip')">
         Mechanical Grip
       </button>
       <button [ngClass]="selectedSetupPart === 'dampers' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
-              (click)="ToggleSelectedPart('dampers')">
+              (click)="toggleSelectedPart('dampers')">
         Dampers
       </button>
       <button [ngClass]="selectedSetupPart === 'aero' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
-              (click)="ToggleSelectedPart('aero')">
+              (click)="toggleSelectedPart('aero')">
         Aero
       </button>
     </div>
@@ -93,7 +93,7 @@
           <span class="h6 small text-muted pt-1 pl-2 pr-2">Name</span>
         </label>
         <input id="create" type="text" [(ngModel)]="setupValues.name" class="form-control">
-        <button class="btn btn-primary m-1" [disabled]="setupValues.name.length < 3" (click)="SubmitSetup()">
+        <button class="btn btn-primary m-1" [disabled]="setupValues.name.length < 3" (click)="submitSetup()">
           Create
         </button>
       </div>

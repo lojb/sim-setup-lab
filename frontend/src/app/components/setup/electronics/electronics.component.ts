@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Electronics} from "../../model/setup/electronics";
-import {ValidateElectronics} from "../../model/validateSetup/validate-electronics";
+import {Electronics} from "../../../model/setup/electronics";
+import {ValidateElectronics} from "../../../model/validateSetup/validate-electronics";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({

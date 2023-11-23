@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FuelStrategy} from "../../model/setup/fuel-strategy";
-import {ValidateFuelStrategy} from "../../model/validateSetup/validate-fuel-strategy";
+import {FuelStrategy} from "../../../model/setup/fuel-strategy";
+import {ValidateFuelStrategy} from "../../../model/validateSetup/validate-fuel-strategy";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Aero} from "../../model/setup/aero";
+import {Aero} from "../../../model/setup/aero";
 
 @Component({
   selector: 'app-fuel-strategy',
