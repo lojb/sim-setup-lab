@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {AuthService} from "../auth.service";
-import {environment} from "../../environments/environment.development";
+import {AuthService} from "../../service/authentication/auth.service";
+import {environment} from "../../../environments/environment.development";
 
 @Component({
   selector: 'app-login',
