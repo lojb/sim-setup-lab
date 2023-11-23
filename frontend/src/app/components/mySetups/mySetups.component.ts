@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {SetupValues} from "../model/setup/setup-values";
+import {SetupValues} from "../../model/setup/setup-values";
 
 @Component({
   selector: 'app-user',
