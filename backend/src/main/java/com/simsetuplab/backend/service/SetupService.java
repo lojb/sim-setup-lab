@@ -87,4 +87,8 @@ public class SetupService {
             throw new ApiRequestException("User does not exist");
         }
     }
+
+    public List<SetupDto> mapSetupListToSetupDtoList(List<Setup> setupList) {
+        return setupList.stream().map(Setup::convertSetupToDto).toList();
+    }
 }
