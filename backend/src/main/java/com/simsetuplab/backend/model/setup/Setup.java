@@ -16,12 +16,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "setup", schema = "public")
 public class Setup {
     @Id
@@ -48,22 +50,19 @@ public class Setup {
     @OneToOne(cascade = CascadeType.ALL)
     private Tyres tyres;
 
-    public Setup(SetupDto setupDto) {
-        setName(setupDto.getName());
-
-        setCarType(CarType.valueOf(setupDto.getCarType()));
-        setTrack(Tracks.valueOf(setupDto.getTrack()));
-        setSetupType(SetupType.valueOf(setupDto.getSetupType()));
-
-        setAero(setupDto.getAero());
-        setDampers(setupDto.getDampers());
-        setElectronics(setupDto.getElectronics());
-        setFuelStrategy(setupDto.getFuelStrategy());
-        setMechanicalGrip(setupDto.getMechanicalGrip());
-        setTyres(setupDto.getTyres());
-    }
-
-    public Setup() {
-
+    public Setup convertDtoToSetup(SetupDto setupDto, User user) {
+        return Setup.builder()
+                .name(setupDto.getName())
+                .user(user)
+                .carType(CarType.valueOf(setupDto.getCarType()))
+                .track(Tracks.valueOf(setupDto.getTrack()))
+                .setupType(SetupType.valueOf(setupDto.getSetupType()))
+                .aero(setupDto.getAero())
+                .dampers(setupDto.getDampers())
+                .electronics(setupDto.getElectronics())
+                .fuelStrategy(setupDto.getFuelStrategy())
+                .mechanicalGrip(setupDto.getMechanicalGrip())
+                .tyres(setupDto.getTyres())
+                .build();
     }
 }
