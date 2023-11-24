@@ -1,4 +1,6 @@
 export class Tyres {
+  id?: number;
+
   frontLeftTyrePressure: number;
   frontRightTyrePressure: number;
   rearLeftTyrePressure: number;

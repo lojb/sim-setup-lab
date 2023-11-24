@@ -1,4 +1,6 @@
 export class MechanicalGrip {
+  id?: number;
+
   frontAntiRollBar: number;
   brakePower: number;
   brakeBias: number;

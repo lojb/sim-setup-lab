@@ -1,4 +1,6 @@
 export class Dampers {
+  id?: number;
+
   frontLeftBump: number;
   frontRightBump: number;
   rearLeftBump: number;
