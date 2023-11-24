@@ -10,7 +10,7 @@ import {HomeComponent} from './components/home/home.component';
 import {RegisterComponent} from './components/register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {AuthService} from "./service/authentication/auth.service";
+import {AuthService} from "./service/auth.service";
 import {SetupComponent} from './components/setup/setup.component';
 import {TyresComponent} from './components/setup/tyres/tyres.component';
 import {ElectronicsComponent} from './components/setup/electronics/electronics.component';
