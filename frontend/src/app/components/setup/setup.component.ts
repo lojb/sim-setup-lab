@@ -8,7 +8,7 @@ import {FuelStrategy} from "../../model/setup/fuel-strategy";
 import {MechanicalGrip} from "../../model/setup/mechanical-grip";
 import {Dampers} from "../../model/setup/dampers";
 import {Aero} from "../../model/setup/aero";
-import {FormGroup} from "@angular/forms";
+import {RequestService} from "../../service/request.service";
 
 @Component({
   selector: 'app-setup',
@@ -17,27 +17,22 @@ import {FormGroup} from "@angular/forms";
 })
 export class SetupComponent {
 
+  requestService: RequestService;
   selectedSetupPart: string = 'tyres';
   setupValues: SetupValues = new SetupValues();
   validator: ValidateSetup;
-  carsList: any;
-  tracksList: any;
+  carsList: Array<string>;
+  tracksList: Array<string>;
   selectedCar: any;
   selectedTrack: any;
   allSelected: boolean;
-  setupForm: FormGroup;
 
-  constructor(private http: HttpClient, setupToLoad?: any) {
-    if (!setupToLoad) {
-      this.http.get('/api/v1/setup/enums')
-        .subscribe((data: any) => {
-          this.carsList = data.cars;
-          this.tracksList = data.tracks;
-        })
-    } else {
-      this.selectedCar = setupToLoad.carType;
-      this.selectedTrack = setupToLoad.selectedTrack;
-    }
+  constructor() {
+    this.requestService.getEnums()
+      .subscribe((data: any) => {
+        this.carsList = data.cars;
+        this.tracksList = data.tracks;
+      })
   }
 
   toggleSelectedPart(setupPart: string) {
@@ -45,18 +40,14 @@ export class SetupComponent {
   }
 
   startSetup() {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    });
-
-    this.http.get(`/api/v1/setup/default?track=${this.transformStringToEnum(this.selectedTrack)}&car=${this.transformStringToEnum(this.selectedCar)}`, {headers})
+    this.requestService.getDefaultSetup(this.transformStringToEnum(this.selectedTrack), this.transformStringToEnum(this.selectedCar))
       .subscribe((setup: any) => {
         this.loadSetup(setup);
       })
+
     this.allSelected = this.selectedTrack && this.selectedCar;
 
-    this.http.get(`/api/v1/validatesetup/${this.transformStringToEnum(this.selectedCar)}`, {headers})
+    this.requestService.getValidator(this.transformStringToEnum(this.selectedCar))
       .subscribe((validator: any) => {
         this.validator = validator;
       })
@@ -69,19 +60,13 @@ export class SetupComponent {
     this.setupValues.setupType = 'CUSTOM';
     console.log(this.setupValues);
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    });
-
-    this.http.post(`/api/v1/setup`, this.setupValues, {headers})
+    this.requestService.postSetup(this.setupValues)
       .subscribe((setup: any) => {
         console.log(setup)
       });
   }
 
-  loadSetup(setup: any) {
-    delete setup.id;
+  loadSetup(setup: SetupValues) {
     delete setup.aero.id;
     delete setup.dampers.id;
     delete setup.electronics.id;
@@ -90,7 +75,8 @@ export class SetupComponent {
     delete setup.tyres.id;
 
     if (setup.setupType === "DEFAULT") {
-      delete setup.user;
+      delete setup.id;
+      delete setup.userId;
       setup.name = "";
     }
 
