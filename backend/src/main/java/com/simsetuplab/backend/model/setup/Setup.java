@@ -66,4 +66,21 @@ public class Setup {
                 .tyres(setupDto.getTyres())
                 .build();
     }
+
+    public SetupDto convertSetupToDto() {
+        return SetupDto.builder()
+                .id(this.getId())
+                .name(this.getName())
+                .userId(this.getUser().getId())
+                .carType(this.getCarType().toString())
+                .track(this.getTrack().toString())
+                .setupType(this.getSetupType().toString())
+                .aero(this.getAero())
+                .dampers(this.getDampers())
+                .electronics(this.getElectronics())
+                .fuelStrategy(this.getFuelStrategy())
+                .mechanicalGrip(this.getMechanicalGrip())
+                .tyres(this.getTyres())
+                .build();
+    }
 }

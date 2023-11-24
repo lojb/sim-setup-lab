@@ -32,21 +32,4 @@ public class SetupDto {
     private FuelStrategy fuelStrategy;
     private MechanicalGrip mechanicalGrip;
     private Tyres tyres;
-
-    public SetupDto convertSetupToDto(Setup setup) {
-        return SetupDto.builder()
-                .id(setup.getId())
-                .name(setup.getName())
-                .userId(setup.getUser().getId())
-                .carType(setup.getCarType().toString())
-                .track(setup.getTrack().toString())
-                .setupType(setup.getSetupType().toString())
-                .aero(setup.getAero())
-                .dampers(setup.getDampers())
-                .electronics(setup.getElectronics())
-                .fuelStrategy(setup.getFuelStrategy())
-                .mechanicalGrip(setup.getMechanicalGrip())
-                .tyres(setup.getTyres())
-                .build();
-    }
 }
