@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {AuthService} from "../../service/authentication/auth.service";
+import {AuthService} from "../../service/auth.service";
 import {environment} from "../../../environments/environment.development";
 
 @Component({
