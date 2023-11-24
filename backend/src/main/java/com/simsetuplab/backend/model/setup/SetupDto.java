@@ -18,6 +18,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SetupDto {
+    private long id;
     private String name;
     private long userId;
 
@@ -34,6 +35,7 @@ public class SetupDto {
 
     public SetupDto convertSetupToDto(Setup setup) {
         return SetupDto.builder()
+                .id(setup.getId())
                 .name(setup.getName())
                 .userId(setup.getUser().getId())
                 .carType(setup.getCarType().toString())

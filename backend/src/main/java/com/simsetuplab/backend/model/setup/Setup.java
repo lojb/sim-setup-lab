@@ -52,6 +52,7 @@ public class Setup {
 
     public Setup convertDtoToSetup(SetupDto setupDto, User user) {
         return Setup.builder()
+                .id(setupDto.getId())
                 .name(setupDto.getName())
                 .user(user)
                 .carType(CarType.valueOf(setupDto.getCarType()))
