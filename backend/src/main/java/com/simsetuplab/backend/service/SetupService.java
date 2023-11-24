@@ -1,11 +1,5 @@
 package com.simsetuplab.backend.service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.enumeration.carsetup.SetupType;
 import com.simsetuplab.backend.enumeration.carsetup.Tracks;
@@ -18,6 +12,12 @@ import com.simsetuplab.backend.model.user.User;
 import com.simsetuplab.backend.repository.SetupRepository;
 import com.simsetuplab.backend.repository.UserRepository;
 import com.simsetuplab.backend.repository.ValidateSetupRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SetupService {
@@ -82,10 +82,9 @@ public class SetupService {
         Optional<User> user = userRepository.findUserById(setupDto.getUserId());
 
         if (user.isPresent()) {
-            Setup setup = new Setup(setupDto);
-            setup.setUser(user.get());
-            return setup;
-        } else
+            return new Setup().convertDtoToSetup(setupDto, user.get());
+        } else {
             throw new ApiRequestException("User does not exist");
+        }
     }
 }
