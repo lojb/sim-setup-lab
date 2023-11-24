@@ -1,6 +1,7 @@
 package com.simsetuplab.backend.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,52 +23,63 @@ import jakarta.annotation.security.PermitAll;
 @RestController
 @RequestMapping(path = "api/v1/setup")
 public class SetupController {
-	private final SetupService setupService;
+    private final SetupService setupService;
 
-	@Autowired
-	public SetupController(SetupService setupService) {
-		this.setupService = setupService;
-	}
+    @Autowired
+    public SetupController(SetupService setupService) {
+        this.setupService = setupService;
+    }
 
-	@GetMapping
-	public ResponseEntity<List<Setup>> getAllSetups() {
-		return ResponseEntity.ok(setupService.getAllSetups());
-	}
+    @GetMapping
+    public ResponseEntity<List<SetupDto>> getAllSetups() {
+        List<Setup> setups = setupService.getAllSetups();
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Setup> getSetupById(@PathVariable("id") Long id) {
-		return ResponseEntity.ok(setupService.getSetupById(id));
-	}
+        return ResponseEntity.ok(setupService.mapSetupListToSetupDtoList(setups));
+    }
 
-	@GetMapping("/default")
-	public ResponseEntity<Setup> getDefaultSetup(@RequestParam String track, @RequestParam String car) {
-		return ResponseEntity.ok(setupService.getDefaultSetup(track, car));
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<SetupDto> getSetupById(@PathVariable("id") Long id) {
+        Setup setup = setupService.getSetupById(id);
 
-	@GetMapping("/user/{userId}")
-	public ResponseEntity<List<Setup>> getSetupsByUserId(@PathVariable("userId") Long userId) {
-		return ResponseEntity.ok(setupService.getSetupsByUserId(userId));
-	}
+        return ResponseEntity.ok(setup.convertSetupToDto());
+    }
 
-	@GetMapping("/enums")
-	@PermitAll
-	public EnumData getEnumData() {
-		return setupService.getEnumData();
-	}
+    @GetMapping("/default")
+    public ResponseEntity<SetupDto> getDefaultSetup(@RequestParam String track, @RequestParam String car) {
+        Setup setup = setupService.getDefaultSetup(track, car);
+        return ResponseEntity.ok(setup.convertSetupToDto());
+    }
 
-	@PostMapping
-	public ResponseEntity<Setup> addSetup(@RequestBody SetupDto setupDto) {
-		return ResponseEntity.ok(setupService.addOrUpdateSetup(setupDto));
-	}
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<SetupDto>> getSetupsByUserId(@PathVariable("userId") Long userId) {
+        List<Setup> setupList = setupService.getSetupsByUserId(userId);
 
-	@PutMapping
-	public ResponseEntity<Setup> updateSetup(@RequestBody SetupDto setupDto) {
-		return ResponseEntity.ok(setupService.addOrUpdateSetup(setupDto));
-	}
+        return ResponseEntity.ok(setupService.mapSetupListToSetupDtoList(setupList));
+    }
 
-	@DeleteMapping
-	public ResponseEntity<Void> deleteSetup(Setup setup) {
-		setupService.deleteSetup(setup);
-		return ResponseEntity.ok().build();
-	}
+    @GetMapping("/enums")
+    @PermitAll
+    public EnumData getEnumData() {
+        return setupService.getEnumData();
+    }
+
+    @PostMapping
+    public ResponseEntity<SetupDto> addSetup(@RequestBody SetupDto setupDto) {
+        Setup setup = setupService.addOrUpdateSetup(setupDto);
+
+        return ResponseEntity.ok(setup.convertSetupToDto());
+    }
+
+    @PutMapping
+    public ResponseEntity<SetupDto> updateSetup(@RequestBody SetupDto setupDto) {
+        Setup setup = setupService.addOrUpdateSetup(setupDto);
+
+        return ResponseEntity.ok(setup.convertSetupToDto());
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteSetup(Setup setup) {
+        setupService.deleteSetup(setup);
+        return ResponseEntity.ok().build();
+    }
 }
