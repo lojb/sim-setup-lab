@@ -1,8 +1,5 @@
 package com.simsetuplab.backend.model.setup;
 
-import com.simsetuplab.backend.enumeration.carsetup.CarType;
-import com.simsetuplab.backend.enumeration.carsetup.SetupType;
-import com.simsetuplab.backend.enumeration.carsetup.Tracks;
 import com.simsetuplab.backend.model.setup.setupvalues.Aero;
 import com.simsetuplab.backend.model.setup.setupvalues.Dampers;
 import com.simsetuplab.backend.model.setup.setupvalues.Electronics;
