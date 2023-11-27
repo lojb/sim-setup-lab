@@ -3,6 +3,7 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../service/auth.service";
 import {environment} from "../../../environments/environment.development";
+import {RequestService} from "../../service/request.service";
 
 @Component({
   selector: 'app-register',
@@ -14,8 +15,8 @@ export class RegisterComponent {
   registerForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private http: HttpClient,
-              private auth: AuthService
+              private auth: AuthService,
+              private requestService: RequestService
   ) {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
@@ -28,13 +29,12 @@ export class RegisterComponent {
   }
 
   RegisterUser() {
-    this.http.post(`${environment.backend}/api/v1/auth/register`, this.registerForm.value)
-      .subscribe(
-        (user: any) => {
-          console.log(user)
+    this.requestService.registerUser(this.registerForm.value)
+      .subscribe((user: any) => {
           this.auth.login(user);
         }
       );
+
   }
 
 
