@@ -1,6 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {SetupValues} from "../../model/setup/setup-values";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ValidateSetup} from "../../model/validateSetup/validate-setup";
 import {Tyres} from "../../model/setup/tyres";
 import {Electronics} from "../../model/setup/electronics";
@@ -17,7 +16,6 @@ import {RequestService} from "../../service/request.service";
 })
 export class SetupComponent {
 
-  requestService: RequestService;
   selectedSetupPart: string = 'tyres';
   setupValues: SetupValues = new SetupValues();
   validator: ValidateSetup;
@@ -27,7 +25,7 @@ export class SetupComponent {
   selectedTrack: any;
   allSelected: boolean;
 
-  constructor() {
+  constructor(private requestService: RequestService) {
     this.requestService.getEnums()
       .subscribe((data: any) => {
         this.carsList = data.cars;
