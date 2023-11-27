@@ -7,7 +7,6 @@ import com.simsetuplab.backend.enumeration.carsetup.CarType;
 import com.simsetuplab.backend.enumeration.carsetup.SetupType;
 import com.simsetuplab.backend.enumeration.carsetup.Tracks;
 import com.simsetuplab.backend.model.setup.Setup;
-import org.springframework.data.jpa.repository.Query;
 
 public interface SetupRepository extends JpaRepository<Setup, Long> {
     Setup findSetupById(Long id);
