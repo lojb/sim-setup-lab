@@ -57,6 +57,13 @@ public class SetupController {
         return ResponseEntity.ok(setupService.mapSetupListToSetupDtoList(setupList));
     }
 
+    @GetMapping("/user/custom/{userId}")
+    public ResponseEntity<List<SetupDto>> getCustomSetupsByUserId(@PathVariable("userId") Long userId) {
+        List<Setup> setupList = setupService.getCustomSetupsByUserId(userId);
+
+        return ResponseEntity.ok(setupService.mapSetupListToSetupDtoList(setupList));
+    }
+
     @GetMapping("/enums")
     @PermitAll
     public EnumData getEnumData() {
