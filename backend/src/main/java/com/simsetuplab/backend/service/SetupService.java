@@ -45,6 +45,10 @@ public class SetupService {
         return setupRepository.findAllByUserId(id);
     }
 
+    public List<Setup> getCustomSetupsByUserId(Long id) {
+        return setupRepository.findAllByUserIdAndSetupType(id, SetupType.CUSTOM);
+    }
+
     public Setup addOrUpdateSetup(SetupDto setupDto) {
         Setup setup = convertDtoToSetup(setupDto);
 
