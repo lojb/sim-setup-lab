@@ -22,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminComponent } from './components/admin/admin.component';
 import { MySetupsComponent } from './components/mySetups/mySetups.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {RequestService} from "./service/request.service";
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     NgbModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, RequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
