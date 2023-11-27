@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import {SetupValues} from "../model/setup/setup-values";
 import {ValidateSetup} from "../model/validateSetup/validate-setup";
 import {EnumData} from "../model/enumData/enumData";
+import {FormGroup} from "@angular/forms";
+import {environment} from "../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,20 @@ export class RequestService {
     return this.http.get('/api/v1/setup/enums');
   }
 
-  postSetup(data: SetupValues): Observable<SetupValues> {
-    return this.http.post('/api/v1/setup', data)
+  getCustomSetupsByUserId(userId: number): Observable<Array<SetupValues>> {
+    return this.http.get(`/api/v1/setup/user/custom/${userId}`);
   }
+
+  loginUser(data: FormGroup):Observable<any> {
+    return this.http.post(`${environment.backend}/api/v1/auth/authenticate`, data);
+  }
+
+  registerUser(data: FormGroup):Observable<any> {
+    return this.http.post(`${environment.backend}/api/v1/auth/register`, data);
+  }
+
+  postSetup(data: SetupValues): Observable<SetupValues> {
+    return this.http.post('/api/v1/setup', data);
+  }
+
 }
