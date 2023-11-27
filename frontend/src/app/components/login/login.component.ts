@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../service/auth.service";
-import {environment} from "../../../environments/environment.development";
+import {RequestService} from "../../service/request.service";
 
 @Component({
   selector: 'app-login',
@@ -13,8 +12,8 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
-              private http: HttpClient,
-              private auth: AuthService
+              private auth: AuthService,
+              private requestService: RequestService
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
@@ -25,9 +24,8 @@ export class LoginComponent {
   }
 
   LoginUser() {
-    this.http.post(`${environment.backend}/api/v1/auth/authenticate`, this.loginForm.value)
+    this.requestService.loginUser(this.loginForm.value)
       .subscribe((user: any) => {
-        console.log(user)
         this.auth.login(user);
       });
   }
