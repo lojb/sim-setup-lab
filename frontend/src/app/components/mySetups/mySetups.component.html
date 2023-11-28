@@ -8,7 +8,7 @@
             <h5 class="card-title">{{setup.name}}</h5>
             <p class="card-text">Car: {{setup.carType.replaceAll("_", " ")}}</p>
             <p class="card-text">Track: {{setup.track}}</p>
-            <button [routerLink]="['/setup', setup.id]" class="btn btn-primary">Edit</button>
+            <button [routerLink]="['/setup']" [queryParams]="{id: setup.id}" class="btn btn-primary">Edit</button>
           </div>
         </div>
 </div>
