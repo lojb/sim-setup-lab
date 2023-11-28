@@ -4,12 +4,11 @@
 
 <div class="d-flex flex-wrap flex-sm-column flex-md-row align-items-center justify-content-center container m-auto rounded-5 glass mh-75">
         <div *ngFor="let setup of setupList" class="card m-2 p-2">
-          <!--  <img class="card-img-top" src="..." alt="Card image cap">-->
           <div class="card-body w-auto">
             <h5 class="card-title">{{setup.name}}</h5>
             <p class="card-text">Car: {{setup.carType.replaceAll("_", " ")}}</p>
             <p class="card-text">Track: {{setup.track}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <button [routerLink]="['/setup', setup.id]" class="btn btn-primary">Edit</button>
           </div>
         </div>
 </div>
