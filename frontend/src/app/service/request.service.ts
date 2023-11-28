@@ -19,6 +19,10 @@ export class RequestService {
     return this.http.get(`/api/v1/setup/default?track=${track}&car=${car}`);
   }
 
+  getCustomSetup(id: number): Observable<SetupValues> {
+    return this.http.get(`/api/v1/setup/${id}`);
+  }
+
   getValidator(car: string): Observable<ValidateSetup> {
     return this.http.get(`/api/v1/validatesetup/${car}`);
   }
@@ -32,15 +36,15 @@ export class RequestService {
   }
 
   loginUser(data: FormGroup):Observable<any> {
-    return this.http.post(`${environment.backend}/api/v1/auth/authenticate`, data);
+    return this.http.postWithoutHeaders(`/api/v1/auth/authenticate`, data);
   }
 
   registerUser(data: FormGroup):Observable<any> {
-    return this.http.post(`${environment.backend}/api/v1/auth/register`, data);
+    return this.http.postWithoutHeaders(`/api/v1/auth/register`, data);
   }
 
   postSetup(data: SetupValues): Observable<SetupValues> {
-    return this.http.post('/api/v1/setup', data);
+    return this.http.post(`/api/v1/setup`, data);
   }
 
 }
