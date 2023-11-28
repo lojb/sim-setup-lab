@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {SetupValues} from "../../model/setup/setup-values";
 import {ValidateSetup} from "../../model/validateSetup/validate-setup";
 import {Tyres} from "../../model/setup/tyres";
@@ -8,6 +8,7 @@ import {MechanicalGrip} from "../../model/setup/mechanical-grip";
 import {Dampers} from "../../model/setup/dampers";
 import {Aero} from "../../model/setup/aero";
 import {RequestService} from "../../service/request.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-setup',
@@ -17,38 +18,49 @@ import {RequestService} from "../../service/request.service";
 export class SetupComponent {
 
   selectedSetupPart: string = 'tyres';
-  setupValues: SetupValues = new SetupValues();
+  setupValues: SetupValues;
   validator: ValidateSetup;
   carsList: Array<string>;
   tracksList: Array<string>;
   selectedCar: any;
   selectedTrack: any;
-  allSelected: boolean;
+  editType: "new" | "edit";
 
-  constructor(private requestService: RequestService) {
-    this.requestService.getEnums()
-      .subscribe((data: any) => {
-        this.carsList = data.cars;
-        this.tracksList = data.tracks;
+  constructor(private requestService: RequestService, private route: ActivatedRoute) {
+    let id = this.route.snapshot.queryParamMap.get("id")
+    if (id) {
+      // edit existing setup
+      this.loadExistingSetup(Number(id));
+    } else {
+      // create new setup
+      this.requestService.getEnums()
+        .subscribe((data: any) => {
+          this.carsList = data.cars;
+          this.tracksList = data.tracks;
+        })
+    }
+  }
+
+  loadExistingSetup(id: number) {
+    this.requestService.getCustomSetup(Number(id))
+      .subscribe((data: SetupValues) => {
+        this.selectedTrack = data.track;
+        this.selectedCar = data.carType;
+        this.setupValues = data;
+        this.getValidator();
       })
+
+    this.editType = "edit";
   }
 
-  toggleSelectedPart(setupPart: string) {
-    this.selectedSetupPart = setupPart;
-  }
-
-  startSetup() {
+  startNewSetup() {
     this.requestService.getDefaultSetup(this.transformStringToEnum(this.selectedTrack), this.transformStringToEnum(this.selectedCar))
       .subscribe((setup: any) => {
-        this.loadSetup(setup);
+        this.loadNewSetup(setup);
+        this.getValidator();
       })
 
-    this.allSelected = this.selectedTrack && this.selectedCar;
-
-    this.requestService.getValidator(this.transformStringToEnum(this.selectedCar))
-      .subscribe((validator: any) => {
-        this.validator = validator;
-      })
+    this.editType = "new";
   }
 
   submitSetup() {
@@ -64,7 +76,7 @@ export class SetupComponent {
       });
   }
 
-  loadSetup(setup: SetupValues) {
+  loadNewSetup(setup: SetupValues) {
     delete setup.aero.id;
     delete setup.dampers.id;
     delete setup.electronics.id;
@@ -79,6 +91,13 @@ export class SetupComponent {
     }
 
     this.setupValues = setup;
+  }
+
+  getValidator() {
+    this.requestService.getValidator(this.transformStringToEnum(this.selectedCar))
+      .subscribe((validator: any) => {
+        this.validator = validator;
+      })
   }
 
   public transformEnumToString(input: string): string {
@@ -109,6 +128,10 @@ export class SetupComponent {
     });
 
     return capitalizedWords.join('_');
+  }
+
+  toggleSelectedPart(setupPart: string) {
+    this.selectedSetupPart = setupPart;
   }
 
   handleTyresUpdate(tyres: Tyres) {

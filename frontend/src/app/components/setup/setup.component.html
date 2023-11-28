@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center justify-content-center container m-auto rounded-5 glass mh-75">
-  <div *ngIf="!allSelected"
+  <div *ngIf="!setupValues"
        class="d-flex flex-column justify-content-center align-items-center bg-body-tertiary bg-opacity-50 rounded-3 m-2">
     <div class="d-flex justify-content-center align-items-center flex-wrap mt-2">
       <div class="container w-auto">
@@ -23,14 +23,14 @@
         </div>
         <div class="d-flex justify-content-center align-items-center m-2">
           <button type="button" class="btn btn-primary" [disabled]="!selectedTrack || !selectedCar"
-                  (click)="startSetup()">
+                  (click)="startNewSetup()">
             Start
           </button>
         </div>
       </div>
     </div>
   </div>
-  <div *ngIf="allSelected"
+  <div *ngIf="setupValues"
        class="d-flex flex-column justify-content-center align-items-center bg-body-tertiary bg-opacity-50 rounded-3 m-2">
     <div class="d-flex justify-content-around align-items-center flex-wrap mt-2">
       <button [ngClass]="selectedSetupPart === 'tyres' ? 'btn btn-dark m-1 w-auto' : 'btn btn-primary m-1 w-auto'"
