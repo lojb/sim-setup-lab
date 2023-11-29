@@ -29,4 +29,8 @@ export class HttpClientWrapper {
   postWithoutHeaders(url: string, data:any): Observable<any> {
     return this.http.post(url, data)
   }
+
+  put(url: string, data: any):Observable<any> {
+    return this.http.put(url, data, this.createOptions())
+  }
 }
