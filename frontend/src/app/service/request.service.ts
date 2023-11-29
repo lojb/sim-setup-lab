@@ -5,7 +5,6 @@ import {SetupValues} from "../model/setup/setup-values";
 import {ValidateSetup} from "../model/validateSetup/validate-setup";
 import {EnumData} from "../model/enumData/enumData";
 import {FormGroup} from "@angular/forms";
-import {environment} from "../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +44,10 @@ export class RequestService {
 
   postSetup(data: SetupValues): Observable<SetupValues> {
     return this.http.post(`/api/v1/setup`, data);
+  }
+
+  updateSetup(data: SetupValues): Observable<SetupValues> {
+    return this.http.put(`/api/v1/setup`, data);
   }
 
 }
