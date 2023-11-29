@@ -94,7 +94,7 @@
         </label>
         <input id="create" type="text" [(ngModel)]="setupValues.name" class="form-control">
         <button class="btn btn-primary m-1" [disabled]="setupValues.name.length < 3" (click)="submitSetup()">
-          Create
+          {{editType === "new" ? "Create" : "Edit"}}
         </button>
       </div>
     </ng-container>
