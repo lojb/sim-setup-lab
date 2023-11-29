@@ -63,19 +63,6 @@ export class SetupComponent {
     this.editType = "new";
   }
 
-  submitSetup() {
-    this.setupValues.userId = Number(localStorage.getItem('userId'));
-    this.setupValues.carType = this.transformStringToEnum(this.selectedCar);
-    this.setupValues.track = this.transformStringToEnum(this.selectedTrack);
-    this.setupValues.setupType = 'CUSTOM';
-    console.log(this.setupValues);
-
-    this.requestService.postSetup(this.setupValues)
-      .subscribe((setup: any) => {
-        console.log(setup)
-      });
-  }
-
   loadNewSetup(setup: SetupValues) {
     delete setup.aero.id;
     delete setup.dampers.id;
@@ -91,6 +78,34 @@ export class SetupComponent {
     }
 
     this.setupValues = setup;
+  }
+
+  submitSetup() {
+    this.setupValues.userId = Number(localStorage.getItem('userId'));
+    this.setupValues.carType = this.transformStringToEnum(this.selectedCar);
+    this.setupValues.track = this.transformStringToEnum(this.selectedTrack);
+    this.setupValues.setupType = 'CUSTOM';
+    console.log(this.setupValues);
+
+    if (this.editType === "edit") {
+      this.sendPutRequest(this.setupValues);
+    } else {
+      this.sendPostRequest(this.setupValues);
+    }
+  }
+
+  sendPostRequest(setup: SetupValues) {
+    this.requestService.postSetup(setup)
+      .subscribe((setup: any) => {
+        console.log(setup)
+      });
+  }
+
+  sendPutRequest(setup: SetupValues) {
+    this.requestService.updateSetup(setup)
+      .subscribe((setup: any) => {
+        console.log(setup)
+      });
   }
 
   getValidator() {
