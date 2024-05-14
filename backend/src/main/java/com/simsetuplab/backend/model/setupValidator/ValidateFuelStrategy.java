@@ -4,6 +4,7 @@ import com.simsetuplab.backend.enumeration.carsetup.TyreType;
 import com.simsetuplab.backend.model.setup.setupvalues.FuelStrategy;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @Table(name = "validate_fuel_strategy", schema = "public")
 public class ValidateFuelStrategy {
 	@Id
@@ -34,13 +36,13 @@ public class ValidateFuelStrategy {
 		return errorList;
 	}
 
-	private void validateFuel(int fuel) {
+	public void validateFuel(int fuel) {
 		if (!(fuel >= fuelMin && fuel <= fuelMax)) {
 			errorList.add("fuel value");
 		}
 	}
 
-	private void validateBrakes(int brakes) {
+	public void validateBrakes(int brakes) {
 		if (!(brakes >= brakesMin && brakes <= brakesMax)) {
 			errorList.add("brakes values");
 		}
