@@ -3,6 +3,7 @@ package com.simsetuplab.backend.model.setupValidator;
 import com.simsetuplab.backend.model.setup.setupvalues.Dampers;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @Table(name = "validate_dampers", schema = "public")
 public class ValidateDampers {
 	@Id
@@ -48,56 +50,56 @@ public class ValidateDampers {
 		return errorList;
 	}
 
-	private void validateFrontBump(int frontLeftBump, int frontRightBump) {
+	public void validateFrontBump(int frontLeftBump, int frontRightBump) {
 		if (!(frontLeftBump >= frontBumpMin && frontLeftBump <= frontBumpMax
 				&& frontRightBump >= frontBumpMin && frontRightBump <= frontBumpMax)) {
 			errorList.add("front bump");
 		}
 	}
 
-	private void validateFrontFastBump(int frontLeftFastBump, int frontRightFastBump) {
+	public void validateFrontFastBump(int frontLeftFastBump, int frontRightFastBump) {
 		if (!(frontLeftFastBump >= frontFastBumpMin && frontLeftFastBump <= frontFastBumpMax
 				&& frontRightFastBump >= frontFastBumpMin && frontRightFastBump <= frontFastBumpMax)) {
 			errorList.add("front fast bump");
 		}
 	}
 
-	private void validateFrontRebound(int frontLeftRebound, int frontRightRebound) {
+	public void validateFrontRebound(int frontLeftRebound, int frontRightRebound) {
 		if (!(frontLeftRebound >= frontReboundMin && frontLeftRebound <= frontReboundMax
 				&& frontRightRebound >= frontReboundMin && frontRightRebound <= frontReboundMax)) {
 			errorList.add("front rebound");
 		}
 	}
 
-	private void validateFrontFastRebound(int frontLeftFastRebound, int frontRightFastRebound) {
+	public void validateFrontFastRebound(int frontLeftFastRebound, int frontRightFastRebound) {
 		if (!(frontLeftFastRebound >= frontFastReboundMin && frontLeftFastRebound <= frontFastReboundMax
 				&& frontRightFastRebound >= frontFastReboundMin && frontRightFastRebound <= frontFastReboundMax)) {
 			errorList.add("front fast rebound");
 		}
 	}
 
-	private void validateRearBump(int rearLeftBump, int rearRightBump) {
+	public void validateRearBump(int rearLeftBump, int rearRightBump) {
 		if (!(rearLeftBump >= rearBumpMin && rearLeftBump <= rearBumpMax
 				&& rearRightBump >= rearBumpMin && rearRightBump <= rearBumpMax)) {
 			errorList.add("rear bump");
 		}
 	}
 
-	private void validateRearFastBump(int rearLeftFastBump, int rearRightFastBump) {
+	public void validateRearFastBump(int rearLeftFastBump, int rearRightFastBump) {
 		if (!(rearLeftFastBump >= rearFastBumpMin && rearLeftFastBump <= rearFastBumpMax
 				&& rearRightFastBump >= rearFastBumpMin && rearRightFastBump <= rearFastBumpMax)) {
 			errorList.add("rear fast bump");
 		}
 	}
 
-	private void validateRearRebound(int rearLeftRebound, int rearRightRebound) {
+	public void validateRearRebound(int rearLeftRebound, int rearRightRebound) {
 		if (!(rearLeftRebound >= rearReboundMin && rearLeftRebound <= rearReboundMax
 				&& rearRightRebound >= rearReboundMin && rearRightRebound <= rearReboundMax)) {
 			errorList.add("rear rebound");
 		}
 	}
 
-	private void validateRearFastRebound(int rearLeftFastRebound, int rearRightFastRebound) {
+	public void validateRearFastRebound(int rearLeftFastRebound, int rearRightFastRebound) {
 		if (!(rearLeftFastRebound >= rearFastReboundMin && rearLeftFastRebound <= rearFastReboundMax
 				&& rearRightFastRebound >= rearFastReboundMin && rearRightFastRebound <= rearFastReboundMax)) {
 			errorList.add("rear fast rebound");
