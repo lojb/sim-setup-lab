@@ -3,13 +3,14 @@ package com.simsetuplab.backend.model.setupValidator;
 import com.simsetuplab.backend.model.setup.setupvalues.Aero;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @Table(name = "validate_aero", schema = "public")
 public class ValidateAero {
 	@Id
@@ -29,7 +30,7 @@ public class ValidateAero {
 	private int rearBrakeDuctsMax;
 
 	@Transient
-	List<String> errorList = new ArrayList<>();
+	private List<String> errorList;
 
 	public List<String> validate(Aero aero) {
 		validateFrontRideHeight(aero.getFrontRideHeight());
@@ -42,37 +43,37 @@ public class ValidateAero {
 		return errorList;
 	}
 
-	private void validateFrontRideHeight(int frontRideHeight) {
+	public void validateFrontRideHeight(int frontRideHeight) {
 		if (!(frontRideHeight >= frontRideHeightMin && frontRideHeight <= frontRideHeightMax)) {
 			errorList.add("front ride height");
 		}
 	}
 
-	private void validateRearRideHeight(int rearRideHeight) {
+	public void validateRearRideHeight(int rearRideHeight) {
 		if (!(rearRideHeight >= rearRideHeightMin && rearRideHeight <= rearRideHeightMax)) {
 			errorList.add("rear ride height");
 		}
 	}
 
-	private void validateSplitter(int splitter) {
+	public void validateSplitter(int splitter) {
 		if (!(splitter >= splitterMin && splitter <= splitterMax)) {
 			errorList.add("splitter");
 		}
 	}
 
-	private void validateRearWing(int rearWing) {
+	public void validateRearWing(int rearWing) {
 		if (!(rearWing >= rearWingMin && rearWing <= rearWingMax)) {
 			errorList.add("rear wing");
 		}
 	}
 
-	private void validateFrontBrakeDucts(int frontBrakeDucts) {
+	public void validateFrontBrakeDucts(int frontBrakeDucts) {
 		if (!(frontBrakeDucts >= frontBrakeDuctsMin && frontBrakeDucts <= frontBrakeDuctsMax)) {
 			errorList.add("front brake ducts");
 		}
 	}
 
-	private void validateRearBrakeDucts(int rearBrakeDucts) {
+	public void validateRearBrakeDucts(int rearBrakeDucts) {
 		if (!(rearBrakeDucts >= rearBrakeDuctsMin && rearBrakeDucts <= rearBrakeDuctsMax)) {
 			errorList.add("rear brake ducts");
 		}
