@@ -3,6 +3,7 @@ package com.simsetuplab.backend.model.setupValidator;
 import com.simsetuplab.backend.model.setup.setupvalues.Electronics;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @Table(name = "validate_electronics", schema = "public")
 public class ValidateElectronics {
 	@Id
@@ -36,25 +38,25 @@ public class ValidateElectronics {
 		return errorList;
 	}
 
-	private void validateTractionControl(int tractionControl) {
+	public void validateTractionControl(int tractionControl) {
 		if (!(tractionControl >= tractionControlMin && tractionControl <= tractionControlMax)) {
 			errorList.add("traction control");
 		}
 	}
 
-	private void validateAbs(int abs) {
+	public void validateAbs(int abs) {
 		if (!(abs >= absMin && abs <= absMax)) {
 			errorList.add("ABS");
 		}
 	}
 
-	private void validateEcuMap(int ecuMap) {
+	public void validateEcuMap(int ecuMap) {
 		if (!(ecuMap >= ecuMapMin && ecuMap <= ecuMapMax)) {
 			errorList.add("ECU map");
 		}
 	}
 
-	private void validateTelemetryLaps(int telemetryLaps) {
+	public void validateTelemetryLaps(int telemetryLaps) {
 		if (!(telemetryLaps >= telemetryLapsMin && telemetryLaps <= telemetryLapsMax)) {
 			errorList.add("telemetry laps");
 		}
